@@ -29,6 +29,11 @@ Visit the [project website](https://ryersondmp.github.io/sa11y/) to learn more.
 2. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+= 1.0.2 =
+* Bug fix.
+
+= 1.0.1 =
+* Bug fix.
 
 = 1.0.0 =
 * Initial release of official WordPress plugin.
