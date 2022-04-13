@@ -68,11 +68,13 @@ function sa11y_load_scripts() {
     $enable = sa11y_get_plugin_settings('sa11y_enable');
     $user = wp_get_current_user();
     $allowed_roles = array('editor', 'administrator', 'author', 'contributor');
+    $allowed_user_roles = array_intersect($allowed_roles, $user->roles);
     $lang  = sanitize_text_field(sa11y_get_plugin_settings('sa11y_lang'));
 
     // Check if scroll top enable.
-    if ($enable && is_user_logged_in() && 
-        (array_intersect($allowed_roles, $user->roles) || current_user_can('edit_posts') || current_user_can('edit_pages'))
+    if ($enable === 1
+        && is_user_logged_in() 
+        && ($allowed_user_roles || current_user_can('edit_posts') || current_user_can('edit_pages'))
     ) {
 
         wp_enqueue_style('sa11y-wp-css', trailingslashit(SA11Y_ASSETS) . 'src/sa11y.min.css', null);
@@ -165,15 +167,23 @@ function sa11y_init() {
         $sa11yNoRun = '#sa11y-no-run';
     }
 
-    // Loads the scroll top
-    if ($enable === 1) {
+    // Allowed roles.
+    $user = wp_get_current_user();
+    $allowed_roles = array('editor', 'administrator', 'author', 'contributor');
+    $allowed_user_roles = array_intersect($allowed_roles, $user->roles);
+
+    // Instantiates Sa11y on the page for allowed users.
+    if ($enable === 1
+        && is_user_logged_in() 
+        && ($allowed_user_roles || current_user_can('edit_posts') || current_user_can('edit_pages'))
+    ) {
 
         //Allowed characters before echoing.
         $r = array('&gt;' => '>', '&quot;' => '"', '&#039;' => '"');
 
         echo '
 		<script id="sa11y-wp-init">
-        const sa11yNoRun = document.querySelectorAll(\'' . strtr($sa11yNoRun, $r) . '\');
+        const sa11yNoRun = document.querySelector(\'' . strtr($sa11yNoRun, $r) . '\');
         if (sa11yNoRun.length === 0) {
             const instantiateSa11y = new Sa11y({
                 checkRoot:  \'' . strtr($target, $r) . '\',

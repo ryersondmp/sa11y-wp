@@ -14,43 +14,21 @@ Sa11y is an accessibility quality assurance tool that visually highlights common
 
 Sa11y, the accessibility quality assurance assistant. Geared towards content authors, Sa11y straightforwardly identifies errors or warnings at the source with a simple tooltip on how to fix them.
 
-= Features: =
+= Features =
 
-* Over 50 test conditions.
-* Free and open source.
-* Automatic: checks content on page load.
+* Over 50 checks.
 * Concise tooltips explain issues right at the source.
-* Additional (toggleable) checks: Contrast, form labels, readability, links (Advanced).
-* Dark mode.
+* Automatically checks content once the page has loaded.
+* Highly customizable. Turn off or hide irrelevant checks.
+* 100% free and open source.
 
-View [project website](https://ryersondmp.github.io/sa11y/) for all features.
+Visit the [project website](https://ryersondmp.github.io/sa11y/) to learn more.
 
-= Support this project =
-
-* [Translate to your language](https://translate.wordpress.org/projects/wp-plugins/sa11y/).
-* Contribute on [Github](https://github.com/ryersondmp/sa11y/).
-
-== Installation ==
-
-**Through dashboard**
-
-1. Log in to your WordPress admin panel and go to Plugins > Add New
-2. Type **Sa11y** in the search box and click on search button. Find **Sa11y**.
-3. Then click on Install Now.
-4. Activate the plugin.
-5. To customize, go to Settings > Sa11y.
-
-**Installing via FTP**
-
-1. Download the plugin.
-2. Unzip.
-3. Upload the "sa11y" folder into your plugins directory.
-4. Log in to your WordPress admin panel and click the Plugins menu.
-5. Then activate the plugin.
-6. To customize, go to Settings > Sa11y.
+== Screenshots ==
+1. Logged-in view with Sa11y enabled. Sa11y detected two issues: a non-descript "learn more" link and a skipped heading. 
+2. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
 
 = 1.0.0 =
 * Initial release of official WordPress plugin.
-

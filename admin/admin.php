@@ -411,47 +411,6 @@ function sa11y_readability_target_field() {
 <?php
 }
 
-/* Readability language field - Show once more languages added.
-function sa11y_lang_field() {
-    $settings = sa11y_get_plugin_settings('sa11y_lang');
-?>
-    <fieldset>
-        <legend class="screen-reader-text" aria-describedby="lang_desc"><span><?php esc_html_e('Language', 'sa11y-wp'); ?></span></legend>
-        <p>
-            <label for="english">
-                <input id="english" type="radio" name="sa11y_plugin_settings[sa11y_lang]" value="en" <?php checked('en', $settings); ?> />
-                <?php esc_html_e('English', 'sa11y-wp'); ?>
-            </label><br>
-            <label for="french">
-                <input id="french" type="radio" name="sa11y_plugin_settings[sa11y_lang]" value="fr" <?php checked('fr', $settings); ?> />
-                <?php esc_html_e('French', 'sa11y-wp'); ?>
-            </label><br>
-
-            <label for="spanish">
-                <input id="spanish" type="radio" name="sa11y_plugin_settings[sa11y_lang]" value="es" <?php checked('es', $settings); ?> />
-                <?php esc_html_e('Spanish', 'sa11y-wp'); ?>
-            </label><br>
-
-            <label for="german">
-                <input id="german" type="radio" name="sa11y_plugin_settings[sa11y_lang]" value="de" <?php checked('de', $settings); ?> />
-                <?php esc_html_e('German', 'sa11y-wp'); ?>
-            </label><br>
-
-            <label for="dutch">
-                <input id="dutch" type="radio" name="sa11y_plugin_settings[sa11y_lang]" value="nl" <?php checked('nl', $settings); ?> />
-                <?php esc_html_e('Dutch', 'sa11y-wp'); ?>
-            </label><br>
-            
-            <label for="italian">
-                <input id="italian" type="radio" name="sa11y_plugin_settings[sa11y_lang]" value="it" <?php checked('it', $settings); ?> />
-                <?php esc_html_e('Italian', 'sa11y-wp'); ?>
-            </label
-        </p>
-        <p id="lang_desc"><?php _e('Default language of Sa11y including main panel and tooltips.', 'sa11y-wp'); ?></p>
-    </fieldset>
-<?php
-} */
-
 /**
  * Container ignore field
  */
@@ -724,8 +683,8 @@ function sa11y_plugin_settings_render_page() { ?>
                         <ul>
                             <li>
                                 <?php 
-                                $anchor = esc_html__( 'Report an issue on GitHub', 'sa11y-wp' );
-                                $domain = esc_url( __( 'https://github.com/ryersondmp/sa11y/issues/new', 'sa11y-wp' ) );  
+                                $anchor = esc_html__( 'Report a bug or leave feedback', 'sa11y-wp' );
+                                $domain = esc_url( __( 'https://forms.gle/sjzK9XykETaoqZv99', 'sa11y-wp' ) );  
                                 $link   = sprintf( '<a href="%s">%s</a>', $domain, $anchor );
                                 echo sprintf( esc_html_x( '%1$s', 'sa11y-wp' ), $link );
                                 ?>
@@ -743,7 +702,7 @@ function sa11y_plugin_settings_render_page() { ?>
                         <h3 class="postbox-heading"><?php _e( 'Version', 'sa11y-wp' ); ?></h3>
                         <ul>
                             <li><strong><?php esc_html_e( 'Sa11y', 'sa11y-wp' ); ?>:</strong> 2.1.6</li>
-                            <li><strong><?php esc_html_e( 'Plugin', 'sa11y-wp' ); ?>:</strong> 1.0.0 (Beta)</li>
+                            <li><strong><?php esc_html_e( 'Plugin', 'sa11y-wp' ); ?>:</strong> 1.0.0 <strong class="sa11y-admin-badge">Beta</strong></li>
                         </ul>
 
                         <h3 class="postbox-heading"><?php _e( 'Acknowledgements', 'sa11y-wp' ); ?></h3>
