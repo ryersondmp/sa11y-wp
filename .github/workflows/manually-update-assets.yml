@@ -1,8 +1,6 @@
-name: Plugin asset/readme update
+name: Manually update plugin asset/readme
 on:
-  workflow_dispatch:
-    branches:
-    - trunk
+  workflow_dispatch
 jobs:
   trunk:
     name: Push to trunk
