@@ -163,10 +163,6 @@ function sa11y_init() {
         $linksAdvancedOn = 'false';
     }
 
-    if (empty($sa11yNoRun)) {
-        $sa11yNoRun = '#sa11y-no-run';
-    }
-
     // Allowed roles.
     $user = wp_get_current_user();
     $allowed_roles = array('editor', 'administrator', 'author', 'contributor');
@@ -183,8 +179,6 @@ function sa11y_init() {
 
         echo '
 		<script id="sa11y-wp-init">
-        const sa11yNoRun = document.querySelector(\'' . strtr($sa11yNoRun, $r) . '\');
-        if (sa11yNoRun.length === 0) {
             const instantiateSa11y = new Sa11y({
                 checkRoot:  \'' . strtr($target, $r) . '\',
                 containerIgnore: \'' . strtr($containerIgnore, $r) . '\',
@@ -204,11 +198,10 @@ function sa11y_init() {
                 videoContent: \'' . $videoContent . '\',
                 audioContent: \'' . $audioContent . '\',
                 dataVizContent: \'' . $dataVizContent . '\',
+                doNotRun: \'' . $sa11yNoRun . '\',
                 ' . $extraProps . '
             });
-        };
 		</script>';
     }
 }
 add_action('wp_footer', 'sa11y_init');
-
