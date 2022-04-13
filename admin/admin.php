@@ -702,7 +702,7 @@ function sa11y_plugin_settings_render_page() { ?>
                         <h3 class="postbox-heading"><?php _e( 'Version', 'sa11y-wp' ); ?></h3>
                         <ul>
                             <li><strong><?php esc_html_e( 'Sa11y', 'sa11y-wp' ); ?>:</strong> 2.1.6</li>
-                            <li><strong><?php esc_html_e( 'Plugin', 'sa11y-wp' ); ?>:</strong> 1.0.0 <strong class="sa11y-admin-badge">Beta</strong></li>
+                            <li><strong><?php esc_html_e( 'Plugin', 'sa11y-wp' ); ?>:</strong> 1.0.1 <strong class="sa11y-admin-badge">Beta</strong></li>
                         </ul>
 
                         <h3 class="postbox-heading"><?php _e( 'Acknowledgements', 'sa11y-wp' ); ?></h3>
