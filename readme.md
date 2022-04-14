@@ -20,6 +20,9 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 **Contact:** [adam.chaboryk@ryerson.ca](mailto:adam.chaboryk@ryerson.ca)
 
 ## Changelog
+### 1.0.3
+- Upgrade to Sa11y 2.1.8
+
 ### 1.0.2
 - Configured Sa11y's `doNotRun` prop.
 

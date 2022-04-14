@@ -29,6 +29,9 @@ Visit the [project website](https://ryersondmp.github.io/sa11y/) to learn more.
 2. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+= 1.0.3 =
+* Upgrade to Sa11y 2.1.8
+
 = 1.0.2 =
 * Bug fix.
 
