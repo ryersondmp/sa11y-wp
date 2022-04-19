@@ -665,9 +665,9 @@ function sa11y_plugin_settings_render_page() { ?>
 
             <div id="postbox-container-1" class="postbox-container">
                 <div class="postbox">
-                    <h2 class="screen-reader-text">More</h2>
+                    <h2 class="screen-reader-text"><?php esc_html_e( 'More', 'sa11y-wp' ); ?></h2>
                     <div class="inside">
-                        <h3 class="postbox-heading"><?php _e( 'Administrator guide', 'sa11y-wp' ); ?></h3>
+                        <h3 class="postbox-heading"><?php esc_html_e( 'Administrator guide', 'sa11y-wp' ); ?></h3>
                         <ul>
                             <li><?php esc_html_e( 'Specify the target area to check. Only check content your authors can edit.', 'sa11y-wp' ); ?></li>
                             <li><?php esc_html_e( 'Turn off checks or features that are not relevant, including issues that cannot be fixed by content authors.', 'sa11y-wp' ); ?></li>
@@ -679,7 +679,7 @@ function sa11y_plugin_settings_render_page() { ?>
                             ?></li>
                         </ul>
                         
-                        <h3 class="postbox-heading"><?php _e( 'Contribute', 'sa11y-wp' ); ?></h3>
+                        <h3 class="postbox-heading"><?php esc_html_e( 'Contribute', 'sa11y-wp' ); ?></h3>
                         <ul>
                             <li>
                                 <?php 
@@ -699,13 +699,20 @@ function sa11y_plugin_settings_render_page() { ?>
                             </li>
                         </ul>
 
-                        <h3 class="postbox-heading"><?php _e( 'Version', 'sa11y-wp' ); ?></h3>
+                        <h3 class="postbox-heading"><?php esc_html_e( 'Version', 'sa11y-wp' ); ?></h3>
                         <ul>
-                            <li><strong><?php esc_html_e( 'Sa11y', 'sa11y-wp' ); ?>:</strong> 2.1.8</li>
-                            <li><strong><?php esc_html_e( 'Plugin', 'sa11y-wp' ); ?>:</strong> 1.0.3 <strong class="sa11y-admin-badge">Beta</strong></li>
+                            <li>
+                                <strong><?php esc_html_e( 'Sa11y', 'sa11y-wp' ); ?>:</strong> 
+                                <?php echo Sa11y_WP::SA11Y_VERSION; ?>
+                            </li>
+                            <li>
+                                <strong><?php esc_html_e( 'Plugin', 'sa11y-wp' ); ?>:</strong> 
+                                <?php echo Sa11y_WP::WP_VERSION; ?> 
+                                <strong class="sa11y-admin-badge">Beta</strong>
+                            </li>
                         </ul>
 
-                        <h3 class="postbox-heading"><?php _e( 'Acknowledgements', 'sa11y-wp' ); ?></h3>
+                        <h3 class="postbox-heading"><?php esc_html_e( 'Acknowledgements', 'sa11y-wp' ); ?></h3>
                         <p><?php 
                             $anchor = esc_html__( 'all acknowledgements.', 'sa11y-wp' );
                             $domain = esc_url( __( 'https://github.com/ryersondmp/sa11y#acknowledgements', 'sa11y-wp' ) );  

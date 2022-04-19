@@ -6,7 +6,7 @@
  * Plugin Name:       Sa11y
  * Plugin URI:        https://ryersondmp.github.io/sa11y
  * Description:       Sa11y is your accessibility quality assurance assistant. Geared towards content authors, Sa11y straightforwardly identifies accessibility issues at the source.
- * Version:           1.0.4
+ * Version:           1.0.5
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            Adam Chaboryk, Ryerson University
@@ -26,6 +26,9 @@
 if (!defined('ABSPATH')) exit;
 
 class Sa11y_WP {
+
+    const SA11Y_VERSION = '2.1.9';
+    const WP_VERSION = '1.0.5';
 
     /**
      * PHP5 constructor method.

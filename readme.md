@@ -12,6 +12,9 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 **Contact:** [adam.chaboryk@ryerson.ca](mailto:adam.chaboryk@ryerson.ca)
 
 ## Changelog
+### 1.0.5
+- Minor fixes.
+
 ### 1.0.4
 - Upgrade to Sa11y 2.1.9
 
