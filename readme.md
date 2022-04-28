@@ -12,6 +12,11 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 **Contact:** [adam.chaboryk@ryerson.ca](mailto:adam.chaboryk@ryerson.ca)
 
 ## Changelog
+### 1.0.6
+- Upgrade to Sa11y 2.2.2
+- Added Polish, Ukrainian, and French (Canadian) translations. This does not include the "Advanced Settings" page at this time. The language will automatically change based on the page language.
+- Name change: Ryerson University is now Toronto Metropolitan University!
+
 ### 1.0.5
 - Minor fixes.
 
