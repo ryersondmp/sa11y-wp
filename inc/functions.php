@@ -69,7 +69,6 @@ function sa11y_load_scripts() {
     $user = wp_get_current_user();
     $allowed_roles = array('editor', 'administrator', 'author', 'contributor');
     $allowed_user_roles = array_intersect($allowed_roles, $user->roles);
-    $lang  = sanitize_text_field(sa11y_get_plugin_settings('sa11y_lang'));
 
     // Check if scroll top enable.
     if ($enable === 1
@@ -80,10 +79,21 @@ function sa11y_load_scripts() {
         wp_enqueue_style('sa11y-wp-css', trailingslashit(SA11Y_ASSETS) . 'src/sa11y.min.css', null);
         wp_enqueue_script('sa11y-wp-tippy', trailingslashit(SA11Y_ASSETS) . 'src/tippy.umd.min.js', null, true);
 
-        /* if ($lang === "en") {
-            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/sa11y-english.min.js', null, true);
-        } */
-        wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/sa11y-english.min.js', null, true);
+        $lang = get_locale();
+        if ( strlen( $lang ) > 0 ) {
+            $lang = explode( '_', $lang )[0];
+        }
+        
+        if ($lang == "fr") {
+            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/fr-ca.min.js', null, true);
+        } else if ($lang == "uk") {
+            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/ua.min.js', null, true);
+        } else if ($lang == "pl") {
+            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/pl.min.js', null, true);
+        } else {
+            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/en.min.js', null, true);
+        }
+                
         wp_enqueue_script('sa11y-wp-js', trailingslashit(SA11Y_ASSETS) . 'src/sa11y.min.js', null, true);
     }
 }

@@ -615,7 +615,7 @@ function sa11y_extra_props_field() {
     <textarea name="sa11y_plugin_settings[sa11y_extra_props]" aria-describedby="extra_props_description" id="sa11y_extra_props" cols="45" rows="3"><?php echo esc_html($settings); ?></textarea>
     <p id="extra_props_description">
         <?php 
-            $domain = esc_url( __('https://github.com/ryersondmp/sa11y#advanced-configuration-and-props', 'sa11y-wp'));
+            $domain = esc_url( __('https://sa11y.netlify.app/developers/props/', 'sa11y-wp'));
             $string = 'Pass additional (boolean) properties to customize. Refer to ';
             $anchor = esc_html__( 'documentation.', 'sa11y-wp' );
             echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
@@ -649,7 +649,7 @@ function sa11y_plugin_settings_render_page() { ?>
                     ?></p>
                     <p style="padding-top:8px"><?php
                         esc_html_e('To learn more about Sa11y, please visit the ', 'sa11y-wp'); 
-                        $domain = esc_url( __('https://ryersondmp.github.io/sa11y/', 'sa11y-wp'));
+                        $domain = esc_url( __('https://sa11y.netlify.app/', 'sa11y-wp'));
                         $anchor = esc_html__( 'project website.', 'sa11y-wp' );
                         $link = sprintf( '<a href="%s">%s</a>', $domain, $anchor );
                         echo sprintf( esc_html__( '%1$s', 'sa11y-wp' ), $link );
@@ -715,12 +715,12 @@ function sa11y_plugin_settings_render_page() { ?>
                         <h3 class="postbox-heading"><?php esc_html_e( 'Acknowledgements', 'sa11y-wp' ); ?></h3>
                         <p><?php 
                             $anchor = esc_html__( 'all acknowledgements.', 'sa11y-wp' );
-                            $domain = esc_url( __( 'https://github.com/ryersondmp/sa11y#acknowledgements', 'sa11y-wp' ) );  
+                            $domain = esc_url( __( 'https://sa11y.netlify.app/acknowledgements/', 'sa11y-wp' ) );  
                             $link   = sprintf( '<a href="%s">%s</a>', $domain, $anchor );
-                            echo sprintf( esc_html__( 'Development led by Adam Chaboryk at Ryerson University in Toronto, Canada. View %1$s', 'sa11y-wp' ), $link );
+                            echo sprintf( esc_html__( 'Development led by Adam Chaboryk at Toronto Metropolitan University. View %1$s', 'sa11y-wp' ), $link );
                             ?></p>
                         <br>
-                        <p><?php esc_html_e( '© 2022 Ryerson University.', 'sa11y-wp' ); ?></p>
+                        <p><?php esc_html_e( '© 2022 Toronto Metropolitan University.', 'sa11y-wp' ); ?></p>
                     </div>
                 </div>
             </div><!-- .postbox-container -->
