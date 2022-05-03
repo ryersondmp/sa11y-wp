@@ -4,7 +4,7 @@ Tags: accessibility, accessibility automated testing, accessibility checker
 Requires at least: 5.6
 Tested up to: 5.9
 Requires PHP: 7.2
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,11 @@ Visit the [project website](https://sa11y.netlify.app/) to learn more.
 2. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+= 1.0.7 =
+* Upgrade to Sa11y 2.2.3
+* Sa11y's main panel is now 33% smaller.
+* Added skip to previous issue shortcut: alt + w or alt + <
+
 = 1.0.6 =
 * Upgrade to Sa11y 2.2.2
 * Added Polish, Ukrainian, and French (Canadian) translations. This does not include the "Advanced Settings" page at this time. The language will automatically change based on the page language.
