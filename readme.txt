@@ -2,9 +2,9 @@
 Contributors: adamchaboryk
 Tags: accessibility, accessibility automated testing, accessibility checker
 Requires at least: 5.6
-Tested up to: 5.9
+Tested up to: 6.0
 Requires PHP: 7.2
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,10 +26,16 @@ Sa11y, the accessibility quality assurance assistant. Geared towards content aut
 Visit the [project website](https://sa11y.netlify.app/) to learn more.
 
 == Screenshots ==
-1. Logged-in view with Sa11y enabled. Sa11y detected two issues: a non-descript "learn more" link and a skipped heading. 
+1. Logged-in view with Sa11y enabled. Sa11y detected two issues: a non-descript "learn more" link and a skipped heading.
 2. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.0.8 =
+* Tested with WordPress 6.0
+* Upgrade to Sa11y 2.2.4
+* Refactoring. Sa11y's main panel is created after the page has fully loaded to avoid conflicting JavaScript.
+
 = 1.0.7 =
 * Upgrade to Sa11y 2.2.3
 * Sa11y's main panel is now 33% smaller.

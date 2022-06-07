@@ -1,10 +1,10 @@
-# Sa11y on WordPress 
+# Sa11y on WordPress
 This is the development environment for [Sa11y](https://github.com/ryersondmp/sa11y).
 
 Documentation for WordPress plugin coming soon.
 
 ## How to report bugs
-Report bugs by creating a new issue. If you do not have a GitHub account, please submit your issue using this [Google Form.](https://forms.gle/sjzK9XykETaoqZv99) 
+Report bugs by creating a new issue. If you do not have a GitHub account, please submit your issue using this [Google Form.](https://forms.gle/sjzK9XykETaoqZv99)
 
 ## Authors
 Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
@@ -12,6 +12,11 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 **Contact:** [adam.chaboryk@ryerson.ca](mailto:adam.chaboryk@ryerson.ca)
 
 ## Changelog
+
+### 1.0.8
+- Tested with WordPress 6.0
+- Upgrade to Sa11y 2.2.4
+- Refactoring. Sa11y's main panel is created after the page has fully loaded to avoid conflicting JavaScript.
 
 ### 1.0.7
 - Upgrade to Sa11y 2.2.3
