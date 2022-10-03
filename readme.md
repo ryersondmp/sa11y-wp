@@ -13,6 +13,12 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.0.9
+- List of headings in the Page Outline panel are now clickable.
+- Swedish translation added.
+- View [full release notes for Sa11y 2.3.3.](https://github.com/ryersondmp/sa11y/releases/tag/2.3.3)
+- Fixed undefined variable `$allowed_html`
+
 ### 1.0.8
 - Tested with WordPress 6.0
 - Upgrade to Sa11y 2.2.4

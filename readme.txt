@@ -4,7 +4,7 @@ Tags: accessibility, accessibility automated testing, accessibility checker
 Requires at least: 5.6
 Tested up to: 6.0
 Requires PHP: 7.2
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,9 @@ Sa11y is an accessibility quality assurance tool that visually highlights common
 
 == Description ==
 
-Sa11y, the accessibility quality assurance assistant. Geared towards content authors, Sa11y straightforwardly identifies errors or warnings at the source with a simple tooltip on how to fix them.
+Sa11y is an accessibility quality assurance tool that visually highlights common accessibility and usability issues. Geared towards content authors, Sa11y straightforwardly identifies errors or warnings at the source with a simple tooltip on how to fix them.
+
+Sa11y works in **Preview** mode.
 
 = Features =
 
@@ -21,7 +23,7 @@ Sa11y, the accessibility quality assurance assistant. Geared towards content aut
 * Automatically checks content once the page has loaded.
 * Highly customizable. Turn off or hide irrelevant checks.
 * 100% free and open source.
-* Available in English, French, Polish, and Ukrainian.
+* Available in English, French, Polish, Ukrainian, and Swedish.
 
 Visit the [project website](https://sa11y.netlify.app/) to learn more.
 
@@ -30,6 +32,11 @@ Visit the [project website](https://sa11y.netlify.app/) to learn more.
 2. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.0.9 =
+* List of headings in the Page Outline panel are now clickable.
+* Swedish translation added.
+* View [full release notes for Sa11y 2.3.3.](https://github.com/ryersondmp/sa11y/releases/tag/2.3.3)
 
 = 1.0.8 =
 * Tested with WordPress 6.0

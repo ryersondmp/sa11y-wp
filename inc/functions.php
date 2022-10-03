@@ -28,7 +28,7 @@ function sa11y_get_defaultOptions() {
         'sa11y_readability' => absint(1),
         'sa11y_readability_target' => esc_html__(''),
         'sa11y_readability_ignore' => esc_html__(''),
-        
+
         'sa11y_container_ignore' => esc_html__('#comments'),
         'sa11y_contrast_ignore' => esc_html__(''),
         'sa11y_outline_ignore' => esc_html__(''),
@@ -72,29 +72,44 @@ function sa11y_load_scripts() {
 
     // Check if scroll top enable.
     if ($enable === 1
-        && is_user_logged_in() 
+        && is_user_logged_in()
         && ($allowed_user_roles || current_user_can('edit_posts') || current_user_can('edit_pages'))
     ) {
 
         wp_enqueue_style('sa11y-wp-css', trailingslashit(SA11Y_ASSETS) . 'src/sa11y.min.css', null);
-        wp_enqueue_script('sa11y-wp-tippy', trailingslashit(SA11Y_ASSETS) . 'src/tippy.umd.min.js', null, true);
 
         $lang = get_locale();
         if ( strlen( $lang ) > 0 ) {
             $lang = explode( '_', $lang )[0];
         }
-        
+
+        global $sa11y_lang;
+        $sa11y_lang = '';
+
+        global $sa11y_lang_prop;
+        $sa11y_lang_prop = '';
+
         if ($lang == "fr") {
-            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/fr-ca.min.js', null, true);
-        } else if ($lang == "uk") {
-            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/ua.min.js', null, true);
+            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/fr.umd.js', null, true);
+            $sa11y_lang = 'Sa11y.Lang.addI18n(Sa11yLangFr.strings);';
+            $sa11y_lang_prop = 'fr';
+        } else if ($lang == "ua") {
+            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/ua.umd.js', null, true);
+            $sa11y_lang = 'Sa11y.Lang.addI18n(Sa11yLangUa.strings);';
         } else if ($lang == "pl") {
-            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/pl.min.js', null, true);
+            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/pl.umd.js', null, true);
+            $sa11y_lang = 'Sa11y.Lang.addI18n(Sa11yLangPl.strings);';
+        } else if ($lang == "sv") {
+            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/sv.umd.js', null, true);
+            $sa11y_lang = 'Sa11y.Lang.addI18n(Sa11yLangSv.strings);';
+            $sa11y_lang_prop = 'sv';
         } else {
-            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/en.min.js', null, true);
+            wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/en.umd.js', null, true);
+            $sa11y_lang = 'Sa11y.Lang.addI18n(Sa11yLangEn.strings);';
+            $sa11y_lang_prop = 'en';
         }
-                
-        wp_enqueue_script('sa11y-wp-js', trailingslashit(SA11Y_ASSETS) . 'src/sa11y.min.js', null, true);
+
+        wp_enqueue_script('sa11y-wp-js', trailingslashit(SA11Y_ASSETS) . 'src/sa11y.umd.min.js', null, true);
     }
 }
 add_action('wp_enqueue_scripts', 'sa11y_load_scripts');
@@ -180,16 +195,19 @@ function sa11y_init() {
 
     // Instantiates Sa11y on the page for allowed users.
     if ($enable === 1
-        && is_user_logged_in() 
+        && is_user_logged_in()
         && ($allowed_user_roles || current_user_can('edit_posts') || current_user_can('edit_pages'))
     ) {
 
         //Allowed characters before echoing.
         $r = array('&gt;' => '>', '&quot;' => '"', '&#039;' => '"');
+        global $sa11y_lang;
+        global $sa11y_lang_prop;
 
         echo '
 		<script id="sa11y-wp-init">
-            const instantiateSa11y = new Sa11y({
+            ' . $sa11y_lang . '
+            const sa11y = new Sa11y.Sa11y({
                 checkRoot:  \'' . strtr($target, $r) . '\',
                 containerIgnore: \'' . strtr($containerIgnore, $r) . '\',
                 contrastIgnore: \'' . strtr($contrastIgnore, $r) . '\',
@@ -199,6 +217,7 @@ function sa11y_init() {
                 linkIgnore: \'' . strtr($linkIgnore, $r) . '\',
                 linkIgnoreSpan: \'' . strtr($linkIgnoreSpan, $r) . '\',
                 linksToFlag: \'' . strtr($linksToFlag, $r) . '\',
+                readabilityLang: \'' . $sa11y_lang_prop . '\',
                 readabilityPlugin: ' . $readabilityOn . ',
                 readabilityRoot: \'' . strtr($readabilityTarget, $r) . '\',
                 readabilityIgnore: \'' . strtr($readabilityIgnore, $r) . '\',

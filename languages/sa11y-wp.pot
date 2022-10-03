@@ -2,234 +2,230 @@
 # This file is distributed under the same license as the Sa11y package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sa11y 1.0.6\n"
+"Project-Id-Version: Sa11y 1.0.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sa11y\n"
-"POT-Creation-Date: 2022-04-28 20:53:59+00:00\n"
+"POT-Creation-Date: 2022-10-03 22:15:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Adam Chaboryk <adam.chaboryk@ryerson.ca>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Adam Chaboryk\n"
+"Language-Team: Adam Chaboryk\n"
 
-#: admin/admin.php:20 admin/admin.php:636
+#: admin/admin.php:21 admin/admin.php:650
 msgid "Sa11y - Advanced Settings"
 msgstr ""
 
-#: admin/admin.php:21 admin/admin.php:705
+#: admin/admin.php:22 admin/admin.php:721
 msgid "Sa11y"
 msgstr ""
 
-#: admin/admin.php:76
+#: admin/admin.php:77
 msgid "Readability"
 msgstr ""
 
-#: admin/admin.php:84
+#: admin/admin.php:85
 msgid "Exclusions"
 msgstr ""
 
-#: admin/admin.php:92
+#: admin/admin.php:93
 msgid "Embedded content"
 msgstr ""
 
-#: admin/admin.php:100
+#: admin/admin.php:101
 msgid "Advanced"
 msgstr ""
 
-#: admin/admin.php:110
+#: admin/admin.php:111
 msgid "Enable Sa11y"
 msgstr ""
 
-#: admin/admin.php:129
+#: admin/admin.php:130
 msgid "Target area to check"
 msgstr ""
 
-#: admin/admin.php:139
+#: admin/admin.php:140
 msgid "Show Contrast toggle"
 msgstr ""
 
-#: admin/admin.php:149
+#: admin/admin.php:150
 msgid "Show Form Labels toggle"
 msgstr ""
 
-#: admin/admin.php:159
+#: admin/admin.php:160
 msgid "Show Links (Advanced) toggle"
 msgstr ""
 
-#: admin/admin.php:169
+#: admin/admin.php:170
 msgid "Show Readability toggle"
 msgstr ""
 
-#: admin/admin.php:179
+#: admin/admin.php:180
 msgid "Readability scan area"
 msgstr ""
 
-#: admin/admin.php:189
+#: admin/admin.php:190
 msgid "Readability exclusions"
 msgstr ""
 
-#: admin/admin.php:199
+#: admin/admin.php:200
 msgid "Regions to ignore"
 msgstr ""
 
-#: admin/admin.php:209
+#: admin/admin.php:210
 msgid "Exclude from contrast check"
 msgstr ""
 
-#: admin/admin.php:219
+#: admin/admin.php:220
 msgid "Exclude headings from outline"
 msgstr ""
 
-#: admin/admin.php:229
+#: admin/admin.php:230
 msgid "Exclude headings"
 msgstr ""
 
-#: admin/admin.php:239
+#: admin/admin.php:240
 msgid "Exclude images"
 msgstr ""
 
-#: admin/admin.php:249
+#: admin/admin.php:250
 msgid "Exclude links"
 msgstr ""
 
-#: admin/admin.php:259
+#: admin/admin.php:260
 msgid "Ignore elements within links"
 msgstr ""
 
-#: admin/admin.php:269
+#: admin/admin.php:270
 msgid "Flag links as an error"
 msgstr ""
 
-#: admin/admin.php:279
+#: admin/admin.php:280
 msgid "Video sources"
 msgstr ""
 
-#: admin/admin.php:288
+#: admin/admin.php:289
 msgid "Audio sources"
 msgstr ""
 
-#: admin/admin.php:297
+#: admin/admin.php:298
 msgid "Data visualization sources"
 msgstr ""
 
-#: admin/admin.php:307
+#: admin/admin.php:308
 msgid "Turn off Sa11y if these elements exist"
 msgstr ""
 
-#: admin/admin.php:317
+#: admin/admin.php:318
 msgid "Add extra props"
 msgstr ""
 
-#: admin/admin.php:618
+#: admin/admin.php:631
 msgid "https://sa11y.netlify.app/developers/props/"
 msgstr ""
 
-#: admin/admin.php:620
+#: admin/admin.php:634
 msgid "documentation."
 msgstr ""
 
-#: admin/admin.php:624 admin/admin.php:655
+#: admin/admin.php:638 admin/admin.php:671
 msgid "%1$s"
 msgstr ""
 
-#: admin/admin.php:648
-msgid "Sa11y is your accessibility quality assurance assistant. Geared towards content authors, Sa11y straightforwardly identifies content related issues at the source. Sa11y works out-of-the-box, although you can use this settings page to customize the experience for website authors. Please note, Sa11y is not a comprehensive code analysis tool. You should make sure you are using an accessible theme."
-msgstr ""
-
-#: admin/admin.php:651
+#: admin/admin.php:667
 msgid "To learn more about Sa11y, please visit the "
 msgstr ""
 
-#: admin/admin.php:652
+#: admin/admin.php:668
 msgid "https://sa11y.netlify.app/"
 msgstr ""
 
-#: admin/admin.php:653
+#: admin/admin.php:669
 msgid "project website."
 msgstr ""
 
-#: admin/admin.php:662
+#: admin/admin.php:678
 msgid "Save Settings"
 msgstr ""
 
-#: admin/admin.php:668
+#: admin/admin.php:684
 msgid "More"
 msgstr ""
 
-#: admin/admin.php:670
+#: admin/admin.php:686
 msgid "Administrator guide"
 msgstr ""
 
-#: admin/admin.php:672
+#: admin/admin.php:688
 msgid "Specify the target area to check. Only check content your authors can edit."
 msgstr ""
 
-#: admin/admin.php:673
+#: admin/admin.php:689
 msgid "Turn off checks or features that are not relevant, including issues that cannot be fixed by content authors."
 msgstr ""
 
-#: admin/admin.php:675
+#: admin/admin.php:691
 msgid "CSS selectors reference."
 msgstr ""
 
-#: admin/admin.php:676
+#: admin/admin.php:692
 msgid "https://www.w3schools.com/cssref/css_selectors.asp"
 msgstr ""
 
-#: admin/admin.php:678
+#: admin/admin.php:694
 msgid "Create exclusions or ignore repetitive elements using CSS selectors. Use a comma to seperate multiple selectors. View %1$s"
 msgstr ""
 
-#: admin/admin.php:682
+#: admin/admin.php:698
 msgid "Contribute"
 msgstr ""
 
-#: admin/admin.php:686
+#: admin/admin.php:702
 msgid "Report a bug or leave feedback"
 msgstr ""
 
-#: admin/admin.php:687
+#: admin/admin.php:703
 msgid "https://forms.gle/sjzK9XykETaoqZv99"
 msgstr ""
 
-#: admin/admin.php:689 admin/admin.php:697
+#: admin/admin.php:705 admin/admin.php:713
 msgctxt "sa11y-wp"
 msgid "%1$s"
 msgstr ""
 
-#: admin/admin.php:694
+#: admin/admin.php:710
 msgid "Help translate or improve"
 msgstr ""
 
-#: admin/admin.php:695
+#: admin/admin.php:711
 msgid "https://github.com/ryersondmp/sa11y/blob/master/CONTRIBUTING.md"
 msgstr ""
 
-#: admin/admin.php:702
+#: admin/admin.php:718
 msgid "Version"
 msgstr ""
 
-#: admin/admin.php:709
+#: admin/admin.php:725
 msgid "Plugin"
 msgstr ""
 
-#: admin/admin.php:715
+#: admin/admin.php:731
 msgid "Acknowledgements"
 msgstr ""
 
-#: admin/admin.php:717
+#: admin/admin.php:733
 msgid "all acknowledgements."
 msgstr ""
 
-#: admin/admin.php:718
+#: admin/admin.php:734
 msgid "https://sa11y.netlify.app/acknowledgements/"
 msgstr ""
 
-#: admin/admin.php:720
+#: admin/admin.php:736
 msgid "Development led by Adam Chaboryk at Toronto Metropolitan University. View %1$s"
 msgstr ""
 
-#: admin/admin.php:723
+#: admin/admin.php:739
 msgid "© 2022 Toronto Metropolitan University."
 msgstr ""
 

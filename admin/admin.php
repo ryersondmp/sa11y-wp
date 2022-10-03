@@ -5,10 +5,11 @@
  */
 
 /* Allowed HTML for all translatable text strings */
-$allowed_html = array(
-    'em' => array(), 
-    'strong' => array(), 
-    'code' => array()
+global $sa11y_allowed_html;
+$sa11y_allowed_html = array(
+    'em' => array(),
+    'strong' => array(),
+    'code' => array(),
 );
 
 /**
@@ -222,7 +223,7 @@ function sa11y_setting_sections_fields() {
         'sa11y_exclusions_settings',
         array( 'label_for' => 'sa11y_outline_ignore' )
     );
-    
+
      // Add heading ignore field.
      add_settings_field(
         'sa11y_header_ignore',
@@ -331,9 +332,10 @@ function sa11y_enable_field() {
 ?>
     <input id="sa11y_enable" type="checkbox" name="sa11y_plugin_settings[sa11y_enable]" aria-describedby="enable_description" value="1" <?php checked(1, $settings); ?> />
     <p id="enable_description">
-        <?php 
+        <?php
             $string = 'Enable for all administrators, editors, authors, contributors, and anyone who has permissions to edit posts and pages.';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
 <?php
@@ -347,9 +349,10 @@ function sa11y_target_field() {
 ?>
     <input autocomplete="off" name="sa11y_plugin_settings[sa11y_target]" type="text" id="sa11y_target" value="<?php echo esc_attr($settings); ?>" aria-describedby="target_description" pattern="[^<>\\\x27;|@&\s]+"/>
     <p id="target_description">
-        <?php 
+        <?php
             $string = 'Input a <strong>single selector</strong> to target a specific region of your website. For example, use <code>main</code> to scan the main content region only.';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
 <?php
@@ -403,9 +406,10 @@ function sa11y_readability_target_field() {
 ?>
     <input autocomplete="off" name="sa11y_plugin_settings[sa11y_readability_target]" type="text" id="sa11y_readability_target" value="<?php echo esc_attr($settings); ?>" aria-describedby="readability_target_description" pattern="[^<>\\\x27;|@&\s]+"/>
     <p id="readability_target_description">
-        <?php 
+        <?php
             $string = 'Input a <strong>single selector</strong> to target a specific region of your website. For example, use <code>main</code> to scan the main content region only.';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
 <?php
@@ -419,9 +423,10 @@ function sa11y_readability_ignore_field() {
 ?>
     <input autocomplete="off" class="regular-text" id="sa11y_readability_ignore" aria-describedby="readability_exclusions_description" type="text" name="sa11y_plugin_settings[sa11y_readability_ignore]" value="<?php echo esc_attr($settings); ?>" />
     <p id="readability_exclusions_description">
-        <?php 
+        <?php
             $string = 'Exclude specific elements from the readability analysis. Only paragraph or list content is analyzed. Content within navigation elements are ignored.';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
 <?php
@@ -435,9 +440,10 @@ function sa11y_container_ignore_field() {
 ?>
     <input autocomplete="off" class="regular-text" id="sa11y_container_ignore" aria-describedby="exclusions_description" type="text" name="sa11y_plugin_settings[sa11y_container_ignore]" value="<?php echo esc_attr($settings); ?>" pattern="[^<\\\x27;|@&]+"/>
     <p id="exclusions_description">
-        <?php 
+        <?php
             $string = 'Ignore entire regions of a page. For example, <code>#comments</code> to ignore the Comments section on all pages.';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
 <?php
@@ -449,12 +455,13 @@ function sa11y_container_ignore_field() {
 function sa11y_contrast_ignore_field() {
     $settings = sa11y_get_plugin_settings('sa11y_contrast_ignore');
 ?>
-    
+
     <input autocomplete="off" class="regular-text" id="sa11y_contrast_ignore" aria-describedby="contrast_description" type="text" name="sa11y_plugin_settings[sa11y_contrast_ignore]" value="<?php echo esc_attr($settings); ?>" pattern="[^<\\\x27;|@&]+"/>
     <p id="contrast_description">
-        <?php 
+        <?php
             $string = 'Ignore specific elements from the contrast check. For example, <code>.sr-only</code> or classes that (intentionally) visually hide elements.';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
 
@@ -469,9 +476,10 @@ function sa11y_outline_ignore_field() {
 ?>
     <input autocomplete="off" class="regular-text" id="sa11y_outline_ignore" aria-describedby="outline_description" type="text" name="sa11y_plugin_settings[sa11y_outline_ignore]" value="<?php echo esc_attr($settings); ?>" pattern="[^<\\\x27;|@&]+"/>
     <p id="outline_description">
-        <?php 
+        <?php
             $string = 'Ignore specific headings from appearing in the "Show Outline" panel. For example, visually hidden headings that content authors do not see.';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
 
@@ -486,9 +494,10 @@ function sa11y_header_ignore_field() {
 ?>
     <input autocomplete="off" class="regular-text" id="sa11y_header_ignore" aria-describedby="header_description" type="text" name="sa11y_plugin_settings[sa11y_header_ignore]" value="<?php echo esc_attr($settings); ?>" pattern="[^<\\\x27;|@&]+"/>
     <p id="header_description">
-        <?php 
+        <?php
             $string = 'Exclude specific headings from all checks.';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
 <?php
@@ -502,9 +511,10 @@ function sa11y_image_ignore_field() {
 ?>
     <input autocomplete="off" class="regular-text" id="sa11y_image_ignore" aria-describedby="image_description" type="text" name="sa11y_plugin_settings[sa11y_image_ignore]" value="<?php echo esc_attr($settings); ?>" pattern="[^<\\\x27;|@&]+"/>
     <p id="image_description">
-        <?php 
+        <?php
             $string = 'Exclude specific images from all checks. For example, add <code>.avatar</code> to ignore all avatar images within the Comments section.';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
 <?php
@@ -518,9 +528,10 @@ function sa11y_link_ignore_field() {
 ?>
     <input autocomplete="off" class="regular-text" id="sa11y_link_ignore" aria-describedby="link_description" type="text" name="sa11y_plugin_settings[sa11y_link_ignore]" value="<?php echo esc_attr($settings); ?>" pattern="[^<\\\x27;|@&]+"/>
     <p id="link_description">
-        <?php 
+        <?php
             $string = 'Exclude specific links from all checks.';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
 <?php
@@ -531,12 +542,13 @@ function sa11y_link_ignore_field() {
  */
 function sa11y_link_ignore_span_field() {
     $settings = sa11y_get_plugin_settings('sa11y_link_ignore_span');
-?>   
+?>
     <input autocomplete="off" class="regular-text" id="sa11y_link_ignore_span" aria-describedby="link_description" type="text" name="sa11y_plugin_settings[sa11y_link_ignore_span]" value="<?php echo esc_attr($settings); ?>" pattern="[^<\\\x27;|@&]+"/>
     <p id="link_span_description">
-        <?php 
+        <?php
             $string = 'Ignore elements within a link to improve accuracy of link checks. For example: <code>&lt;a href=&#34;#&#34;&gt;learn more <strong>&lt;span class=&#34;sr-only&#34;&gt;external link&lt;/span&gt;</strong>&lt;/a&gt;</code>';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
 <?php
@@ -550,9 +562,10 @@ function sa11y_links_to_flag_field() {
 ?>
     <input autocomplete="off" class="regular-text" id="sa11y_links_to_flag" aria-describedby="links_to_flag_description" type="text" name="sa11y_plugin_settings[sa11y_links_to_flag]" value="<?php echo esc_attr($settings); ?>" pattern="[^<\\\x27;|@&]+"/>
     <p id="links_to_flag_description">
-        <?php 
+        <?php
             $string = 'Flag absolute URLs that point to a development environment as an error. For example, all links that start with "dev": <code>a[href^="https://dev."]</code>';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
 
@@ -565,7 +578,7 @@ function sa11y_links_to_flag_field() {
 function sa11y_videoContent_field() {
     $settings = sa11y_get_plugin_settings('sa11y_videoContent');
 ?>
-   <textarea required id="sa11y_videoContent" name="sa11y_plugin_settings[sa11y_videoContent]" cols="45" rows="3"><?php echo esc_html($settings); ?></textarea> 
+   <textarea required id="sa11y_videoContent" name="sa11y_plugin_settings[sa11y_videoContent]" cols="45" rows="3"><?php echo esc_html($settings); ?></textarea>
 <?php
 }
 
@@ -575,17 +588,17 @@ function sa11y_videoContent_field() {
 function sa11y_audioContent_field() {
     $settings = sa11y_get_plugin_settings('sa11y_audioContent');
 ?>
-    <textarea required id="sa11y_audioContent" name="sa11y_plugin_settings[sa11y_audioContent]" cols="45" rows="3"><?php echo esc_html($settings); ?></textarea>  
+    <textarea required id="sa11y_audioContent" name="sa11y_plugin_settings[sa11y_audioContent]" cols="45" rows="3"><?php echo esc_html($settings); ?></textarea>
 <?php
 }
 
 /**
- * dataVizContent 
+ * dataVizContent
  */
 function sa11y_dataVizContent_field() {
     $settings = sa11y_get_plugin_settings('sa11y_dataVizContent');
 ?>
-   <textarea required id="sa11y_dataVizContent" name="sa11y_plugin_settings[sa11y_dataVizContent]" cols="45" rows="3"><?php echo esc_html($settings); ?></textarea>  
+   <textarea required id="sa11y_dataVizContent" name="sa11y_plugin_settings[sa11y_dataVizContent]" cols="45" rows="3"><?php echo esc_html($settings); ?></textarea>
 <?php
 }
 
@@ -597,12 +610,12 @@ function sa11y_no_run_field() {
 ?>
     <input autocomplete="off" class="regular-text" id="sa11y_no_run" aria-describedby="sa11y_no_run_description" type="text" name="sa11y_plugin_settings[sa11y_no_run]" value="<?php echo esc_attr($settings); ?>" pattern="[^<>\\\x27;|@&]+"/>
     <p id="sa11y_no_run_description">
-        <?php 
+        <?php
             $string = 'Provide a list of selectors that are <strong>unique to pages</strong>. If any of the elements exist on the page, Sa11y will not scan or appear.';
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            global $sa11y_allowed_html;
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
         ?>
     </p>
-
 <?php
 }
 
@@ -614,16 +627,17 @@ function sa11y_extra_props_field() {
 ?>
     <textarea name="sa11y_plugin_settings[sa11y_extra_props]" aria-describedby="extra_props_description" id="sa11y_extra_props" cols="45" rows="3"><?php echo esc_html($settings); ?></textarea>
     <p id="extra_props_description">
-        <?php 
+        <?php
             $domain = esc_url( __('https://sa11y.netlify.app/developers/props/', 'sa11y-wp'));
             $string = 'Pass additional (boolean) properties to customize. Refer to ';
+            global $sa11y_allowed_html;
             $anchor = esc_html__( 'documentation.', 'sa11y-wp' );
-            echo wp_kses( __($string, 'sa11y-wp'), $allowed_html);
+            echo wp_kses( __($string, 'sa11y-wp'), $sa11y_allowed_html);
 
             $link = sprintf( '<a href="%s">%s</a>', $domain, $anchor );
             echo sprintf( esc_html__( '%1$s', 'sa11y-wp' ), $link );
         ?>
-    </p> 
+    </p>
 <?php
 }
 
@@ -634,21 +648,23 @@ function sa11y_plugin_settings_render_page() { ?>
 
     <div class="wrap">
         <h1><?php esc_html_e('Sa11y - Advanced Settings', 'sa11y-wp'); ?></h1>
-    
+
         <div id="poststuff">
             <div id="post-body" class="sa11y-wp-settings metabox-holder columns-2">
                 <div id="post-body-content">
 
                 <div class="announcement-component">
-                    <h2 class="announcement-heading"><?php 
-                        $current_user = wp_get_current_user(); 
+                    <h2 class="announcement-heading"><?php
+                        $current_user = wp_get_current_user();
                         esc_html_e('Howdy ' . $current_user->nickname . ',' , 'sa11y-wp' );
                     ?></h2>
-                    <p><?php 
-                            esc_html_e('Sa11y is your accessibility quality assurance assistant. Geared towards content authors, Sa11y straightforwardly identifies content related issues at the source. Sa11y works out-of-the-box, although you can use this settings page to customize the experience for website authors. Please note, Sa11y is not a comprehensive code analysis tool. You should make sure you are using an accessible theme.', 'sa11y-wp'); 
+                    <p><?php
+                            global $sa11y_allowed_html;
+                            $welcome = 'Sa11y is your accessibility quality assurance assistant. Sa11y works in <strong>Preview</strong> mode on all pages and posts. Use this settings page to customize the experience for website authors. Please note, Sa11y is not a comprehensive code analysis tool. You should make sure you are using an accessible theme.';
+                            echo wp_kses( __($welcome, 'sa11y-wp'), $sa11y_allowed_html);
                     ?></p>
                     <p style="padding-top:8px"><?php
-                        esc_html_e('To learn more about Sa11y, please visit the ', 'sa11y-wp'); 
+                        esc_html_e('To learn more about Sa11y, please visit the ', 'sa11y-wp');
                         $domain = esc_url( __('https://sa11y.netlify.app/', 'sa11y-wp'));
                         $anchor = esc_html__( 'project website.', 'sa11y-wp' );
                         $link = sprintf( '<a href="%s">%s</a>', $domain, $anchor );
@@ -671,28 +687,28 @@ function sa11y_plugin_settings_render_page() { ?>
                         <ul>
                             <li><?php esc_html_e( 'Specify the target area to check. Only check content your authors can edit.', 'sa11y-wp' ); ?></li>
                             <li><?php esc_html_e( 'Turn off checks or features that are not relevant, including issues that cannot be fixed by content authors.', 'sa11y-wp' ); ?></li>
-                            <li><?php 
+                            <li><?php
                                 $anchor = esc_html__( 'CSS selectors reference.', 'sa11y-wp' );
-                                $domain = esc_url( __( 'https://www.w3schools.com/cssref/css_selectors.asp', 'sa11y-wp'));  
+                                $domain = esc_url( __( 'https://www.w3schools.com/cssref/css_selectors.asp', 'sa11y-wp'));
                                 $link = sprintf( '<a href="%s">%s</a>', $domain, $anchor );
                                 echo sprintf( esc_html__( 'Create exclusions or ignore repetitive elements using CSS selectors. Use a comma to seperate multiple selectors. View %1$s', 'sa11y-wp' ), $link );
                             ?></li>
                         </ul>
-                        
+
                         <h3 class="postbox-heading"><?php esc_html_e( 'Contribute', 'sa11y-wp' ); ?></h3>
                         <ul>
                             <li>
-                                <?php 
+                                <?php
                                 $anchor = esc_html__( 'Report a bug or leave feedback', 'sa11y-wp' );
-                                $domain = esc_url( __( 'https://forms.gle/sjzK9XykETaoqZv99', 'sa11y-wp' ) );  
+                                $domain = esc_url( __( 'https://forms.gle/sjzK9XykETaoqZv99', 'sa11y-wp' ) );
                                 $link   = sprintf( '<a href="%s">%s</a>', $domain, $anchor );
                                 echo sprintf( esc_html_x( '%1$s', 'sa11y-wp' ), $link );
                                 ?>
                             </li>
                             <li>
-                                <?php 
+                                <?php
                                     $anchor = esc_html__( 'Help translate or improve', 'sa11y-wp' );
-                                    $domain = esc_url( __( 'https://github.com/ryersondmp/sa11y/blob/master/CONTRIBUTING.md', 'sa11y-wp' ) );  
+                                    $domain = esc_url( __( 'https://github.com/ryersondmp/sa11y/blob/master/CONTRIBUTING.md', 'sa11y-wp' ) );
                                     $link   = sprintf( '<a href="%s">%s</a>', $domain, $anchor );
                                     echo sprintf( esc_html_x( '%1$s', 'sa11y-wp' ), $link );
                                     ?>
@@ -702,20 +718,20 @@ function sa11y_plugin_settings_render_page() { ?>
                         <h3 class="postbox-heading"><?php esc_html_e( 'Version', 'sa11y-wp' ); ?></h3>
                         <ul>
                             <li>
-                                <strong><?php esc_html_e( 'Sa11y', 'sa11y-wp' ); ?>:</strong> 
+                                <strong><?php esc_html_e( 'Sa11y', 'sa11y-wp' ); ?>:</strong>
                                 <?php echo Sa11y_WP::SA11Y_VERSION; ?>
                             </li>
                             <li>
-                                <strong><?php esc_html_e( 'Plugin', 'sa11y-wp' ); ?>:</strong> 
-                                <?php echo Sa11y_WP::WP_VERSION; ?> 
+                                <strong><?php esc_html_e( 'Plugin', 'sa11y-wp' ); ?>:</strong>
+                                <?php echo Sa11y_WP::WP_VERSION; ?>
                                 <strong class="sa11y-admin-badge">Beta</strong>
                             </li>
                         </ul>
 
                         <h3 class="postbox-heading"><?php esc_html_e( 'Acknowledgements', 'sa11y-wp' ); ?></h3>
-                        <p><?php 
+                        <p><?php
                             $anchor = esc_html__( 'all acknowledgements.', 'sa11y-wp' );
-                            $domain = esc_url( __( 'https://sa11y.netlify.app/acknowledgements/', 'sa11y-wp' ) );  
+                            $domain = esc_url( __( 'https://sa11y.netlify.app/acknowledgements/', 'sa11y-wp' ) );
                             $link   = sprintf( '<a href="%s">%s</a>', $domain, $anchor );
                             echo sprintf( esc_html__( 'Development led by Adam Chaboryk at Toronto Metropolitan University. View %1$s', 'sa11y-wp' ), $link );
                             ?></p>
@@ -739,18 +755,18 @@ function sa11y_plugin_settings_validate($settings) {
 
     /* Deep cleaning to help with error handling and security */
     $remove = array(
-        '&lt;' => '', 
-        '&apos;' => '', 
-        '&amp;' => '', 
-        '&percnt;' => '', 
-        '&#96;' => '', 
+        '&lt;' => '',
+        '&apos;' => '',
+        '&amp;' => '',
+        '&percnt;' => '',
+        '&#96;' => '',
         '`' => '');
     $removeExtra = array(
         '&gt;' => '',
         '>' => '');
     $targetRemove = array_merge($remove, $removeExtra);
-    
-    /* Basic settings */    
+
+    /* Basic settings */
     $settings['sa11y_enable'] = (isset(
         $settings['sa11y_enable']) && 1 == $settings['sa11y_enable'] ? 1 : 0);
 
@@ -805,31 +821,31 @@ function sa11y_plugin_settings_validate($settings) {
     $settings['sa11y_link_ignore_span'] = strtr(
         sanitize_text_field($settings['sa11y_link_ignore_span']), $remove);
 
-    $settings['sa11y_links_to_flag'] = strtr( 
+    $settings['sa11y_links_to_flag'] = strtr(
         sanitize_text_field($settings['sa11y_links_to_flag']), $remove);
 
     /* Regex match for deep cleaning */
     /* Allowed characters: , . : empty space */
-    $specialChars = '/[^.,:a-zA-Z0-9 ]/'; 
+    $specialChars = '/[^.,:a-zA-Z0-9 ]/';
 
     /* Video */
-    $settings['sa11y_videoContent'] = preg_replace($specialChars, '', 
+    $settings['sa11y_videoContent'] = preg_replace($specialChars, '',
         sanitize_text_field($settings['sa11y_videoContent']));
 
     /* Audio */
-    $settings['sa11y_audioContent'] = preg_replace($specialChars, '', 
+    $settings['sa11y_audioContent'] = preg_replace($specialChars, '',
         sanitize_text_field($settings['sa11y_audioContent']));
 
     /* Data Visualizations */
-    $settings['sa11y_dataVizContent'] =  preg_replace($specialChars, '', 
+    $settings['sa11y_dataVizContent'] =  preg_replace($specialChars, '',
         sanitize_text_field($settings['sa11y_dataVizContent']));
 
     /* Don't run Sa11y */
-    $settings['sa11y_no_run'] = strtr( 
+    $settings['sa11y_no_run'] = strtr(
         sanitize_text_field($settings['sa11y_no_run']), $targetRemove);
 
     /* Advanced props */
-    $settings['sa11y_extra_props'] =  preg_replace($specialChars, '', 
+    $settings['sa11y_extra_props'] =  preg_replace($specialChars, '',
         sanitize_text_field($settings['sa11y_extra_props']));
 
     return $settings;
