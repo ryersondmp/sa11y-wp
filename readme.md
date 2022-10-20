@@ -13,6 +13,12 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.1.0
+- Improved Page Outline panel.
+- Various bug fixes.
+- Upgrade to Sa11y 2.3.5
+- View [latest release notes for Sa11y](https://github.com/ryersondmp/sa11y/releases/)
+
 ### 1.0.9
 - List of headings in the Page Outline panel are now clickable.
 - Swedish translation added.

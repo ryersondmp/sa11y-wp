@@ -4,7 +4,7 @@ Tags: accessibility, accessibility automated testing, accessibility checker
 Requires at least: 5.6
 Tested up to: 6.0
 Requires PHP: 7.2
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,12 @@ Visit the [project website](https://sa11y.netlify.app/) to learn more.
 2. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.1.0 =
+* Improved Page Outline panel.
+* Various bug fixes.
+* Upgrade to Sa11y 2.3.5
+* View [latest release notes for Sa11y](https://github.com/ryersondmp/sa11y/releases/)
 
 = 1.0.9 =
 * List of headings in the Page Outline panel are now clickable.
