@@ -1,10 +1,10 @@
-=== Sa11y ===
+=== Sa11y, the accessibility quality assurance assistant ===
 Contributors: adamchaboryk
-Tags: accessibility, accessibility automated testing, accessibility checker
+Tags: accessibility, accessibility automated testing, accessibility checker, wcag, audit
 Requires at least: 5.6
-Tested up to: 6.0
+Tested up to: 6.2
 Requires PHP: 7.2
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,16 +22,25 @@ Sa11y works in **Preview** mode.
 * Concise tooltips explain issues right at the source.
 * Automatically checks content once the page has loaded.
 * Highly customizable. Turn off or hide irrelevant checks.
+* Content editors can temporarily dismiss warnings.
 * 100% free and open source.
-* Available in English, French, Polish, Ukrainian, and Swedish.
+* Available in English, French, Polish, Ukrainian, German, and Swedish.
+* Supports Multisite: create global settings and custom defaults for all websites on your network.
 
-Visit the [project website](https://sa11y.netlify.app/) to learn more.
+Visit the [project website](https://sa11y.netlify.app/) for a demo or to learn more!
 
 == Screenshots ==
 1. Logged-in view with Sa11y enabled. Sa11y detected two issues: a non-descript "learn more" link and a skipped heading.
 2. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.1.1 =
+* Upgrade to Sa11y 3!
+* Content editors now have the ability to temporarily dismiss warnings, preview pages with various colour filters, and new admin settings.
+* German translation added.
+* Multisite support added. Multisite admins can create global exclusions and provide custom defaults.
+* Check out the [latest release notes for Sa11y 3.0!](https://github.com/ryersondmp/sa11y/releases/tag/3.0.0)
 
 = 1.1.0 =
 * Improved Page Outline panel.

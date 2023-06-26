@@ -6,12 +6,22 @@ Documentation for WordPress plugin coming soon.
 ## How to report bugs
 Report bugs by creating a new issue. If you do not have a GitHub account, please submit your issue using this [Google Form.](https://forms.gle/sjzK9XykETaoqZv99)
 
+## Generate a fresh language.pot file
+`wp i18n make-pot . languages/sa11y-i18n.pot --domain=sa11y-i18n`
+
 ## Authors
 Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
-**Contact:** [adam.chaboryk@ryerson.ca](mailto:adam.chaboryk@ryerson.ca)
+**Contact:** [adam.chaboryk@torontomu.ca](mailto:adam.chaboryk@torontomu.ca)
 
 ## Changelog
+
+### 1.1.1
+- Upgrade to Sa11y 3!
+- Content editors now have the ability to temporarily dismiss warnings, preview pages with various colour filters, and new admin settings.
+- German translation added.
+- Multisite support added. Multisite admins can create global exclusions and provide custom defaults.
+- Check out the [latest release notes for Sa11y 3.0!](https://github.com/ryersondmp/sa11y/releases/tag/3.0.0)
 
 ### 1.1.0
 - Improved Page Outline panel.

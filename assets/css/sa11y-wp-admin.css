@@ -1,1 +1,163 @@
-.sa11y-wp-settings .inside img {width: 100%;}code > strong {color: darkred;font-weight: 600;background-color: #ffeeee;}#poststuff form > h2 {font-size: 18px;padding: 10px 5px 10px 5px;margin: 0;line-height: 1.4;border-bottom: 1px solid #bababa;}.form-table td fieldset.sa11y-wp-vertical label {display: inline-block;margin-right: 2em !important;}h2.postbox-heading {font-size: 19px !important;margin: 10px 0 0 0 !important;padding: 8px 0 0 12px !important;line-height: 1 !important;}h3.postbox-heading {font-size: 18px !important;margin: 10px 0 0 0;}.postbox .inside p, .postbox .inside li {margin: 0;font-size: 14px;}.postbox .inside li {list-style: disc;margin: 0 0 5px 10px;}.postbox .inside ul {margin: 10px;}form.sa11y-form-admin td p {max-width: 40em;}.regular-text, textarea {width: 40em;}.announcement-component {margin-bottom: 15px;max-width: 840px;border: 1px solid #c3c4c7;box-shadow: 0 1px 1px rgb(0 0 0 / 4%);background: #fff;padding: 10px 15px 15px 15px;}.announcement-component h2.announcement-heading {margin: 10px 0 5px 0 !important;font-size: 1.3em !important;padding: 0 !important;line-height: 1 !important;}.announcement-component > p {margin: 0 !important;font-size: 1.1em !important;}.sa11y-admin-badge{box-sizing:border-box;display:inline-block;background-color:#207bb7;color:#fff;border-radius:7px;text-align:center;font-size:1em;font-weight:600;padding:.05em .5em .1em;line-height:inherit}
+/* Sa11y - admin interface styles */
+.regular-text,
+textarea {
+  width: 40em;
+}
+
+#poststuff {
+  max-width: 1200px;
+}
+
+#post-body-content {
+  max-width: 900px;
+}
+
+#post-body a:hover,
+#post-body a:focus {
+  text-decoration: none;
+}
+
+#post-body code strong {
+  background-color: #ffeeee;
+  color: darkred;
+  font-weight: 600;
+}
+
+code {
+  border-radius: 3px;
+}
+
+.network-admin-note {
+  background: #dfdfe0;
+  padding: 3px 6px;
+  border-radius: 3px;
+  margin-top: 12px !important;
+}
+
+/* Updated block */
+#sa11y-updated {
+  padding: 10px;
+}
+
+#sa11y-updated h2 {
+  padding: 0 !important;
+}
+
+#sa11y-updated p {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Body */
+#poststuff form p {
+  font-size: 14px !important;
+}
+
+#poststuff form h2 {
+  border-bottom: 1px solid #bababa;
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 0;
+  padding: 10px 5px 10px 5px;
+}
+
+.form-table td fieldset.sa11y-wp-vertical label {
+  display: inline-block;
+  margin-right: 2em !important;
+}
+
+
+h2.postbox-heading {
+  font-size: 19px !important;
+  line-height: 1 !important;
+  margin: 10px 0 0 0 !important;
+  padding: 8px 0 0 12px !important;
+}
+
+h3.postbox-heading {
+  font-size: 18px !important;
+  margin: 10px 0 0 0;
+}
+
+.postbox .inside p,
+.postbox .inside li {
+  font-size: 14px;
+  margin: 0;
+}
+
+.postbox .inside li {
+  list-style: disc;
+  margin: 0 0 5px 10px;
+}
+
+.postbox .inside ul {
+  margin: 10px;
+}
+
+form.sa11y-form-admin td p {
+  max-width: 40em;
+}
+
+.form-table td fieldset label {
+  display: inline-block;
+  margin: 0.35em 2em 0.5em 0 !important;
+}
+
+/* Intro block */
+.sa11y-intro {
+  background: #fff;
+  border: 1px solid #c3c4c7;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
+  margin-bottom: 15px;
+  max-width: 840px;
+  padding: 10px 15px 15px 15px;
+}
+
+.sa11y-intro h2 {
+  font-size: 1.3em !important;
+  line-height: 1 !important;
+  margin: 10px 0 5px 0 !important;
+  padding: 0 !important;
+}
+
+.sa11y-intro p {
+  font-size: 1.1em !important;
+  margin: 0 !important;
+}
+
+/* Badge */
+.sa11y-admin-badge {
+  background-color: #207bb7;
+  border-radius: 7px;
+  box-sizing: border-box;
+  color: #fff;
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: inherit;
+  padding: 0.05em 0.5em 0.1em;
+  text-align: center;
+}
+
+/* Accordion */
+details {
+  margin: 10px 0;
+}
+
+summary {
+  background: #565656;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 5px 5px 5px 10px;
+  width: 280px;
+}
+
+summary:hover,
+summary:focus {
+  background: #757575;
+}
+
+details[open] p {
+  padding: 5px;
+}
