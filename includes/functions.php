@@ -141,7 +141,7 @@ add_action('wp_enqueue_scripts', 'sa11y_load_scripts');
 function sa11y_init()
 {
   /* ******************* */
-  /*  Get values         */
+  /*  Get local values   */
   /* ******************* */
   // General
   $enable = absint(sa11y_get_settings('sa11y_enable'));
@@ -170,36 +170,36 @@ function sa11y_init()
   $getLinkIgnoreSpan = esc_html(sa11y_get_settings('sa11y_link_ignore_span'));
   $getLinksToFlag = esc_html(sa11y_get_settings('sa11y_links_to_flag'));
 
-  //Embedded content
+  // Embedded content
   $getVideoContent = wp_filter_nohtml_kses(sa11y_get_settings('sa11y_video_sources'));
   $getAudioContent = wp_filter_nohtml_kses(sa11y_get_settings('sa11y_audio_sources'));
   $getDataVizContent = wp_filter_nohtml_kses(sa11y_get_settings('sa11y_dataviz_sources'));
 
-  //Advanced settings
+  // Advanced settings
   $getNoRun = esc_html(sa11y_get_settings('sa11y_no_run'));
   $getShadowComponents = esc_html(sa11y_get_settings('sa11y_shadow_components'));
   $getExtraProps = wp_filter_nohtml_kses(sa11y_get_settings('sa11y_extra_props'));
 
-  // Get network admin values
-  if (is_multisite()) {
-    $networkContainerIgnore = esc_html(get_site_option('sa11y_network_region_ignore'));
-    $networkReadabilityIgnore = esc_html(get_site_option('sa11y_network_readability_ignore'));
-    $networkContrastIgnore = esc_html(get_site_option('sa11y_network_contrast_ignore'));
-    $networkOutlineIgnore = esc_html(get_site_option('sa11y_network_outline_ignore'));
-    $networkHeaderIgnore = esc_html(get_site_option('sa11y_network_header_ignore'));
-    $networkImageIgnore = esc_html(get_site_option('sa11y_network_image_ignore'));
-    $networkLinkIgnore = esc_html(get_site_option('sa11y_network_link_ignore'));
-    $networkLinkIgnoreSpan = esc_html(get_site_option('sa11y_network_link_ignore_span'));
-    $networkLinkFlag = esc_html(get_site_option('sa11y_network_link_flag'));
+  /* ******************** */
+  /*  Get network values  */
+  /* ******************** */
+  $networkContainerIgnore = esc_html(get_site_option('sa11y_network_region_ignore'));
+  $networkReadabilityIgnore = esc_html(get_site_option('sa11y_network_readability_ignore'));
+  $networkContrastIgnore = esc_html(get_site_option('sa11y_network_contrast_ignore'));
+  $networkOutlineIgnore = esc_html(get_site_option('sa11y_network_outline_ignore'));
+  $networkHeaderIgnore = esc_html(get_site_option('sa11y_network_header_ignore'));
+  $networkImageIgnore = esc_html(get_site_option('sa11y_network_image_ignore'));
+  $networkLinkIgnore = esc_html(get_site_option('sa11y_network_link_ignore'));
+  $networkLinkIgnoreSpan = esc_html(get_site_option('sa11y_network_link_ignore_span'));
+  $networkLinkFlag = esc_html(get_site_option('sa11y_network_link_flag'));
 
-    $networkVideo = wp_filter_nohtml_kses(get_site_option('sa11y_network_video'));
-    $networkAudio = wp_filter_nohtml_kses(get_site_option('sa11y_network_audio'));
-    $networkDataViz = wp_filter_nohtml_kses(get_site_option('sa11y_network_dataViz'));
+  $networkVideo = wp_filter_nohtml_kses(get_site_option('sa11y_network_video'));
+  $networkAudio = wp_filter_nohtml_kses(get_site_option('sa11y_network_audio'));
+  $networkDataViz = wp_filter_nohtml_kses(get_site_option('sa11y_network_dataViz'));
 
-    $networkNoRun = esc_html(get_site_option('sa11y_network_noRun'));
-    $networkShadowComponents = esc_html(get_site_option('sa11y_network_shadow_components'));
-    $networkExtraProps = wp_filter_nohtml_kses(get_site_option('sa11y_network_extra_props'));
-  }
+  $networkNoRun = esc_html(get_site_option('sa11y_network_noRun'));
+  $networkShadowComponents = esc_html(get_site_option('sa11y_network_shadow_components'));
+  $networkExtraProps = wp_filter_nohtml_kses(get_site_option('sa11y_network_extra_props'));
 
   /* ******************* */
   /* Prep before echoing */
@@ -232,30 +232,57 @@ function sa11y_init()
   // Readability
   $readabilityTarget = empty($getReadabilityTarget) ? 'body' : strtr($getReadabilityTarget, $r);
 
-  if (is_multisite()) {
-    $containerIgnore = $networkContainerIgnore ? "{$defaultIgnore}, {$networkContainerIgnore}, {$getContainerIgnore}" : "{$defaultIgnore}, {$getContainerIgnore}";
-    $readabilityIgnore = $networkReadabilityIgnore ? "{$networkReadabilityIgnore}, {$getReadabilityIgnore}" : $getReadabilityIgnore;
-    $contrastIgnore = $networkContrastIgnore ? "{$networkContrastIgnore}, {$getContrastIgnore}" : $getContrastIgnore;
-    $outlineIgnore = $networkOutlineIgnore ? "{$networkOutlineIgnore}, {$getOutlineIgnore}" : $getOutlineIgnore;
-    $headerIgnore = $networkHeaderIgnore ? "{$networkHeaderIgnore}, {$getHeaderIgnore}" : $getHeaderIgnore;
-    $imageIgnore = $networkImageIgnore ? "{$networkImageIgnore}, {$getImageIgnore}" : $getImageIgnore;
-    $linkIgnore = $networkLinkIgnore ? "{$networkLinkIgnore}, {$getLinkIgnore}" : $getLinkIgnore;
-    $linkIgnoreSpan = $networkLinkIgnoreSpan ? "{$networkLinkIgnoreSpan}, {$getLinkIgnoreSpan}" : $getLinkIgnoreSpan;
-    $linksToFlag = $networkLinkFlag ? "{$networkLinkFlag}, {$getLinksToFlag}" : $getLinksToFlag;
-    $videoContent = $networkVideo ? "{$videoDefault}, {$networkVideo}, {$getVideoContent}" : $videoDefault;
-    $audioContent = $networkAudio ? "{$audioDefault}, {$networkAudio}, {$getAudioContent}" : $audioDefault;
-    $dataVizContent = $networkDataViz ? "{$dataVizDefault}, {$networkDataViz}, {$getDataVizContent}" : $dataVizDefault;
-    $noRun = $networkNoRun ? "{$networkNoRun}, {$getNoRun}" : $getNoRun;
-    $shadowComponents = $networkShadowComponents ? "{$networkShadowComponents}, {$getShadowComponents}" : $getShadowComponents;
-    $extraProps = $networkExtraProps ? "{$networkExtraProps}, {$getExtraProps}" : $getExtraProps;
-  } else {
-    $containerIgnore = $getContainerIgnore ? "{$defaultIgnore}, {$getContainerIgnore}" : $defaultIgnore;
-    $videoContent = $getVideoContent ? "{$videoDefault}, {$getVideoContent}" : $videoDefault;
-    $audioContent = $getAudioContent ? "{$audioDefault}, {$getAudioContent}" : $videoDefault;
-    $dataVizContent = $getDataVizContent ? "{$dataVizDefault}, {$getDataVizContent}" : $dataVizDefault;
-  }
-
   // Exclusions
+  $containerIgnore = $networkContainerIgnore ? "{$defaultIgnore}, {$networkContainerIgnore}, {$getContainerIgnore}"
+    : "{$defaultIgnore}, {$getContainerIgnore}";
+
+  $readabilityIgnore = $networkReadabilityIgnore ? "{$networkReadabilityIgnore}, {$getReadabilityIgnore}"
+    : $getReadabilityIgnore;
+
+  $contrastIgnore = $networkContrastIgnore ? "{$networkContrastIgnore}, {$getContrastIgnore}"
+    : $getContrastIgnore;
+
+  $outlineIgnore = $networkOutlineIgnore ? "{$networkOutlineIgnore}, {$getOutlineIgnore}"
+    : $getOutlineIgnore;
+
+  $headerIgnore = $networkHeaderIgnore ? "{$networkHeaderIgnore}, {$getHeaderIgnore}"
+    : $getHeaderIgnore;
+
+  $imageIgnore = $networkImageIgnore ? "{$networkImageIgnore}, {$getImageIgnore}"
+    : $getImageIgnore;
+
+  $linkIgnore = $networkLinkIgnore ? "{$networkLinkIgnore}, {$getLinkIgnore}"
+    : $getLinkIgnore;
+
+  $linkIgnoreSpan = $networkLinkIgnoreSpan ? "{$networkLinkIgnoreSpan}, {$getLinkIgnoreSpan}"
+    : $getLinkIgnoreSpan;
+
+  $linksToFlag = $networkLinkFlag ? "{$networkLinkFlag}, {$getLinksToFlag}"
+    : $getLinksToFlag;
+
+  // Embedded content
+  $videoContent = $networkVideo ? "{$videoDefault}, {$networkVideo}, {$getVideoContent}"
+    : "{$videoDefault}, {$getVideoContent}";
+
+  $audioContent = $networkAudio ? "{$audioDefault}, {$networkAudio}, {$getAudioContent}"
+    : "{$audioDefault}, {$getAudioContent}";
+
+  $dataVizContent = $networkDataViz ? "{$dataVizDefault}, {$networkDataViz}, {$getDataVizContent}"
+    : "{$dataVizDefault}, {$getDataVizContent}";
+
+  // Advanced
+  $noRun = $networkNoRun ? "{$networkNoRun}, {$getNoRun}"
+    : $getNoRun;
+
+  $shadowComponents = $networkShadowComponents ? "{$networkShadowComponents}, {$getShadowComponents}"
+    : $getShadowComponents;
+
+  $extraProps = $networkExtraProps ? "{$networkExtraProps}, {$getExtraProps}"
+    : $getExtraProps;
+
+  /* ******************************** */
+  /* Final prep before instantiation. */
+  /* ******************************** */
   $readabilityIgnore = rtrim(strtr($readabilityIgnore, $r), ', ');
   $containerIgnore = rtrim(strtr($containerIgnore, $r), ', ');
   $contrastIgnore = rtrim(strtr($contrastIgnore, $r), ', ');
@@ -265,13 +292,9 @@ function sa11y_init()
   $linkIgnore = rtrim(strtr($linkIgnore, $r), ', ');
   $linkIgnoreSpan = rtrim(strtr($linkIgnoreSpan, $r), ', ');
   $linksToFlag = rtrim(strtr($linksToFlag, $r), ', ');
-
-  // Embedded content
   $videoContent = rtrim(strtr($videoContent, $r), ', ');
   $audioContent = rtrim(strtr($audioContent, $r), ', ');
   $dataVizContent = rtrim(strtr($dataVizContent, $r), ', ');
-
-  // Advanced settings
   $noRun = rtrim(strtr($noRun, $r), ', ');
   $shadowComponents = rtrim(strtr($shadowComponents, $r), ', ');
   $extraProps = rtrim(strtr($extraProps, $r), ', ');

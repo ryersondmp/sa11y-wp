@@ -1,4 +1,4 @@
-=== Sa11y, the accessibility quality assurance assistant ===
+=== Sa11y, the accessibility quality assurance assistant | Accessibility Checker ===
 Contributors: adamchaboryk
 Tags: accessibility, accessibility automated testing, accessibility checker, wcag, audit
 Requires at least: 5.6
@@ -34,6 +34,8 @@ Visit the [project website](https://sa11y.netlify.app/) for a demo or to learn m
 2. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+= 1.1.2 =
+* Bug fixes.
 
 = 1.1.1 =
 * Upgrade to Sa11y 3!

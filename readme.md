@@ -16,6 +16,9 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.1.2
+- Bug fixes.
+
 ### 1.1.1
 - Upgrade to Sa11y 3!
 - Content editors now have the ability to temporarily dismiss warnings, preview pages with various colour filters, and new admin settings.
