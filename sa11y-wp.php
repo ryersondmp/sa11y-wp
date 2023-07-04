@@ -124,6 +124,7 @@ class Sa11y_WP
   public function includes()
   {
     require_once(SA11Y_INCLUDES . 'functions.php');
+    require_once(SA11Y_INCLUDES . 'database.php');
     require_once(SA11Y_INCLUDES . 'strings.php');
     require_once(SA11Y_INCLUDES . 'sanitize.php');
   }
@@ -147,6 +148,33 @@ class Sa11y_WP
 
     // Register activation hook.
     register_activation_hook(__FILE__, array($this, 'sa11y_default_network_options'));
+    register_activation_hook(__FILE__, array($this, 'activate'));
+  }
+
+  /**
+   * Setup the database tables.
+   */
+
+  private function setup_database()
+  {
+    global $wpdb;
+
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $table_name = $wpdb->prefix . 'sa11y_issues';
+
+    $sql = "CREATE TABLE $table_name (
+      id mediumint(9) NOT NULL AUTO_INCREMENT,
+      time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+      post_id mediumint(9) NOT NULL,
+      issue_type varchar(255) NOT NULL,
+      issue_details mediumtext NOT NULL,
+      issue_selector mediumtext NOT NULL,
+      PRIMARY KEY  (id)
+    ) $charset_collate;";
+
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
   }
 
   /**
@@ -161,6 +189,22 @@ class Sa11y_WP
     if (is_admin()) {
       require_once(SA11Y_ADMIN . 'admin.php');
     }
+  }
+
+  /**
+   * Plugin activation.
+   */
+  public function activate()
+  {
+    $this->setup_database();
+  }
+
+  /**
+   * Plugin deactivation.
+   */
+  public function deactivate()
+  {
+    // Do nothing.
   }
 }
 

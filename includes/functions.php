@@ -317,8 +317,35 @@ function sa11y_init()
     global $sa11y_lang;
     global $sa11y_lang_prop;
 
+    $post_id = get_the_ID();
+    $site_url = get_site_url();
+
     echo <<<EOT
       <script id="sa11y-wp-init">
+        // add event listener to send results to rest api endpoint
+        document.addEventListener('sa11y-check-complete', function (e) {
+          const results = e.detail.results;
+          const post_id = e.detail.post_id;
+          const data = {
+            'results': results,
+            'post_id': $post_id
+          };
+          fetch('$site_url/wp-json/sa11y/v1/results', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          })
+            .then(response => response.json())
+            .then(data => {
+              console.log('Success:', data);
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+        });
+
         $sa11y_lang
         /* Do not run when Elementors page builder is active. */
         if (!(window.frameElement && window.frameElement.id === "elementor-preview-iframe")) {
@@ -355,3 +382,28 @@ function sa11y_init()
   }
 }
 add_action('wp_footer', 'sa11y_init');
+
+// rest api endpoint to store results
+function store_results()
+{
+  $body = file_get_contents('php://input');
+  $data = json_decode($body, true);
+  $results = $data['results'];
+
+  // for each result store in database
+  foreach ($results as $result) {
+    $post_id = $data['post_id'];
+    $issue_type = $result['type'];
+    $issue_details = $result['content'];
+    $issue_selector = $result['cssPath'];
+    store_issue($post_id, $issue_type, $issue_details, $issue_selector);
+  }
+
+  return $results;
+}
+add_action('rest_api_init', function () {
+  register_rest_route('sa11y/v1', '/results', [
+    'methods' => 'POST',
+    'callback' => 'store_results',
+  ]);
+});
