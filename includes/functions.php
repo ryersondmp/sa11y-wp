@@ -76,7 +76,6 @@ function sa11y_get_defaultOptions()
     'sa11y_no_run' => esc_html(''),
     'sa11y_shadow_components' => esc_html(''),
     'sa11y_extra_props' => esc_html(''),
-    'sa11y_timestamp' => esc_html('')
   ];
 
   // Allow dev to filter the default settings.
@@ -144,11 +143,13 @@ function sa11y_load_scripts()
 
     // Check if Sa11y supports language.
     if (!in_array($lang, $languages)) {
-      $lang = ($country === "US") ? "enUS" : "en";
+      $lang = "en";
     } else if ($lang === "pt") {
       $lang = ($country === "BR") ? "ptBR" : "ptPT";
     } else if ($lang === "uk") {
       $lang = "ua";
+    } else if ($lang === "en") {
+      $lang = ($country === "US") ? "enUS" : "en";
     }
 
     // Enqueue language file, CSS, and main Javascript file.

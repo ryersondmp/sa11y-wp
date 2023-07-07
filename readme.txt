@@ -4,7 +4,7 @@ Tags: accessibility, accessibility automated testing, accessibility checker, wca
 Requires at least: 5.6
 Tested up to: 6.2
 Requires PHP: 7.2
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,9 @@ Visit the [project website](https://sa11y.netlify.app/) for a demo or to learn m
 2. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.1.4 =
+To-do
 
 = 1.1.3 =
 * Upgrade to Sa11y 3.0.3
