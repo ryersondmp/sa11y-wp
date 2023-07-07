@@ -16,57 +16,63 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.1.3
+* Upgrade to Sa11y 3.0.3
+* Added Spanish and several machine translations.
+* New ruleset to flag non-descript DOI (digital object identifier) links.
+* Check out the [latest release notes for Sa11y 3.0.3!](https://github.com/ryersondmp/sa11y/releases/tag/3.0.3)
+
 ### 1.1.2
-- Bug fixes.
+* Bug fixes.
 
 ### 1.1.1
-- Upgrade to Sa11y 3!
-- Content editors now have the ability to temporarily dismiss warnings, preview pages with various colour filters, and new admin settings.
-- German translation added.
-- Multisite support added. Multisite admins can create global exclusions and provide custom defaults.
-- Check out the [latest release notes for Sa11y 3.0!](https://github.com/ryersondmp/sa11y/releases/tag/3.0.0)
+* Upgrade to Sa11y 3!
+* Content editors now have the ability to temporarily dismiss warnings, preview pages with various colour filters, and new admin settings.
+* German translation added.
+* Multisite support added. Multisite admins can create global exclusions and provide custom defaults.
+* Check out the [latest release notes for Sa11y 3.0!](https://github.com/ryersondmp/sa11y/releases/tag/3.0.0)
 
 ### 1.1.0
-- Improved Page Outline panel.
-- Various bug fixes.
-- Upgrade to Sa11y 2.3.5
-- View [latest release notes for Sa11y](https://github.com/ryersondmp/sa11y/releases/)
+* Improved Page Outline panel.
+* Various bug fixes.
+* Upgrade to Sa11y 2.3.5
+* View [latest release notes for Sa11y](https://github.com/ryersondmp/sa11y/releases/)
 
 ### 1.0.9
-- List of headings in the Page Outline panel are now clickable.
-- Swedish translation added.
-- View [full release notes for Sa11y 2.3.3.](https://github.com/ryersondmp/sa11y/releases/tag/2.3.3)
-- Fixed undefined variable `$allowed_html`
+* List of headings in the Page Outline panel are now clickable.
+* Swedish translation added.
+* View [full release notes for Sa11y 2.3.3.](https://github.com/ryersondmp/sa11y/releases/tag/2.3.3)
+* Fixed undefined variable `$allowed_html`
 
 ### 1.0.8
-- Tested with WordPress 6.0
-- Upgrade to Sa11y 2.2.4
-- Refactoring. Sa11y's main panel is created after the page has fully loaded to avoid conflicting JavaScript.
+* Tested with WordPress 6.0
+* Upgrade to Sa11y 2.2.4
+* Refactoring. Sa11y's main panel is created after the page has fully loaded to avoid conflicting JavaScript.
 
 ### 1.0.7
-- Upgrade to Sa11y 2.2.3
-- Sa11y's main panel is now 33% smaller.
-- Added skip to previous issue shortcut: `alt + w` or `alt + <`
+* Upgrade to Sa11y 2.2.3
+* Sa11y's main panel is now 33% smaller.
+* Added skip to previous issue shortcut: `alt + w` or `alt + <`
 
 ### 1.0.6
-- Upgrade to Sa11y 2.2.2
-- Added Polish, Ukrainian, and French (Canadian) translations. This does not include the "Advanced Settings" page at this time. The language will automatically change based on the page language.
-- Name change: Ryerson University is now Toronto Metropolitan University!
+* Upgrade to Sa11y 2.2.2
+* Added Polish, Ukrainian, and French (Canadian) translations. This does not include the "Advanced Settings" page at this time. The language will automatically change based on the page language.
+* Name change: Ryerson University is now Toronto Metropolitan University!
 
 ### 1.0.5
-- Minor fixes.
+* Minor fixes.
 
 ### 1.0.4
-- Upgrade to Sa11y 2.1.9
+* Upgrade to Sa11y 2.1.9
 
 ### 1.0.3
-- Upgrade to Sa11y 2.1.8
+* Upgrade to Sa11y 2.1.8
 
 ### 1.0.2
-- Configured Sa11y's `doNotRun` prop.
+* Configured Sa11y's `doNotRun` prop.
 
 ### 1.0.1
-- Bug fix.
+* Bug fix.
 
 ### 1.0.0
-- Initial release
+* Initial release

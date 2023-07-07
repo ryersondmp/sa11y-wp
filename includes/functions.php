@@ -21,11 +21,10 @@ function sa11y_get_defaultOptions()
 
   /* Get Network defaults. */
   // Target
-
   $getNetworkTarget = get_site_option('sa11y_network_target');
   $defaultTarget = empty($getNetworkTarget) ? '' : $getNetworkTarget;
-  // Readability target
 
+  // Readability target
   $getNetworkReadabilityTarget = get_site_option('sa11y_network_readability_target');
   $defaultReadabilityTarget = empty($getNetworkReadabilityTarget) ? '' : $getNetworkReadabilityTarget;
 
@@ -76,7 +75,6 @@ function sa11y_get_defaultOptions()
     'sa11y_no_run' => esc_html(''),
     'sa11y_shadow_components' => esc_html(''),
     'sa11y_extra_props' => esc_html(''),
-    'sa11y_timestamp' => esc_html('')
   ];
 
   // Allow dev to filter the default settings.
@@ -110,17 +108,47 @@ function sa11y_load_scripts()
     && is_user_logged_in()
     && ($allowed_user_roles || current_user_can('edit_posts') || current_user_can('edit_pages'))
   ) {
-    global $sa11y_lang, $sa11y_lang_prop;
+    global $sa11y_lang;
 
     // Get page language.
     $lang = explode('_', get_locale())[0];
-    $languages = ["fr", "uk", "pl", "sv", "de", "en"];
+    $country = explode('_', get_locale())[1];
+    $languages = [
+      'cs',
+      'da',
+      'de',
+      'el',
+      'en',
+      'es',
+      'et',
+      'fi',
+      'fr',
+      'id',
+      'it',
+      'ja',
+      'lt',
+      'lv',
+      'nb',
+      'nl',
+      'pl',
+      'pt',
+      'ro',
+      'sl',
+      'sv',
+      'tr',
+      'ua',
+      'zh',
+    ];
 
     // Check if Sa11y supports language.
     if (!in_array($lang, $languages)) {
       $lang = "en";
+    } else if ($lang === "pt") {
+      $lang = ($country === "BR") ? "ptBR" : "ptPT";
     } else if ($lang === "uk") {
       $lang = "ua";
+    } else if ($lang === "en") {
+      $lang = ($country === "US") ? "enUS" : "en";
     }
 
     // Enqueue language file, CSS, and main Javascript file.
@@ -130,7 +158,6 @@ function sa11y_load_scripts()
 
     // Populate props within <script>
     $sa11y_lang = 'Sa11y.Lang.addI18n(Sa11yLang' . ucfirst($lang) . '.strings);';
-    $sa11y_lang_prop = ($lang === "en") ? "en" : $lang;
   }
 }
 add_action('wp_enqueue_scripts', 'sa11y_load_scripts');
@@ -315,7 +342,6 @@ function sa11y_init()
     && ($allowed_user_roles || current_user_can('edit_posts') || current_user_can('edit_pages'))
   ) {
     global $sa11y_lang;
-    global $sa11y_lang_prop;
 
     echo <<<EOT
       <script id="sa11y-wp-init">
@@ -330,7 +356,6 @@ function sa11y_init()
             linksAdvancedPlugin: $linksAdvancedOn,
             colourFilterPlugin: $colourFilterOn,
             checkAllHideToggles: $allChecksOn,
-            readabilityLang: '$sa11y_lang_prop',
             readabilityPlugin: $readabilityOn,
             readabilityRoot: '$readabilityTarget',
             readabilityIgnore: '$readabilityIgnore',
