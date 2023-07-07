@@ -4,7 +4,7 @@ Tags: accessibility, accessibility automated testing, accessibility checker, wca
 Requires at least: 5.6
 Tested up to: 6.2
 Requires PHP: 7.2
-Stable tag: 1.1.1
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,13 @@ Visit the [project website](https://sa11y.netlify.app/) for a demo or to learn m
 2. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.1.3 =
+* Upgrade to Sa11y 3.0.3
+* Added Spanish and several machine translations including: Czech, Danish, Greek, Estonian, Finnish, Indonesian, Italian, Japanese, Lithuanian, Latvian, Norwegian (Bokmål), Dutch, Portuguese (Brazil), Portuguese (Portugal), Romanian, Slovenian, Turkish, Chinese (simplified)
+* New ruleset to flag non-descript DOI (digital object identifier) links.
+* Check out the [latest release notes for Sa11y 3.0.3!](https://github.com/ryersondmp/sa11y/releases/tag/3.0.3)
+
 = 1.1.2 =
 * Bug fixes.
 

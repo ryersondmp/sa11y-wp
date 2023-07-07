@@ -6,7 +6,7 @@
  * Plugin Name:       Sa11y
  * Plugin URI:        https://sa11y.netlify.app/
  * Description:       Sa11y is your accessibility quality assurance assistant. Geared towards content authors, Sa11y is an accessibility checker that straightforwardly identifies issues at the source.
- * Version:           1.1.2
+ * Version:           1.1.3
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            Adam Chaboryk, Toronto Metropolitan University
@@ -29,8 +29,8 @@ if (!defined('ABSPATH')) exit;
 class Sa11y_WP
 {
 
-  const VERSION = '3.0.2';
-  const WP_VERSION = '1.1.2';
+  const VERSION = '3.0.3';
+  const WP_VERSION = '1.1.3';
 
   /**
    * Defines constants used by the plugin.
@@ -154,27 +154,45 @@ class Sa11y_WP
   /**
    * Setup the database tables.
    */
-
   private function setup_database()
   {
     global $wpdb;
-
     $charset_collate = $wpdb->get_charset_collate();
-
     $table_name = $wpdb->prefix . 'sa11y_issues';
 
-    $sql = "CREATE TABLE $table_name (
-      id mediumint(9) NOT NULL AUTO_INCREMENT,
-      time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-      post_id mediumint(9) NOT NULL,
-      issue_type varchar(255) NOT NULL,
-      issue_details mediumtext NOT NULL,
-      issue_selector mediumtext NOT NULL,
-      PRIMARY KEY  (id)
-    ) $charset_collate;";
-
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);
+    // If multisite, create tables for each site in the network.
+    if (is_multisite()) {
+      $blog_ids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+      foreach ($blog_ids as $blog_id) {
+        $table_name = $wpdb->prefix . $blog_id . '_sa11y_issues';
+        $sql = "CREATE TABLE $table_name (
+                id mediumint(9) NOT NULL AUTO_INCREMENT,
+                time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+                post_id mediumint(9) NOT NULL,
+                issue_type varchar(255) NOT NULL,
+                issue_details mediumtext NOT NULL,
+                issue_selector mediumtext NOT NULL,
+                PRIMARY KEY  (id)
+            ) $charset_collate;";
+        switch_to_blog($blog_id);
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        dbDelta($sql);
+        restore_current_blog();
+      }
+    } else {
+      // Create table for single site.
+      $sql = "CREATE TABLE $table_name (
+            id mediumint(9) NOT NULL AUTO_INCREMENT,
+            time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+            post_id mediumint(9) NOT NULL,
+            issue_type varchar(255) NOT NULL,
+            issue_details mediumtext NOT NULL,
+            issue_selector mediumtext NOT NULL,
+            PRIMARY KEY  (id)
+        ) $charset_collate;";
+      require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+      dbDelta($sql);
+    }
   }
 
   /**

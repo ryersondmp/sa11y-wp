@@ -13,13 +13,13 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Sa11yLangEn = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Sa11yLangEnUS = factory());
 })(this, (function () { 'use strict';
 
-  var en = {
+  var enUS = {
     // English
     strings: {
-      LANG_CODE: 'en',
+      LANG_CODE: 'en-US',
       MAIN_TOGGLE_LABEL: 'Check Accessibility',
       CONTAINER_LABEL: 'Accessibility Checker',
       ERROR: 'Error',
@@ -58,17 +58,17 @@
       DISMISS_REMINDER: 'Please note that warnings are only <strong>temporarily</strong> dismissed. Clearing your browser history and cookies will restore all previously dismissed warnings across all pages.',
 
       // Color filters
-      COLOUR_FILTER: 'Colour filter',
+      COLOUR_FILTER: 'Color filter',
       PROTANOPIA: 'Protanopia',
       DEUTERANOPIA: 'Deuteranopia',
       TRITANOPIA: 'Tritanopia',
       MONOCHROMACY: 'Monochromacy',
-      COLOUR_FILTER_MESSAGE: 'Check for elements that are difficult to perceive or distinguish against other colours.',
+      COLOUR_FILTER_MESSAGE: 'Check for elements that are difficult to perceive or distinguish against other colors.',
       RED_EYE: 'Red blind.',
       GREEN_EYE: 'Green blind.',
       BLUE_EYE: 'Blue blind.',
       MONO_EYE: 'Red, blue, and green blind.',
-      COLOUR_FILTER_HIGH_CONTRAST_MESSAGE: 'Colour filters do not work in high contrast mode.',
+      COLOUR_FILTER_HIGH_CONTRAST_MESSAGE: 'Color filters do not work in high contrast mode.',
 
       // Alternative text module stop words
       SUSPICIOUS_ALT_STOPWORDS: ['image', 'graphic', 'picture', 'photo'],
@@ -159,7 +159,7 @@
       LINK_IMAGE_NO_ALT_TEXT: 'Image within link is marked as decorative and there is no link text. Please add alt text to the image that describes the destination of the link.',
       LINK_IMAGE_HAS_TEXT: 'Image is marked as decorative, although the link is using the surrounding text as a descriptive label.',
       LINK_IMAGE_LONG_ALT: 'Alt text description on a linked image is <strong>too long</strong>. The alt text on linked images should describe where the link takes you, not a literal description of the image. <strong>Consider using the title of the page it links to as the alt text.</strong> <hr> <strong>Alt text (<span {r}>%(altLength)</span> characters):</strong> %(altText)',
-      LINK_IMAGE_ALT_WARNING: 'Image link contains alt text. Does the alt text describe where the link takes you? <strong>Consider using the title of the page it links to as the alt text.</strong> <hr> <strong>Alt text:</strong> %(altText)',
+      LINK_IMAGE_ALT_WARNING: 'Image link contains alt text. Does the alt text describe where the link takes you? <strong>Consider using the title of the page it links to as the alt text.</strong><hr> <strong>Alt text:</strong> %(altText)',
       LINK_IMAGE_ALT_AND_TEXT_WARNING: 'Image link contains <strong>both alt text and surrounding link text.</strong> If this image is decorative and is being used as a functional link to another page, consider marking the image as decorative or null - the surrounding link text should suffice. <hr> <strong>Alt text:</strong> %(altText)',
       IMAGE_FIGURE_DECORATIVE: 'Image is marked as <strong>decorative</strong> and will be ignored by assistive technology. <hr> Although a <strong>caption</strong> was provided, the image should also have alt text in most cases. <ul><li>The alt text should provide a concise description of what is in the image.</li><li>The caption should usually provide context to relate the image back to the surrounding content, or give attention to a particular piece of information.</li></ul>Learn more: <a href="https://thoughtbot.com/blog/alt-vs-figcaption#the-figcaption-element">alt versus figcaption.</a>',
       IMAGE_FIGURE_DUPLICATE_ALT: 'Do not use the exact same words for both the alt and caption text. Screen readers will announce the information twice.<ul><li>The alt text should provide a concise description of what is in the image.</li><li>The caption should usually provide context to relate the image back to the surrounding content, or give attention to a particular piece of information.</li></ul> Learn more: <a href="https://thoughtbot.com/blog/alt-vs-figcaption#the-figcaption-element">alt versus figcaption.</a> <hr> <strong>Alt text:</strong> %(altText)',
@@ -177,7 +177,7 @@
       // Embedded content
       EMBED_VIDEO: 'Please ensure <strong>all videos have closed captioning.</strong> Providing captions for all audio and video content is a mandatory Level A requirement. Captions support people who are D/deaf or hard-of-hearing.',
       EMBED_AUDIO: 'Please ensure to provide a <strong>transcript for all podcasts.</strong> Providing transcripts for audio content is a mandatory Level A requirement. Transcripts support people who are D/deaf or hard-of-hearing, but can benefit everyone. Consider placing the transcript below or within an accordion panel.',
-      EMBED_DATA_VIZ: 'Data visualization widgets like this are often problematic for people who use a keyboard or screen reader to navigate, and can present significant difficulties for people who have low vision or colourblindness. It\'s recommended to provide the same information in an alternative (text or table) format below the widget. <hr> Learn more about <a href="https://www.w3.org/WAI/tutorials/images/complex">complex images.</a>',
+      EMBED_DATA_VIZ: 'Data visualization widgets like this are often problematic for people who use a keyboard or screen reader to navigate, and can present significant difficulties for people who have low vision or colorblindness. It\'s recommended to provide the same information in an alternative (text or table) format below the widget. <hr> Learn more about <a href="https://www.w3.org/WAI/tutorials/images/complex">complex images.</a>',
       EMBED_MISSING_TITLE: 'Embedded content requires an accessible name that describes its contents. Please provide a unique <code>title</code> or <code>aria-label</code> attribute on the <code>iframe</code> element. Learn more about <a href="https://dequeuniversity.com/tips/provide-iframe-titles">iFrames.</a>',
       EMBED_GENERAL_WARNING: 'Unable to check embedded content. Please make sure that images have alt text, videos have captions, text has sufficient contrast, and interactive components are <a href="https://webaim.org/techniques/keyboard/">keyboard accessible.</a>',
 
@@ -203,11 +203,11 @@
 
       // Contrast
       CONTRAST_ERROR: 'This text does not have enough contrast with the background. The contrast ratio should be at least 4.5:1 for normal text and 3:1 for large text. <hr> The contrast ratio is <strong {r}>%(cratio)</strong> for the following text: <strong {r}>%(sanitizedText)</strong>',
-      CONTRAST_WARNING: 'The contrast of this text is unknown and needs to be manually reviewed. Ensure the text and the background have strong contrasting colours. The contrast ratio should be at least 4.5:1 for normal text and 3:1 for large text. <hr> <strong>Please review:</strong> %(sanitizedText)',
+      CONTRAST_WARNING: 'The contrast of this text is unknown and needs to be manually reviewed. Ensure the text and the background have strong contrasting colors. The contrast ratio should be at least 4.5:1 for normal text and 3:1 for large text. <hr> <strong>Please review:</strong> %(sanitizedText)',
       CONTRAST_INPUT_ERROR: 'Text within this input does not have enough contrast with the background. The contrast ratio should be at least 4.5:1 for normal text and 3:1 for large text. <hr> Contrast ratio: <strong {r}>%(cratio)</strong>',
     },
   };
 
-  return en;
+  return enUS;
 
 }));

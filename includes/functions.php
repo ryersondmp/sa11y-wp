@@ -110,15 +110,43 @@ function sa11y_load_scripts()
     && is_user_logged_in()
     && ($allowed_user_roles || current_user_can('edit_posts') || current_user_can('edit_pages'))
   ) {
-    global $sa11y_lang, $sa11y_lang_prop;
+    global $sa11y_lang;
 
     // Get page language.
     $lang = explode('_', get_locale())[0];
-    $languages = ["fr", "uk", "pl", "sv", "de", "en"];
+    $country = explode('_', get_locale())[1];
+    $languages = [
+      'cs',
+      'da',
+      'de',
+      'el',
+      'en',
+      'es',
+      'et',
+      'fi',
+      'fr',
+      'id',
+      'it',
+      'ja',
+      'lt',
+      'lv',
+      'nb',
+      'nl',
+      'pl',
+      'pt',
+      'ro',
+      'sl',
+      'sv',
+      'tr',
+      'ua',
+      'zh',
+    ];
 
     // Check if Sa11y supports language.
     if (!in_array($lang, $languages)) {
-      $lang = "en";
+      $lang = ($country === "US") ? "enUS" : "en";
+    } else if ($lang === "pt") {
+      $lang = ($country === "BR") ? "ptBR" : "ptPT";
     } else if ($lang === "uk") {
       $lang = "ua";
     }
@@ -130,7 +158,6 @@ function sa11y_load_scripts()
 
     // Populate props within <script>
     $sa11y_lang = 'Sa11y.Lang.addI18n(Sa11yLang' . ucfirst($lang) . '.strings);';
-    $sa11y_lang_prop = ($lang === "en") ? "en" : $lang;
   }
 }
 add_action('wp_enqueue_scripts', 'sa11y_load_scripts');
@@ -315,10 +342,9 @@ function sa11y_init()
     && ($allowed_user_roles || current_user_can('edit_posts') || current_user_can('edit_pages'))
   ) {
     global $sa11y_lang;
-    global $sa11y_lang_prop;
 
     $post_id = get_the_ID();
-    $site_url = get_site_url();
+    $site_url = esc_url(get_site_url());
 
     echo <<<EOT
       <script id="sa11y-wp-init">
@@ -357,7 +383,6 @@ function sa11y_init()
             linksAdvancedPlugin: $linksAdvancedOn,
             colourFilterPlugin: $colourFilterOn,
             checkAllHideToggles: $allChecksOn,
-            readabilityLang: '$sa11y_lang_prop',
             readabilityPlugin: $readabilityOn,
             readabilityRoot: '$readabilityTarget',
             readabilityIgnore: '$readabilityIgnore',
@@ -374,6 +399,7 @@ function sa11y_init()
             dataVizContent: '$dataVizContent',
             doNotRun: '$noRun',
             shadowComponents: '$shadowComponents',
+            selectorPath: true,
             $extraProps
           });
         }
@@ -383,16 +409,16 @@ function sa11y_init()
 }
 add_action('wp_footer', 'sa11y_init');
 
-// rest api endpoint to store results
-function store_results()
+// REST API endpoint to store results
+function store_results($request)
 {
-  $body = file_get_contents('php://input');
+  $body = $request->get_body();
   $data = json_decode($body, true);
   $results = $data['results'];
+  $post_id = $data['post_id'];
 
-  // for each result store in database
+  // for each result, store in the database
   foreach ($results as $result) {
-    $post_id = $data['post_id'];
     $issue_type = $result['type'];
     $issue_details = $result['content'];
     $issue_selector = $result['cssPath'];
@@ -401,9 +427,26 @@ function store_results()
 
   return $results;
 }
-add_action('rest_api_init', function () {
-  register_rest_route('sa11y/v1', '/results', [
-    'methods' => 'POST',
-    'callback' => 'store_results',
-  ]);
-});
+
+// Register REST API endpoint for each site in the network.
+function register_sa11y_results_endpoint()
+{
+  if (is_multisite()) {
+    $blog_ids = get_sites(['fields' => 'ids']);
+    foreach ($blog_ids as $blog_id) {
+      switch_to_blog($blog_id);
+      register_rest_route('sa11y/v1', '/results', [
+        'methods' => 'POST',
+        'callback' => 'store_results',
+      ]);
+      restore_current_blog();
+    }
+  } else {
+    // Register REST API endpoint for single site.
+    register_rest_route('sa11y/v1', '/results', [
+      'methods' => 'POST',
+      'callback' => 'store_results',
+    ]);
+  }
+}
+add_action('rest_api_init', 'register_sa11y_results_endpoint');
