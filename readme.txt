@@ -4,7 +4,7 @@ Tags: accessibility, accessibility automated testing, accessibility checker, wca
 Requires at least: 5.6
 Tested up to: 6.4
 Requires PHP: 7.2
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,13 @@ Visit the [project website](https://sa11y.netlify.app/) for a demo or to learn m
 2. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.1.5 =
+* Upgrade Sa11y 3.0.6
+* New feature: Export all errors and warnings on a page as CSV or HTML. Make it easier to compile accessibility audits or export results into your favourite reporting tool. This feature is off by default. Please enable via Advanced Settings.
+* New feature: More helpful preview of hidden issues. When using the Skip-to-Issue button, Sa11y will display more helpful previews of hidden issues. Images, iframes, video, and audio content will be displayed in its entirety, otherwise a preview of the issue’s HTML will be displayed. This will help make it easier to identify hidden or off-screen issues.
+* New machine translations: Bulgarian, Hungarian, Korean, Slovak
+* Check out the [latest release notes for Sa11y.](https://github.com/ryersondmp/sa11y/releases)
 
 = 1.1.4 =
 * Upgrade Sa11y 3.0.6
