@@ -73,7 +73,7 @@ function sa11y_get_defaultOptions()
 
     // Advanced settings
     'sa11y_no_run' => esc_html(''),
-    'sa11y_export_results' => absint(1),
+    'sa11y_export_results' => absint(0),
     'sa11y_shadow_components' => esc_html(''),
     'sa11y_extra_props' => esc_html(''),
   ];
