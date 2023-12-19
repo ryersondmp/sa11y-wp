@@ -73,6 +73,7 @@ function sa11y_get_defaultOptions()
 
     // Advanced settings
     'sa11y_no_run' => esc_html(''),
+    'sa11y_export_results' => absint(1),
     'sa11y_shadow_components' => esc_html(''),
     'sa11y_extra_props' => esc_html(''),
   ];
@@ -88,7 +89,7 @@ function sa11y_get_defaultOptions()
 function sa11y_get_settings($option = '')
 {
   $settings = get_option('sa11y_settings', sa11y_get_defaultOptions());
-  return $settings[$option];
+  return $settings[$option] ?? null;
 }
 
 /**
@@ -114,6 +115,7 @@ function sa11y_load_scripts()
     $lang = explode('_', get_locale())[0];
     $country = explode('_', get_locale())[1];
     $languages = [
+      'bg',
       'cs',
       'da',
       'de',
@@ -123,9 +125,11 @@ function sa11y_load_scripts()
       'et',
       'fi',
       'fr',
+      'hu',
       'id',
       'it',
       'ja',
+      'ko',
       'lt',
       'lv',
       'nb',
@@ -134,6 +138,7 @@ function sa11y_load_scripts()
       'pt',
       'ro',
       'sl',
+      'sk',
       'sv',
       'tr',
       'ua',
@@ -203,6 +208,7 @@ function sa11y_init()
   $getDataVizContent = wp_filter_nohtml_kses(sa11y_get_settings('sa11y_dataviz_sources'));
 
   // Advanced settings
+  $getExportResults = absint(sa11y_get_settings('sa11y_export_results'));
   $getNoRun = esc_html(sa11y_get_settings('sa11y_no_run'));
   $getShadowComponents = esc_html(sa11y_get_settings('sa11y_shadow_components'));
   $getExtraProps = wp_filter_nohtml_kses(sa11y_get_settings('sa11y_extra_props'));
@@ -255,6 +261,8 @@ function sa11y_init()
   $colourFilterOn = ($getColourFilter === 1) ? 'true' : 'false';
   $allChecksOn = ($getAllChecks === 1) ? 'true' : 'false';
   $readabilityOn = ($getReadability === 1) ? 'true' : 'false';
+  $exportResultsOn = ($getExportResults === 1) ? 'true' : 'false';
+
 
   // Readability
   $readabilityTarget = empty($getReadabilityTarget) ? 'body' : strtr($getReadabilityTarget, $r);
@@ -371,6 +379,7 @@ function sa11y_init()
             audioContent: '$audioContent',
             dataVizContent: '$dataVizContent',
             doNotRun: '$noRun',
+            exportResultsPlugin: $exportResultsOn,
             shadowComponents: '$shadowComponents',
             $extraProps
           });

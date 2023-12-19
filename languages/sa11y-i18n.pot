@@ -2,16 +2,16 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sa11y 1.1.1\n"
+"Project-Id-Version: Sa11y 1.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sa11y\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-06-26T15:16:29+00:00\n"
+"POT-Creation-Date: 2023-12-19T18:58:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.7.1\n"
+"X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: sa11y-i18n\n"
 
 #. Plugin Name of the plugin
@@ -174,166 +174,174 @@ msgstr ""
 msgid "Add extra props"
 msgstr ""
 
-#: includes/strings.php:47
+#: includes/strings.php:43
+msgid "Export results"
+msgstr ""
+
+#: includes/strings.php:48
 msgid "Enable for all administrators, editors, authors, contributors, and anyone who has permissions to edit posts and pages."
 msgstr ""
 
-#: includes/strings.php:49
+#: includes/strings.php:50
 msgid "Display Sa11y's main panel on the left or right side."
 msgstr ""
 
-#: includes/strings.php:50
+#: includes/strings.php:51
 msgid "Left"
 msgstr ""
 
-#: includes/strings.php:51
+#: includes/strings.php:52
 msgid "Right"
 msgstr ""
 
-#: includes/strings.php:53
-#: includes/strings.php:67
+#: includes/strings.php:54
+#: includes/strings.php:68
 msgid "Input a <strong>single selector</strong> to target a specific region of your website. For example, use <code>main</code> to scan the main content region only."
 msgstr ""
 
-#: includes/strings.php:54
+#: includes/strings.php:55
 msgid "<strong>Important ⚠️:</strong> This selector <strong>must</strong> be common to <strong>all</strong> themes."
 msgstr ""
 
-#: includes/strings.php:55
+#: includes/strings.php:56
 msgid "Create global exclusions or ignore repetitive elements using CSS selectors. Use a comma to separate multiple selectors. View <a href=\"%s\">CSS selectors reference.</a>"
 msgstr ""
 
-#: includes/strings.php:56
+#: includes/strings.php:57
 #: partials/sidebar.php:18
 msgid "Create exclusions or ignore repetitive elements using CSS selectors. Use a comma to separate multiple selectors. View <a href=\"%s\">CSS selectors reference.</a>"
 msgstr ""
 
-#: includes/strings.php:57
+#: includes/strings.php:58
 msgid "<strong>Note:</strong> Admins can override this setting."
 msgstr ""
 
-#: includes/strings.php:58
+#: includes/strings.php:59
 msgid "<strong>Note:</strong> Admins <strong>cannot</strong> override this setting."
 msgstr ""
 
-#: includes/strings.php:59
+#: includes/strings.php:60
 msgid "<strong>Note:</strong> Admins can override the settings in this section."
 msgstr ""
 
-#: includes/strings.php:60
+#: includes/strings.php:61
 msgid "<strong>Note:</strong> Admins <strong>cannot</strong> override the settings in this section."
 msgstr ""
 
-#: includes/strings.php:61
+#: includes/strings.php:62
 msgid "Show Contrast toggle in Settings panel. Check for WCAG 2.0 Level AA contrast issues between foreground text and background elements."
 msgstr ""
 
-#: includes/strings.php:62
+#: includes/strings.php:63
 msgid "Show Form Labels toggle in Settings panel. Check for form inputs missing a corresponding label. Not necessarily a content author issue, and usually not an issue when using a reputable, accessible forms plugin."
 msgstr ""
 
-#: includes/strings.php:63
+#: includes/strings.php:64
 msgid "Show Links (Advanced) toggle in Settings panel. Check for additional issues such as: links that open in a new tab without warning, have identical names but different purpose, or points to a PDF and other files without warning."
 msgstr ""
 
-#: includes/strings.php:64
+#: includes/strings.php:65
 msgid "Show Colour Filter toggle in Settings panel. Colour filters help identify potential color combinations that may be difficult for people to distinguish."
 msgstr ""
 
-#: includes/strings.php:65
+#: includes/strings.php:66
 msgid "Enable this option if you would like to make all toggleable checks above enabled by default. This will visually hide the toggle switches in the Settings panel."
 msgstr ""
 
-#: includes/strings.php:66
+#: includes/strings.php:67
 msgid "Show Readability switch in the Settings panel. Check readability score of content based on Flesch reading-ease."
 msgstr ""
 
-#: includes/strings.php:68
+#: includes/strings.php:69
 msgid "Exclude specific elements from the readability analysis. Only paragraph or list content is analyzed. Content within navigation elements are ignored by default."
 msgstr ""
 
-#: includes/strings.php:69
+#: includes/strings.php:70
 msgid "Ignore entire regions of a page. For example, <code>footer</code> to ignore the footer on all pages. The comments area (<code>#comments</code>) is ignored by default."
 msgstr ""
 
-#: includes/strings.php:70
+#: includes/strings.php:71
 msgid "Ignore entire regions of a page. For example, <code>#comments</code> to ignore the Comments section on all pages."
 msgstr ""
 
-#: includes/strings.php:71
+#: includes/strings.php:72
 msgid "Ignore specific elements from the contrast check. For example, <code>.sr-only</code> or classes that (intentionally) visually hide elements."
 msgstr ""
 
-#: includes/strings.php:72
+#: includes/strings.php:73
 msgid "Ignore specific headings from appearing in the \"Show Outline\" panel. For example, visually hidden headings that content authors do not see."
 msgstr ""
 
-#: includes/strings.php:73
+#: includes/strings.php:74
 msgid "Exclude specific headings from all checks."
 msgstr ""
 
-#: includes/strings.php:74
+#: includes/strings.php:75
 msgid "Exclude specific images from all checks."
 msgstr ""
 
-#: includes/strings.php:75
+#: includes/strings.php:76
 msgid "Exclude specific links from all checks."
 msgstr ""
 
-#: includes/strings.php:76
+#: includes/strings.php:77
 msgid "Ignore elements within a link to improve accuracy of link checks. For example, add <code>.sr-only</code> to ignore the text \"external link\" within the following anchor: <code>&lt;a href=&#34;#&#34;&gt;learn more <strong>&lt;span class=&#34;sr-only&#34;&gt;external link&lt;/span&gt;</strong>&lt;/a&gt;</code>"
 msgstr ""
 
-#: includes/strings.php:77
+#: includes/strings.php:78
 msgid "Flag absolute URLs that point to a development environment as an error. For example, all links that start with \"dev\": <code>a[href^=\"https://dev.\"]</code>"
 msgstr ""
 
-#: includes/strings.php:78
+#: includes/strings.php:79
 msgid "Ensure the correct warning message is applied to all embedded content (iframes)."
 msgstr ""
 
-#: includes/strings.php:80
+#: includes/strings.php:81
 msgid "Ensure videos within iFrames display a relevant warning to provide accurate closed captions."
 msgstr ""
 
-#: includes/strings.php:81
+#: includes/strings.php:82
 msgid "View default video sources"
 msgstr ""
 
-#: includes/strings.php:85
+#: includes/strings.php:86
 msgid "Ensure audio within iFrames display a relevant warning to provide a transcript."
 msgstr ""
 
-#: includes/strings.php:86
+#: includes/strings.php:87
 msgid "View default audio sources"
 msgstr ""
 
-#: includes/strings.php:90
+#: includes/strings.php:91
 msgid "Ensure data visualizations within iFrames display a relevant warning."
 msgstr ""
 
-#: includes/strings.php:91
+#: includes/strings.php:92
 msgid "View default data visualization sources"
 msgstr ""
 
-#: includes/strings.php:94
+#: includes/strings.php:95
 msgid "Provide a list of selectors that are <strong>unique to pages</strong>. If any of the elements exist on the page, Sa11y will not scan or appear."
 msgstr ""
 
-#: includes/strings.php:95
+#: includes/strings.php:96
 msgid "Provide a list of all known web components or containers with an open shadow DOM."
 msgstr ""
 
-#: includes/strings.php:96
+#: includes/strings.php:97
 msgid "Pass additional (boolean) properties to customize. Use a comma to seperate multiple key/value pairs. Refer to <a href=\"%s\">documentation.</a>"
 msgstr ""
 
-#: includes/strings.php:97
+#: includes/strings.php:98
 msgid "Settings last updated by %s on %s."
 msgstr ""
 
-#: includes/strings.php:98
+#: includes/strings.php:99
 msgid "Save Settings"
+msgstr ""
+
+#: includes/strings.php:100
+msgid "Allow editors to export results as CSV or HTML."
 msgstr ""
 
 #: partials/intro.php:19

@@ -325,6 +325,16 @@ function sa11y_setting_sections_fields()
     ['label_for' => 'sa11y_dataviz_sources']
   );
 
+  // Field: Add exports feature.
+  add_settings_field(
+    'sa11y_export_results',
+    esc_html__(SA11Y_LABEL["EXPORT_RESULTS"]),
+    'sa11y_export_results_field',
+    'sa11y',
+    'sa11y_advanced_settings',
+    ['label_for' => 'sa11y_export_results']
+  );
+
   // Field: Don't run sa11y if these elements exist.
   add_settings_field(
     'sa11y_no_run',
@@ -335,7 +345,7 @@ function sa11y_setting_sections_fields()
     ['label_for' => 'sa11y_no_run']
   );
 
-  // Field: Add link span ignore field.
+  // Field: Shadow components.
   add_settings_field(
     'sa11y_shadow_components',
     esc_html__(SA11Y_LABEL["SHADOW"]),
@@ -673,6 +683,18 @@ function sa11y_dataviz_sources_field()
 <?php
 }
 
+// Option: Export results option.
+function sa11y_export_results_field()
+{
+  $settings = sa11y_get_settings('sa11y_export_results');
+?>
+  <input type="checkbox" id="sa11y_export_results" name="sa11y_settings[sa11y_export_results]" value="1" <?php checked(1, $settings); ?> aria-describedby="export_desc" />
+  <p id="export_desc">
+    <?php echo wp_kses(SA11Y_DESC["EXPORT_RESULTS_DESC"], SA11Y_ALLOWED_HTML); ?>
+  </p>
+<?php
+}
+
 // Option: Turn off Sa11y if these elements are detected.
 function sa11y_no_run_field()
 {
@@ -753,6 +775,7 @@ function sa11y_settings_validate($settings)
     'sa11y_colour_filter',
     'sa11y_all_checks',
     'sa11y_readability',
+    'sa11y_export_results',
   ];
   foreach ($checkboxes as $key) {
     if (isset($settings[$key])) {
