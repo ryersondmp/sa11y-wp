@@ -16,6 +16,12 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.1.4
+* Upgrade to Sa11y 3.0.6
+* Added new Export Results prop.
+* New machine translations: Bulgarian, Hungarian, Korean, Slovak
+* Check out the [latest release notes for Sa11y.](https://github.com/ryersondmp/sa11y/releases)
+
 ### 1.1.3
 * Upgrade to Sa11y 3.0.3
 * Added Spanish and several machine translations.

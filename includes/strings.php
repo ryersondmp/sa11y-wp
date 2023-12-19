@@ -40,6 +40,7 @@ define('SA11Y_LABEL', [
   'TURN_OFF' => __('Turn off Sa11y if these elements exist', 'sa11y-i18n'),
   'SHADOW' => __('Web components to check', 'sa11y-i18n'),
   'PROPS' => __('Add extra props', 'sa11y-i18n'),
+  'EXPORT_RESULTS' => __('Export results', 'sa11y-i18n'),
 ]);
 
 /* Setting descriptions */
@@ -89,11 +90,12 @@ define('SA11Y_DESC', [
   'DATA_VIZ' => [
     'DESCRIPTION' => __('Ensure data visualizations within iFrames display a relevant warning.', 'sa11y-i18n'),
     'SHOW_SOURCES' => __('View default data visualization sources', 'sa11y-i18n'),
-    'SOURCES' => 'tableau, datastudio.google.com',
+    'SOURCES' => 'datastudio, tableau, lookerstudio, powerbi, qlik',
   ],
   'NO_RUN' => __('Provide a list of selectors that are <strong>unique to pages</strong>. If any of the elements exist on the page, Sa11y will not scan or appear.', 'sa11y-i18n'),
   'SHADOW' => __('Provide a list of all known web components or containers with an open shadow DOM.', 'sa11y-i18n'),
   'PROPS' => __('Pass additional (boolean) properties to customize. Use a comma to seperate multiple key/value pairs. Refer to <a href="%s">documentation.</a>', 'sa11y-i18n'),
   'TIMESTAMP' => __('Settings last updated by %s on %s.', 'sa11y-i18n'),
-  'SAVE' => __('Save Settings', 'sa11y-i18n')
+  'SAVE' => __('Save Settings', 'sa11y-i18n'),
+  'EXPORT_RESULTS_DESC' => __('Allow editors to export results as CSV or HTML.', 'sa11y-i18n')
 ]);
