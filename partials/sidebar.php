@@ -77,7 +77,10 @@
       </p>
       <br>
       <p>
-        <?php esc_html_e('© 2023 Toronto Metropolitan University.', 'sa11y-i18n'); ?>
+        <?php
+        $year = date('Y');
+        esc_html_e('© 2020 - ' . $year . ' Toronto Metropolitan University.', 'sa11y-i18n');
+        ?>
       </p>
     </div>
   </div>

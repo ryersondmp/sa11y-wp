@@ -39,7 +39,7 @@ add_action('network_admin_menu', 'sa11y_network_admin_menu');
 /* ************************************************************ */
 function sa11y_network_styles_scripts()
 {
-  wp_enqueue_style('sa11y-wp-css', trailingslashit(SA11Y_ASSETS) . 'css/sa11y-wp-admin.css', null);
+  wp_enqueue_style('sa11y-wp', trailingslashit(SA11Y_ASSETS) . 'css/sa11y-wp-admin.css', null);
 }
 
 /* ************************************************************ */

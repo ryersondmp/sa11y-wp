@@ -16,6 +16,11 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.1.6
+* Upgrade to Sa11y 3.0.8
+* Minor bug fixes.
+* Check out the [latest release notes for Sa11y.](https://github.com/ryersondmp/sa11y/releases)
+
 ### 1.1.5
 * Upgrade to Sa11y 3.0.6
 * Added new Export Results prop (default off)

@@ -63,7 +63,7 @@ define('SA11Y_DESC', [
   'FORM_LABELS' => __('Show Form Labels toggle in Settings panel. Check for form inputs missing a corresponding label. Not necessarily a content author issue, and usually not an issue when using a reputable, accessible forms plugin.', 'sa11y-i18n'),
   'LINKS_ADVANCED' => __('Show Links (Advanced) toggle in Settings panel. Check for additional issues such as: links that open in a new tab without warning, have identical names but different purpose, or points to a PDF and other files without warning.', 'sa11y-i18n'),
   'COLOUR_FILTER' => __('Show Colour Filter toggle in Settings panel. Colour filters help identify potential color combinations that may be difficult for people to distinguish.', 'sa11y-i18n'),
-  'ALL_CHECKS' => __('Enable this option if you would like to make all toggleable checks above enabled by default. This will visually hide the toggle switches in the Settings panel.', 'sa11y-i18n'),
+  'ALL_CHECKS' => __('Enable to visually hide the toggle switches in the Settings panel.', 'sa11y-i18n'),
   'READABILITY' => __('Show Readability switch in the Settings panel. Check readability score of content based on Flesch reading-ease.', 'sa11y-i18n'),
   'READABILITY_TARGET' => __('Input a <strong>single selector</strong> to target a specific region of your website. For example, use <code>main</code> to scan the main content region only.', 'sa11y-i18n'),
   'READABILITY_IGNORE' => __('Exclude specific elements from the readability analysis. Only paragraph or list content is analyzed. Content within navigation elements are ignored by default.', 'sa11y-i18n'),
@@ -94,7 +94,7 @@ define('SA11Y_DESC', [
   ],
   'NO_RUN' => __('Provide a list of selectors that are <strong>unique to pages</strong>. If any of the elements exist on the page, Sa11y will not scan or appear.', 'sa11y-i18n'),
   'SHADOW' => __('Provide a list of all known web components or containers with an open shadow DOM.', 'sa11y-i18n'),
-  'PROPS' => __('Pass additional (boolean) properties to customize. Use a comma to seperate multiple key/value pairs. Refer to <a href="%s">documentation.</a>', 'sa11y-i18n'),
+  'PROPS' => __('Pass additional (boolean or integer) properties to customize. Use a comma to seperate multiple key/value pairs. Refer to <a href="%s">documentation.</a>', 'sa11y-i18n'),
   'TIMESTAMP' => __('Settings last updated by %s on %s.', 'sa11y-i18n'),
   'SAVE' => __('Save Settings', 'sa11y-i18n'),
   'EXPORT_RESULTS_DESC' => __('Allow editors to export results as CSV or HTML.', 'sa11y-i18n')

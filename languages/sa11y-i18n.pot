@@ -329,7 +329,7 @@ msgid "Provide a list of all known web components or containers with an open sha
 msgstr ""
 
 #: includes/strings.php:97
-msgid "Pass additional (boolean) properties to customize. Use a comma to seperate multiple key/value pairs. Refer to <a href=\"%s\">documentation.</a>"
+msgid "Pass additional (boolean or integer) properties to customize. Use a comma to seperate multiple key/value pairs. Refer to <a href=\"%s\">documentation.</a>"
 msgstr ""
 
 #: includes/strings.php:98
@@ -405,5 +405,5 @@ msgid "Development led by Adam Chaboryk at Toronto Metropolitan University. View
 msgstr ""
 
 #: partials/sidebar.php:80
-msgid "© 2023 Toronto Metropolitan University."
+msgid "© 2020 - %s Toronto Metropolitan University."
 msgstr ""

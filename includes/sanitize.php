@@ -89,8 +89,8 @@ function sa11y_sanitize_textarea_fields($value)
 {
   global $sa11y_replaceExtraHTML;
   $sanitizedValue = sanitize_textarea_field($value);
-  // Strip all characters except letters, .,: and whitespace
-  $sanitizedValue = preg_replace('/[^a-zA-Z.,:\s]/', '', $sanitizedValue);
+  // Strip all characters except numbers, letters, .,: and whitespace
+  $sanitizedValue = preg_replace('/[^a-zA-Z0-9.,:\s]/', '', $sanitizedValue);
   $sanitizedValue = preg_replace('/^(javascript|data):/', '', $sanitizedValue); // URL schemes
   $sanitizedValue = trim(strtr($sanitizedValue, $sa11y_replaceExtraHTML));
   $sanitizedValue = substr($sanitizedValue, 0, 400); // Max 400 characters.

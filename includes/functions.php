@@ -109,11 +109,12 @@ function sa11y_load_scripts()
     && is_user_logged_in()
     && ($allowed_user_roles || current_user_can('edit_posts') || current_user_can('edit_pages'))
   ) {
-    global $sa11y_lang;
+    global $sa11yLangPrefix;
 
     // Get page language.
-    $lang = explode('_', get_locale())[0];
-    $country = explode('_', get_locale())[1];
+    $splitLang = explode('_', get_locale());
+    $lang      = $splitLang[0];
+    $country   = $splitLang[1] ?? '';
     $languages = [
       'bg',
       'cs',
@@ -142,6 +143,7 @@ function sa11y_load_scripts()
       'sv',
       'tr',
       'ua',
+      'uk',
       'zh',
     ];
 
@@ -157,12 +159,12 @@ function sa11y_load_scripts()
     }
 
     // Enqueue language file, CSS, and main Javascript file.
-    wp_enqueue_style('sa11y-wp-css', trailingslashit(SA11Y_ASSETS) . 'src/sa11y.min.css', null);
-    wp_enqueue_script('sa11y-wp-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/' . $lang . '.umd.js', null, true);
-    wp_enqueue_script('sa11y-wp-js', trailingslashit(SA11Y_ASSETS) . 'src/sa11y.umd.min.js', null, true);
+    wp_enqueue_style('sa11y', trailingslashit(SA11Y_ASSETS) . 'src/sa11y.min.css', null);
+    wp_enqueue_script('sa11y-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/' . $lang . '.umd.js', null, true);
+    wp_enqueue_script('sa11y', trailingslashit(SA11Y_ASSETS) . 'src/sa11y.umd.min.js', null, true);
 
     // Populate props within <script>
-    $sa11y_lang = 'Sa11y.Lang.addI18n(Sa11yLang' . ucfirst($lang) . '.strings);';
+    $sa11yLangPrefix = ucfirst($lang);
   }
 }
 add_action('wp_enqueue_scripts', 'sa11y_load_scripts');
@@ -234,19 +236,9 @@ function sa11y_init()
   $networkShadowComponents = esc_html(get_site_option('sa11y_network_shadow_components'));
   $networkExtraProps = wp_filter_nohtml_kses(get_site_option('sa11y_network_extra_props'));
 
-  /* ******************* */
-  /* Prep before echoing */
-  /* ******************* */
-
-  //Allowed characters before echoing.
-  $r = [
-    '&gt;' => '>',
-    '&quot;' => '"',
-    '&#039;' => '"'
-  ];
-
-  // Check root
-  $checkRoot = empty($checkRoot) ? 'body' : strtr($checkRoot, $r);
+  /* ********************************************** */
+  /*  Combine defaults, local and network options.  */
+  /* ********************************************** */
 
   // Global defaults
   $defaultIgnore = '#query-monitor-main, #wpadminbar';
@@ -254,85 +246,137 @@ function sa11y_init()
   $audioDefault = 'soundcloud.com, simplecast.com, podbean.com, buzzsprout.com, blubrry.com, transistor.fm, fusebox.fm, libsyn.com';
   $dataVizDefault = 'datastudio.google.com, tableau';
 
-  // Additional Checks
-  $contrastOn = ($getContrast === 1) ? 'true' : 'false';
-  $formsOn = ($getForms === 1) ? 'true' : 'false';
-  $linksAdvancedOn = ($getLinksAdvanced === 1) ? 'true' : 'false';
-  $colourFilterOn = ($getColourFilter === 1) ? 'true' : 'false';
-  $allChecksOn = ($getAllChecks === 1) ? 'true' : 'false';
-  $readabilityOn = ($getReadability === 1) ? 'true' : 'false';
-  $exportResultsOn = ($getExportResults === 1) ? 'true' : 'false';
-
-
-  // Readability
-  $readabilityTarget = empty($getReadabilityTarget) ? 'body' : strtr($getReadabilityTarget, $r);
-
   // Exclusions
-  $containerIgnore = $networkContainerIgnore ? "{$defaultIgnore}, {$networkContainerIgnore}, {$getContainerIgnore}"
+  $containerIgnore = $networkContainerIgnore
+    ? "{$defaultIgnore}, {$networkContainerIgnore}, {$getContainerIgnore}"
     : "{$defaultIgnore}, {$getContainerIgnore}";
 
-  $readabilityIgnore = $networkReadabilityIgnore ? "{$networkReadabilityIgnore}, {$getReadabilityIgnore}"
+  $readabilityIgnore = $networkReadabilityIgnore
+    ? "{$networkReadabilityIgnore}, {$getReadabilityIgnore}"
     : $getReadabilityIgnore;
 
-  $contrastIgnore = $networkContrastIgnore ? "{$networkContrastIgnore}, {$getContrastIgnore}"
+  $contrastIgnore = $networkContrastIgnore
+    ? "{$networkContrastIgnore}, {$getContrastIgnore}"
     : $getContrastIgnore;
 
-  $outlineIgnore = $networkOutlineIgnore ? "{$networkOutlineIgnore}, {$getOutlineIgnore}"
+  $outlineIgnore = $networkOutlineIgnore
+    ? "{$networkOutlineIgnore}, {$getOutlineIgnore}"
     : $getOutlineIgnore;
 
-  $headerIgnore = $networkHeaderIgnore ? "{$networkHeaderIgnore}, {$getHeaderIgnore}"
+  $headerIgnore = $networkHeaderIgnore
+    ? "{$networkHeaderIgnore}, {$getHeaderIgnore}"
     : $getHeaderIgnore;
 
-  $imageIgnore = $networkImageIgnore ? "{$networkImageIgnore}, {$getImageIgnore}"
+  $imageIgnore = $networkImageIgnore
+    ? "{$networkImageIgnore}, {$getImageIgnore}"
     : $getImageIgnore;
 
-  $linkIgnore = $networkLinkIgnore ? "{$networkLinkIgnore}, {$getLinkIgnore}"
+  $linkIgnore = $networkLinkIgnore
+    ? "{$networkLinkIgnore}, {$getLinkIgnore}"
     : $getLinkIgnore;
 
-  $linkIgnoreSpan = $networkLinkIgnoreSpan ? "{$networkLinkIgnoreSpan}, {$getLinkIgnoreSpan}"
+  $linkIgnoreSpan = $networkLinkIgnoreSpan
+    ? "{$networkLinkIgnoreSpan}, {$getLinkIgnoreSpan}"
     : $getLinkIgnoreSpan;
 
-  $linksToFlag = $networkLinkFlag ? "{$networkLinkFlag}, {$getLinksToFlag}"
+  $linksToFlag = $networkLinkFlag
+    ? "{$networkLinkFlag}, {$getLinksToFlag}"
     : $getLinksToFlag;
 
   // Embedded content
-  $videoContent = $networkVideo ? "{$videoDefault}, {$networkVideo}, {$getVideoContent}"
+  $videoContent = $networkVideo
+    ? "{$videoDefault}, {$networkVideo}, {$getVideoContent}"
     : "{$videoDefault}, {$getVideoContent}";
 
-  $audioContent = $networkAudio ? "{$audioDefault}, {$networkAudio}, {$getAudioContent}"
+  $audioContent = $networkAudio
+    ? "{$audioDefault}, {$networkAudio}, {$getAudioContent}"
     : "{$audioDefault}, {$getAudioContent}";
 
-  $dataVizContent = $networkDataViz ? "{$dataVizDefault}, {$networkDataViz}, {$getDataVizContent}"
+  $dataVizContent = $networkDataViz
+    ? "{$dataVizDefault}, {$networkDataViz}, {$getDataVizContent}"
     : "{$dataVizDefault}, {$getDataVizContent}";
 
   // Advanced
-  $noRun = $networkNoRun ? "{$networkNoRun}, {$getNoRun}"
+  $noRun = $networkNoRun
+    ? "{$networkNoRun}, {$getNoRun}"
     : $getNoRun;
 
-  $shadowComponents = $networkShadowComponents ? "{$networkShadowComponents}, {$getShadowComponents}"
+  $shadowComponents = $networkShadowComponents
+    ? "{$networkShadowComponents}, {$getShadowComponents}"
     : $getShadowComponents;
 
-  $extraProps = $networkExtraProps ? "{$networkExtraProps}, {$getExtraProps}"
+  $extraProps = $networkExtraProps
+    ? "{$networkExtraProps}, {$getExtraProps}"
     : $getExtraProps;
 
   /* ******************************** */
   /* Final prep before instantiation. */
   /* ******************************** */
-  $readabilityIgnore = rtrim(strtr($readabilityIgnore, $r), ', ');
-  $containerIgnore = rtrim(strtr($containerIgnore, $r), ', ');
-  $contrastIgnore = rtrim(strtr($contrastIgnore, $r), ', ');
-  $outlineIgnore = rtrim(strtr($outlineIgnore, $r), ', ');
-  $headerIgnore = rtrim(strtr($headerIgnore, $r), ', ');
-  $imageIgnore = rtrim(strtr($imageIgnore, $r), ', ');
-  $linkIgnore = rtrim(strtr($linkIgnore, $r), ', ');
-  $linkIgnoreSpan = rtrim(strtr($linkIgnoreSpan, $r), ', ');
-  $linksToFlag = rtrim(strtr($linksToFlag, $r), ', ');
-  $videoContent = rtrim(strtr($videoContent, $r), ', ');
-  $audioContent = rtrim(strtr($audioContent, $r), ', ');
-  $dataVizContent = rtrim(strtr($dataVizContent, $r), ', ');
-  $noRun = rtrim(strtr($noRun, $r), ', ');
-  $shadowComponents = rtrim(strtr($shadowComponents, $r), ', ');
-  $extraProps = rtrim(strtr($extraProps, $r), ', ');
+
+  // Prepare object.
+  $sa11yOptionsArray = [
+    'checkRoot' => empty($checkRoot) ? 'body' : $checkRoot,
+    'panelPosition' => $panelPosition,
+    'contrastPlugin' => ($getContrast === 1) ? 1 : 0,
+    'formLabelsPlugin' => ($getForms === 1) ? 1 : 0,
+    'linksAdvancedPlugin' => ($getLinksAdvanced === 1) ? 1 : 0,
+    'colourFilterPlugin' => ($getColourFilter === 1) ? 1 : 0,
+    'checkAllHideToggles' => ($getAllChecks === 1) ? 1 : 0,
+    'readabilityPlugin' => ($getReadability === 1) ? 1 : 0,
+    'readabilityRoot' => empty($getReadabilityTarget) ? 'body' : $getReadabilityTarget,
+    'readabilityIgnore' => $readabilityIgnore,
+    'exportResultsPlugin' => ($getExportResults === 1) ? 1 : 0,
+    'containerIgnore' => $containerIgnore,
+    'contrastIgnore' => $contrastIgnore,
+    'outlineIgnore' => $outlineIgnore,
+    'headerIgnore' => $headerIgnore,
+    'imageIgnore' => $imageIgnore,
+    'linkIgnore' => $linkIgnore,
+    'linkIgnoreSpan' => $linkIgnoreSpan,
+    'linksToFlag' => $linksToFlag,
+    'videoContent' => $videoContent,
+    'audioContent' => $audioContent,
+    'dataVizContent' => $dataVizContent,
+    'doNotRun' => $noRun,
+    'shadowComponents' => $shadowComponents,
+  ];
+
+  // Remove trailing commas and empty space at beginning or end of values.
+  foreach ($sa11yOptionsArray as $key => $value) {
+    $cleanValue = is_string($value) ? trim($value, ', ') : $value;
+    unset($sa11yOptionsArray[$key]);
+    $sa11yOptionsArray[$key] = $cleanValue;
+  }
+
+  // Convert extra props into array.
+  $getExtraPropsOptions = !empty($extraProps) ? explode(', ', $extraProps) : [];
+  $extraPropsArray = [];
+  foreach ($getExtraPropsOptions as $pair) {
+    if (!empty($pair)) {
+      list($key, $value) = explode(':', $pair, 2);
+      $value = trim($value);
+      if (is_numeric($value)) {
+        $value = (int)$value;
+      } elseif ($value === 'true') {
+        $value = 1;
+      } elseif ($value === 'false') {
+        $value = 0;
+      }
+      $extraPropsArray[$key] = $value;
+    }
+  }
+
+  // Merge options and encode into JSON.
+  $allSa11yOptions = array_merge($sa11yOptionsArray, $extraPropsArray);
+  $allSa11yOptions = json_encode($allSa11yOptions);
+
+  //Allowed characters.
+  $replace = [
+    '&gt;' => ">",
+    '&quot;' => "'",
+    '&#039;' => "'",
+  ];
+  $allSa11yOptions = str_replace(array_keys($replace), array_values($replace), $allSa11yOptions);
 
   /* ******************* */
   /* Allowed roles       */
@@ -349,40 +393,13 @@ function sa11y_init()
     && is_user_logged_in()
     && ($allowed_user_roles || current_user_can('edit_posts') || current_user_can('edit_pages'))
   ) {
-    global $sa11y_lang;
-
+    global $sa11yLangPrefix;
     echo <<<EOT
       <script id="sa11y-wp-init">
-        $sa11y_lang
+        Sa11y.Lang.addI18n(Sa11yLang$sa11yLangPrefix.strings);
         /* Do not run when Elementors page builder is active. */
         if (!(window.frameElement && window.frameElement.id === "elementor-preview-iframe")) {
-          const sa11y = new Sa11y.Sa11y({
-            checkRoot: '$checkRoot',
-            panelPosition: '$panelPosition',
-            contrastPlugin: $contrastOn,
-            formLabelsPlugin: $formsOn,
-            linksAdvancedPlugin: $linksAdvancedOn,
-            colourFilterPlugin: $colourFilterOn,
-            checkAllHideToggles: $allChecksOn,
-            readabilityPlugin: $readabilityOn,
-            readabilityRoot: '$readabilityTarget',
-            readabilityIgnore: '$readabilityIgnore',
-            containerIgnore: '$containerIgnore',
-            contrastIgnore: '$contrastIgnore',
-            outlineIgnore: '$outlineIgnore',
-            headerIgnore: '$headerIgnore',
-            imageIgnore: '$imageIgnore',
-            linkIgnore: '$linkIgnore',
-            linkIgnoreSpan: '$linkIgnoreSpan',
-            linksToFlag: '$linksToFlag',
-            videoContent: '$videoContent',
-            audioContent: '$audioContent',
-            dataVizContent: '$dataVizContent',
-            doNotRun: '$noRun',
-            exportResultsPlugin: $exportResultsOn,
-            shadowComponents: '$shadowComponents',
-            $extraProps
-          });
+          const sa11y = new Sa11y.Sa11y({$allSa11yOptions});
         }
       </script>
     EOT;
