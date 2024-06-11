@@ -159,9 +159,28 @@ function sa11y_load_scripts()
     }
 
     // Enqueue language file, CSS, and main Javascript file.
-    wp_enqueue_style('sa11y', trailingslashit(SA11Y_ASSETS) . 'src/sa11y.min.css', null);
-    wp_enqueue_script('sa11y-lang', trailingslashit(SA11Y_ASSETS) . 'src/lang/' . $lang . '.umd.js', null, true);
-    wp_enqueue_script('sa11y', trailingslashit(SA11Y_ASSETS) . 'src/sa11y.umd.min.js', null, true);
+    wp_enqueue_style(
+      'sa11y',
+      trailingslashit(SA11Y_ASSETS) . 'src/sa11y.min.css',
+      null,
+      Sa11y_WP::VERSION
+    );
+
+    wp_enqueue_script(
+      'sa11y-lang',
+      trailingslashit(SA11Y_ASSETS) . 'src/lang/' . $lang . '.umd.js',
+      null,
+      Sa11y_WP::VERSION,
+      false,
+    );
+
+    wp_enqueue_script(
+      'sa11y',
+      trailingslashit(SA11Y_ASSETS) . 'src/sa11y.umd.min.js',
+      null,
+      Sa11y_WP::VERSION,
+      false,
+    );
 
     // Populate props within <script>
     $sa11yLangPrefix = ucfirst($lang);

@@ -2,9 +2,9 @@
 Contributors: adamchaboryk
 Tags: accessibility, accessibility automated testing, accessibility checker, wcag, audit
 Requires at least: 5.6
-Tested up to: 6.4
+Tested up to: 6.5
 Requires PHP: 7.2
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,16 +24,23 @@ Sa11y works in **Preview** mode.
 * Highly customizable. Turn off or hide irrelevant checks.
 * Content editors can temporarily dismiss warnings.
 * 100% free and open source.
-* Available in English, French, Polish, Ukrainian, German, Swedish, and many more languages through machine translations.
+* Available in English, French, Spanish, Polish, Ukrainian, German, Swedish, and many more languages through machine translations.
 * Supports Multisite: create global settings and custom defaults for all websites on your network.
 
 Visit the [project website](https://sa11y.netlify.app/) for a demo or to learn more!
 
 == Screenshots ==
-1. Logged-in view with Sa11y enabled. Sa11y detected two issues: a non-descript "learn more" link and a skipped heading.
-2. The Advanced Settings page where admins can customize different settings.
+1. Logged-in view with Sa11y showing heading hierarchy and non-descriptive link text errors.
+2. The Images tab makes it easy to review all images and their corresponding alt text within a page for accuracy and quality. Warnings can also be temporarily dismissed.
+3. The Settings tab has additional toggleable checks, including a dark mode option.
+4. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.1.7 =
+* Upgrade to Sa11y 3.2.1
+* New: The Images tab makes it easy to review all images and their corresponding alt text within a page for accuracy and quality.
+* Check out the [latest release notes for Sa11y.](https://github.com/ryersondmp/sa11y/releases)
 
 = 1.1.6 =
 * Upgrade to Sa11y 3.0.8

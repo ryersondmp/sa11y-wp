@@ -16,6 +16,11 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.1.7
+* Upgrade to Sa11y 3.2.1
+* New: The Images tab makes it easy to review all images and their corresponding alt text within a page for accuracy and quality.
+* Check out the [latest release notes for Sa11y.](https://github.com/ryersondmp/sa11y/releases)
+
 ### 1.1.6
 * Upgrade to Sa11y 3.0.8
 * Minor bug fixes.
