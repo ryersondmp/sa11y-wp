@@ -137,7 +137,11 @@ class Sa11y_WP
     add_action('plugins_loaded', array(&$this, 'constants'), 1);
 
     // Internationalize the text strings used.
-    add_action('init', array(&$this, 'i18n'), 2);
+    if (version_compare(wp_get_wp_version(), '6.7.0', '>=')) {
+        add_action('init', array(&$this, 'i18n'), 2);
+    } else {
+        add_action('plugins_loaded', array(&$this, 'i18n'), 2);
+    }
 
     // Load the functions files.
     add_action('plugins_loaded', array(&$this, 'includes'), 3);
