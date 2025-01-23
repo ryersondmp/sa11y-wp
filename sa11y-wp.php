@@ -6,7 +6,7 @@
  * Plugin Name:       Sa11y
  * Plugin URI:        https://sa11y.netlify.app/
  * Description:       Sa11y is your accessibility quality assurance assistant. Geared towards content authors, Sa11y is an accessibility checker that straightforwardly identifies issues at the source.
- * Version:           1.1.7
+ * Version:           1.1.8
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            Adam Chaboryk, Toronto Metropolitan University
@@ -19,7 +19,7 @@
  * @package         Sa11y
  * @link            https://sa11y.netlify.app/
  * @author          Adam Chaboryk, Toronto Metropolitan University
- * @copyright       2020 - 2024 Toronto Metropolitan University
+ * @copyright       2020 - 2025 Toronto Metropolitan University
  * @license         GPL v2 or later
  */
 
@@ -29,8 +29,8 @@ if (!defined('ABSPATH')) exit;
 class Sa11y_WP
 {
 
-  const VERSION = '3.2.1';
-  const WP_VERSION = '1.1.7';
+  const VERSION = '4.0.2';
+  const WP_VERSION = '1.1.8';
 
   /**
    * Defines constants used by the plugin.
@@ -138,9 +138,9 @@ class Sa11y_WP
 
     // Internationalize the text strings used.
     if (version_compare(wp_get_wp_version(), '6.7.0', '>=')) {
-        add_action('init', array(&$this, 'i18n'), 2);
+      add_action('init', array(&$this, 'i18n'), 2);
     } else {
-        add_action('plugins_loaded', array(&$this, 'i18n'), 2);
+      add_action('plugins_loaded', array(&$this, 'i18n'), 2);
     }
 
     // Load the functions files.

@@ -2,9 +2,9 @@
 Contributors: adamchaboryk
 Tags: accessibility, accessibility automated testing, accessibility checker, wcag, audit
 Requires at least: 5.6
-Tested up to: 6.5
+Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,11 @@ Visit the [project website](https://sa11y.netlify.app/) for a demo or to learn m
 4. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.1.8 =
+* Upgrade to Sa11y 4.0
+* New: Improved contrast checking tools, simplified settings panel, new content checks, and more!
+* Check out the [latest release notes for Sa11y 4.](https://github.com/ryersondmp/sa11y/releases/tag/4.0.0)
 
 = 1.1.7 =
 * Upgrade to Sa11y 3.2.1

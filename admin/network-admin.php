@@ -58,15 +58,7 @@ function sa11y_network_fields()
     'sa11y_network_options_page'
   );
 
-  // 2. Create "Additional Checks" section.
-  add_settings_section(
-    'additional-checks',
-    esc_html__(SA11Y_SECTION["ADDITIONAL"]),
-    'network_additional_checks_callback',
-    'sa11y_network_options_page'
-  );
-
-  // 3. Create "Readability" section.
+  // 2. Create "Readability" section.
   add_settings_section(
     'readability',
     esc_html__(SA11Y_SECTION["READABILITY"]),
@@ -74,7 +66,7 @@ function sa11y_network_fields()
     'sa11y_network_options_page'
   );
 
-  // 4. Create "Exclusions" section.
+  // 3. Create "Exclusions" section.
   add_settings_section(
     'exclusions',
     esc_html__(SA11Y_SECTION["EXCLUSIONS"]),
@@ -82,7 +74,7 @@ function sa11y_network_fields()
     'sa11y_network_options_page'
   );
 
-  // 5. Create "Embedded Content" section.
+  // 4. Create "Embedded Content" section.
   add_settings_section(
     'embedded-content',
     esc_html__(SA11Y_SECTION["EMBEDDED"]),
@@ -90,7 +82,7 @@ function sa11y_network_fields()
     'sa11y_network_options_page'
   );
 
-  // 6. Create "Advanced settings" section.
+  // 5. Create "Advanced settings" section.
   add_settings_section(
     'advanced-settings',
     esc_html__(SA11Y_SECTION["ADVANCED"]),
@@ -131,79 +123,19 @@ function sa11y_network_fields()
     'general',
   );
 
-  // Option: Contrast (Additional Checks)
+  // Option: Developer checks on by default
   register_setting(
     'sa11y_network_options_page',
-    'sa11y_network_contrast',
+    'sa11y_network_developer_checks',
     'sa11y_sanitize_checkboxes'
   );
   add_settings_field(
-    'sa11y_network_contrast',
-    esc_html__(SA11Y_LABEL["CONTRAST"]),
-    'sa11y_network_contrast_callback',
+    'sa11y_network_developer_checks',
+    esc_html__(SA11Y_LABEL["DEVELOPER_CHECKS"]),
+    'sa11y_network_developer_checks_callback',
     'sa11y_network_options_page',
-    'additional-checks',
-    ['label_for' => 'sa11y_network_contrast']
-  );
-
-  // Option: Form Labels (Additional Checks)
-  register_setting(
-    'sa11y_network_options_page',
-    'sa11y_network_form_labels',
-    'sa11y_sanitize_checkboxes'
-  );
-  add_settings_field(
-    'sa11y_network_form_labels',
-    esc_html__(SA11Y_LABEL["FORM_LABELS"]),
-    'sa11y_network_form_labels_callback',
-    'sa11y_network_options_page',
-    'additional-checks',
-    ['label_for' => 'sa11y_network_form_labels']
-  );
-
-  // Option: Links Advanced (Additional Checks)
-  register_setting(
-    'sa11y_network_options_page',
-    'sa11y_network_links_advanced',
-    'sa11y_sanitize_checkboxes'
-  );
-  add_settings_field(
-    'sa11y_network_links_advanced',
-    esc_html__(SA11Y_LABEL["LINKS_ADVANCED"]),
-    'sa11y_network_links_advanced_callback',
-    'sa11y_network_options_page',
-    'additional-checks',
-    ['label_for' => 'sa11y_network_links_advanced']
-  );
-
-  // Option: Colour Filter
-  register_setting(
-    'sa11y_network_options_page',
-    'sa11y_network_colour_filter',
-    'sa11y_sanitize_checkboxes'
-  );
-  add_settings_field(
-    'sa11y_network_colour_filter',
-    esc_html__(SA11Y_LABEL["COLOUR_FILTER"]),
-    'sa11y_network_colour_filter_callback',
-    'sa11y_network_options_page',
-    'additional-checks',
-    ['label_for' => 'sa11y_network_colour_filter']
-  );
-
-  // Option: Make all additional checks required by default (Additional Checks)
-  register_setting(
-    'sa11y_network_options_page',
-    'sa11y_network_all_checks',
-    'sa11y_sanitize_checkboxes'
-  );
-  add_settings_field(
-    'sa11y_network_all_checks',
-    esc_html__(SA11Y_LABEL["ALL_CHECKS"]),
-    'sa11y_network_all_checks_callback',
-    'sa11y_network_options_page',
-    'additional-checks',
-    ['label_for' => 'sa11y_network_all_checks']
+    'general',
+    ['label_for' => 'sa11y_network_developer_checks']
   );
 
   // Option: Readability plugin
@@ -528,72 +460,26 @@ function sa11y_network_validate_panel_position($value)
   return $value;
 }
 
+// Option: Developer checks on by default
+function sa11y_network_developer_checks_callback()
+{
+  $option = get_site_option('sa11y_network_developer_checks');
+?>
+  <input type="checkbox" id="sa11y_network_developer_checks" name="sa11y_network_developer_checks" value="1" <?php checked($option, 1); ?> aria-describedby="dev_checks_desc" />
+  <div id="dev_checks_desc">
+    <p>
+      <?php echo wp_kses(SA11Y_DESC["DEVELOPER_CHECKS"], SA11Y_ALLOWED_HTML); ?>
+    </p>
+  </div>
+<?php
+}
+
 /* Network Additional Checks Description */
 function network_additional_checks_callback()
 {
 ?>
   <p class="network-admin-note">
     <?php echo wp_kses(SA11Y_DESC["NETWORK_OVERRIDE_SECTION"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-<?php
-}
-
-// Option: Contrast toggle
-function sa11y_network_contrast_callback()
-{
-  $option = absint(get_site_option('sa11y_network_contrast'));
-?>
-  <input type="checkbox" id="sa11y_network_contrast" name="sa11y_network_contrast" value="1" <?php checked($option, 1); ?> aria-describedby="contrast_desc" />
-  <p id="contrast_desc">
-    <?php echo wp_kses(SA11Y_DESC["CONTRAST"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-<?php
-}
-
-// Option: Form Labels
-function sa11y_network_form_labels_callback()
-{
-  $option = absint(get_site_option('sa11y_network_form_labels'));
-?>
-  <input type="checkbox" id="sa11y_network_form_labels" name="sa11y_network_form_labels" value="1" <?php checked($option, 1); ?> aria-describedby="form_desc" />
-  <p id="form_desc">
-    <?php echo wp_kses(SA11Y_DESC["FORM_LABELS"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-<?php
-}
-
-// Option: Links Advanced
-function sa11y_network_links_advanced_callback()
-{
-  $option = absint(get_site_option('sa11y_network_links_advanced'));
-?>
-  <input type="checkbox" id="sa11y_network_links_advanced" name="sa11y_network_links_advanced" value="1" <?php checked($option, 1); ?> aria-describedby="links_adv_desc" />
-  <p id="links_adv_desc">
-    <?php echo wp_kses(SA11Y_DESC["LINKS_ADVANCED"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-<?php
-}
-
-// Option: Colour Filter
-function sa11y_network_colour_filter_callback()
-{
-  $option = absint(get_site_option('sa11y_network_colour_filter'));
-?>
-  <input type="checkbox" id="sa11y_network_colour_filter" name="sa11y_network_colour_filter" value="1" <?php checked($option, 1); ?> aria-describedby="colour_filter_desc" />
-  <p id="colour_filter_desc">
-    <?php echo wp_kses(SA11Y_DESC["COLOUR_FILTER"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-<?php
-}
-
-// Option: Make all additional checks required by default (Additional Checks)
-function sa11y_network_all_checks_callback()
-{
-  $option = absint(get_site_option('sa11y_network_all_checks'));
-?>
-  <input type="checkbox" id="sa11y_network_all_checks" name="sa11y_network_all_checks" value="1" <?php checked($option, 1); ?> aria-describedby="all_checks_desc" />
-  <p id="all_checks_desc">
-    <?php echo wp_kses(SA11Y_DESC["ALL_CHECKS"], SA11Y_ALLOWED_HTML); ?>
   </p>
 <?php
 }
@@ -926,11 +812,6 @@ function sa11y_update_network_options()
       // Instead of deleting checkbox options, change to 0.
       $network_checkboxes = [
         'sa11y_network_readability',
-        'sa11y_network_contrast',
-        'sa11y_network_form_labels',
-        'sa11y_network_links_advanced',
-        'sa11y_network_colour_filter',
-        'sa11y_network_all_checks',
       ];
       if (in_array($option, $network_checkboxes)) {
         update_site_option($option, 0);

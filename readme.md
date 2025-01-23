@@ -6,8 +6,9 @@ Documentation for WordPress plugin coming soon.
 ## How to report bugs
 Report bugs by creating a new issue. If you do not have a GitHub account, please submit your issue using this [Google Form.](https://forms.gle/sjzK9XykETaoqZv99)
 
-## Generate a fresh language.pot file
-`wp i18n make-pot . languages/sa11y-i18n.pot --domain=sa11y-i18n`
+## Updating the WordPress plugin
+- Run `wp i18n make-pot . languages/sa11y-i18n.pot --domain=sa11y-i18n` to update the pot file.
+- Run `./get.sh` to update `/assets/src/` with the latest Sa11y assets from the main repository.
 
 ## Authors
 Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
@@ -15,6 +16,11 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 **Contact:** [adam.chaboryk@torontomu.ca](mailto:adam.chaboryk@torontomu.ca)
 
 ## Changelog
+
+### 1.1.8
+* Upgrade to Sa11y 4!
+* New: Improved contrast checking tools, simplified settings panel, new content checks, and more!
+* Check out the [latest release notes for Sa11y 4.](https://github.com/ryersondmp/sa11y/releases/tag/4.0.0)
 
 ### 1.1.7
 * Upgrade to Sa11y 3.2.1

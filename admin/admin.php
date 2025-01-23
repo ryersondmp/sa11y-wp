@@ -62,14 +62,6 @@ function sa11y_setting_sections_fields()
     'sa11y'
   );
 
-  // Section: Additional checks.
-  add_settings_section(
-    'sa11y_additional_settings',
-    esc_html__(SA11Y_SECTION["ADDITIONAL"]),
-    '__return_false',
-    'sa11y'
-  );
-
   // Section: Readability.
   add_settings_section(
     'sa11y_readability_settings',
@@ -135,54 +127,14 @@ function sa11y_setting_sections_fields()
     'sa11y_general_settings',
   );
 
-  // Field: Contrast module.
+  // Field: Developer checks on by default
   add_settings_field(
-    'sa11y_contrast',
-    esc_html__(SA11Y_LABEL["CONTRAST"]),
-    'sa11y_contrast_field',
+    'sa11y_developer_checks',
+    esc_html__(SA11Y_LABEL["DEVELOPER_CHECKS"]),
+    'sa11y_developer_checks_field',
     'sa11y',
-    'sa11y_additional_settings',
-    ['label_for' => 'sa11y_contrast']
-  );
-
-  // Field: Forms module.
-  add_settings_field(
-    'sa11y_forms',
-    esc_html__(SA11Y_LABEL["FORM_LABELS"]),
-    'sa11y_forms_field',
-    'sa11y',
-    'sa11y_additional_settings',
-    ['label_for' => 'sa11y_forms']
-  );
-
-  // Field: Links advanced module.
-  add_settings_field(
-    'sa11y_links_advanced',
-    esc_html__(SA11Y_LABEL["LINKS_ADVANCED"]),
-    'sa11y_links_advanced_field',
-    'sa11y',
-    'sa11y_additional_settings',
-    ['label_for' => 'sa11y_links_advanced']
-  );
-
-  // Field: Colour filter.
-  add_settings_field(
-    'sa11y_colour_filter',
-    esc_html__(SA11Y_LABEL["COLOUR_FILTER"]),
-    'sa11y_colour_filter_field',
-    'sa11y',
-    'sa11y_additional_settings',
-    ['label_for' => 'sa11y_colour_filter']
-  );
-
-  // Field: Enable all option checks by default.
-  add_settings_field(
-    'sa11y_all_checks',
-    esc_html__(SA11Y_LABEL["ALL_CHECKS"]),
-    'sa11y_all_checks_field',
-    'sa11y',
-    'sa11y_additional_settings',
-    ['label_for' => 'sa11y_all_checks']
+    'sa11y_general_settings',
+    ['label_for' => 'sa11y_developer_checks']
   );
 
   // Field: Add Readability checkbox setting.
@@ -416,62 +368,14 @@ function sa11y_panel_position_field()
 <?php
 }
 
-// Option: Contrast
-function sa11y_contrast_field()
+// Option: developer checks field.
+function sa11y_developer_checks_field()
 {
-  $settings = sa11y_get_settings('sa11y_contrast');
+  $settings = sa11y_get_settings('sa11y_developer_checks');
 ?>
-  <input type="checkbox" id="sa11y_contrast" name="sa11y_settings[sa11y_contrast]" value="1" <?php checked(1, $settings); ?> aria-describedby="contrast_desc" />
-  <p id="contrast_desc">
-    <?php echo wp_kses(SA11Y_DESC["CONTRAST"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-<?php
-}
-
-// Option: Form labels
-function sa11y_forms_field()
-{
-  $settings = sa11y_get_settings('sa11y_forms');
-?>
-  <input type="checkbox" id="sa11y_forms" name="sa11y_settings[sa11y_forms]" value="1" <?php checked(1, $settings); ?> aria-describedby="fl_desc" />
-  <p id="fl_desc">
-    <?php echo wp_kses(SA11Y_DESC["FORM_LABELS"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-<?php
-}
-
-// Option: Links Advanced
-function sa11y_links_advanced_field()
-{
-  $settings = sa11y_get_settings('sa11y_links_advanced');
-?>
-  <input type="checkbox" id="sa11y_links_advanced" name="sa11y_settings[sa11y_links_advanced]" value="1" <?php checked(1, $settings); ?> aria-describedby="la_desc" />
-  <p id="la_desc">
-    <?php echo wp_kses(SA11Y_DESC["LINKS_ADVANCED"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-<?php
-}
-
-// Option: Colour Filter
-function sa11y_colour_filter_field()
-{
-  $settings = sa11y_get_settings('sa11y_colour_filter');
-?>
-  <input type="checkbox" id="sa11y_colour_filter" name="sa11y_settings[sa11y_colour_filter]" value="1" <?php checked(1, $settings); ?> aria-describedby="colour-filter_desc" />
-  <p id="colour-filter_desc">
-    <?php echo wp_kses(SA11Y_DESC["COLOUR_FILTER"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-<?php
-}
-
-// Option: Make all optional checks required by default.
-function sa11y_all_checks_field()
-{
-  $settings = sa11y_get_settings('sa11y_all_checks');
-?>
-  <input type="checkbox" id="sa11y_all_checks" name="sa11y_settings[sa11y_all_checks]" value="1" <?php checked(1, $settings); ?> aria-describedby="all_checks_desc" />
-  <p id="all_checks_desc">
-    <?php echo wp_kses(SA11Y_DESC["ALL_CHECKS"], SA11Y_ALLOWED_HTML); ?>
+  <input type="checkbox" id="sa11y_developer_checks" name="sa11y_settings[sa11y_developer_checks]" value="1" <?php checked(1, $settings); ?> aria-describedby="developer_checks_desc" />
+  <p id="developer_checks_desc">
+    <?php echo wp_kses(SA11Y_DESC["DEVELOPER_CHECKS"], SA11Y_ALLOWED_HTML); ?>
   </p>
 <?php
 }
@@ -741,7 +645,7 @@ function sa11y_extra_props_field()
 function sa11y_settings_render_page()
 {
 ?>
-  <div class=" wrap">
+  <div class="wrap">
     <h1><?php esc_html_e(SA11Y_LABEL["SA11Y_ADVANCED"]); ?></h1>
     <div id="poststuff">
       <div id="post-body" class="metabox-holder columns-2">
@@ -769,11 +673,7 @@ function sa11y_settings_validate($settings)
   /* Validate: Checkboxes */
   $checkboxes = [
     'sa11y_enable',
-    'sa11y_contrast',
-    'sa11y_forms',
-    'sa11y_links_advanced',
-    'sa11y_colour_filter',
-    'sa11y_all_checks',
+    'sa11y_developer_checks',
     'sa11y_readability',
     'sa11y_export_results',
   ];

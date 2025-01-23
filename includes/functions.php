@@ -30,11 +30,7 @@ function sa11y_get_defaultOptions()
 
   // Checkboxes
   $defaultPanelPosition = is_multisite() ? get_site_option('sa11y_network_panel_position') : 'right';
-  $defaultContrast = is_multisite() ? get_site_option('sa11y_network_contrast') : 1;
-  $defaultFormLabels = is_multisite() ? get_site_option('sa11y_network_form_labels') : 1;
-  $defaultLinksAdvanced = is_multisite() ? get_site_option('sa11y_network_links_advanced') : 1;
-  $defaultColourFilter = is_multisite() ? get_site_option('sa11y_network_colour_filter') : 1;
-  $defaultAllChecks = is_multisite() ? get_site_option('sa11y_network_all_checks') : 0;
+  $defaultDeveloperChecks = is_multisite() ? get_site_option('sa11y_network_developer_checks') : 1;
   $defaultReadability = is_multisite() ? get_site_option('sa11y_network_readability') : 1;
 
   /* Default options */
@@ -43,13 +39,6 @@ function sa11y_get_defaultOptions()
     'sa11y_enable' => absint(1),
     'sa11y_target' => esc_html($defaultTarget),
     'sa11y_panel_position' => esc_html($defaultPanelPosition),
-
-    // Additional checks
-    'sa11y_contrast' => absint($defaultContrast),
-    'sa11y_forms' => absint($defaultFormLabels),
-    'sa11y_links_advanced' => absint($defaultLinksAdvanced),
-    'sa11y_colour_filter' => absint($defaultColourFilter),
-    'sa11y_all_checks' => absint($defaultAllChecks),
 
     // Readability
     'sa11y_readability' => absint($defaultReadability),
@@ -72,6 +61,7 @@ function sa11y_get_defaultOptions()
     'sa11y_dataviz_sources' => esc_html(''),
 
     // Advanced settings
+    'sa11y_developer_checks' => absint($defaultDeveloperChecks),
     'sa11y_no_run' => esc_html(''),
     'sa11y_export_results' => absint(0),
     'sa11y_shadow_components' => esc_html(''),
@@ -201,13 +191,6 @@ function sa11y_init()
   $checkRoot = esc_html__(sa11y_get_settings('sa11y_target'));
   $panelPosition = esc_html__(sa11y_get_settings('sa11y_panel_position'));
 
-  // Additional checks
-  $getContrast = absint(sa11y_get_settings('sa11y_contrast'));
-  $getForms = absint(sa11y_get_settings('sa11y_forms'));
-  $getLinksAdvanced = absint(sa11y_get_settings('sa11y_links_advanced'));
-  $getColourFilter = absint(sa11y_get_settings('sa11y_colour_filter'));
-  $getAllChecks = absint(sa11y_get_settings('sa11y_all_checks'));
-
   // Readability
   $getReadability = absint(sa11y_get_settings('sa11y_readability'));
   $getReadabilityTarget = esc_html(sa11y_get_settings('sa11y_readability_target'));
@@ -229,6 +212,7 @@ function sa11y_init()
   $getDataVizContent = wp_filter_nohtml_kses(sa11y_get_settings('sa11y_dataviz_sources'));
 
   // Advanced settings
+  $getDeveloperChecks = absint(sa11y_get_settings('sa11y_developer_checks'));
   $getExportResults = absint(sa11y_get_settings('sa11y_export_results'));
   $getNoRun = esc_html(sa11y_get_settings('sa11y_no_run'));
   $getShadowComponents = esc_html(sa11y_get_settings('sa11y_shadow_components'));
@@ -336,11 +320,7 @@ function sa11y_init()
   $sa11yOptionsArray = [
     'checkRoot' => empty($checkRoot) ? 'body' : $checkRoot,
     'panelPosition' => $panelPosition,
-    'contrastPlugin' => ($getContrast === 1) ? 1 : 0,
-    'formLabelsPlugin' => ($getForms === 1) ? 1 : 0,
-    'linksAdvancedPlugin' => ($getLinksAdvanced === 1) ? 1 : 0,
-    'colourFilterPlugin' => ($getColourFilter === 1) ? 1 : 0,
-    'checkAllHideToggles' => ($getAllChecks === 1) ? 1 : 0,
+    'developerChecksOnByDefault' => ($getDeveloperChecks === 1) ? 1 : 0,
     'readabilityPlugin' => ($getReadability === 1) ? 1 : 0,
     'readabilityRoot' => empty($getReadabilityTarget) ? 'body' : $getReadabilityTarget,
     'readabilityIgnore' => $readabilityIgnore,
@@ -367,27 +347,27 @@ function sa11y_init()
     $sa11yOptionsArray[$key] = $cleanValue;
   }
 
-  // Convert extra props into array.
-  $getExtraPropsOptions = !empty($extraProps) ? explode(', ', $extraProps) : [];
-  $extraPropsArray = [];
-  foreach ($getExtraPropsOptions as $pair) {
-    if (!empty($pair)) {
-      list($key, $value) = explode(':', $pair, 2);
-      $value = trim($value);
-      if (is_numeric($value)) {
-        $value = (int)$value;
-      } elseif ($value === 'true') {
-        $value = 1;
-      } elseif ($value === 'false') {
-        $value = 0;
-      }
-      $extraPropsArray[$key] = $value;
+  // JSONify extra props.
+  function parseExtraOptions($input)
+  {
+    $json = '{' . rtrim(trim($input), ',') . '}';
+    $json = preg_replace('/\\\\"/', '"', $json); // Remove escaped double quotes.
+    $json = preg_replace('/(\w+):/', '"$1":', $json); // Adds quotes around keys.
+    $parsed = json_decode($json, true);
+
+    // Return an empty array if parsing fails.
+    if (json_last_error() !== JSON_ERROR_NONE) {
+      $errorMessage = 'Sa11y: There was an error parsing the "Additional props" field. Please review and correct the syntax.';
+      echo "<script>console.error(" . json_encode($errorMessage) . ");</script>";
+      return [];
     }
+    return $parsed ?: [];
   }
 
-  // Merge options and encode into JSON.
-  $allSa11yOptions = array_merge($sa11yOptionsArray, $extraPropsArray);
-  $allSa11yOptions = json_encode($allSa11yOptions);
+  // Main processing code
+  $getExtraPropsOptions = !empty($extraProps) ? parseExtraOptions($extraProps) : [];
+  $allSa11yOptions = array_merge($sa11yOptionsArray, $getExtraPropsOptions);
+  $allSa11yOptions = json_encode($allSa11yOptions, JSON_UNESCAPED_SLASHES);
 
   //Allowed characters.
   $replace = [
