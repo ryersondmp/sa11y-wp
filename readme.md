@@ -17,6 +17,9 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.1.9
+* Fixed a bug affecting WordPress versions 6.6 and earlier.
+
 ### 1.1.8
 * Upgrade to Sa11y 4!
 * New: Improved contrast checking tools, simplified settings panel, new content checks, and more!
