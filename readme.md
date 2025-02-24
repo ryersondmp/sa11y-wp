@@ -17,6 +17,13 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.2.0
+* Upgrade to Sa11y 4.1.1
+* Simplified admin settings page. Removal of "Panel Position" option and embedded content sources.
+* Content authors can now change the panel position through Sa11y's settings panel.
+* Enhanced "Extra Props" section. Admins can customize or turn off any check programatically via props.
+* New experimental setting! Show "Edit" links in Images panel: Enabling this option adds an "Edit" link to each image in the Images panel if it's uploaded to the Media Library, allowing content authors to quickly add alt text.
+
 ### 1.1.9
 * Fixed a bug affecting WordPress versions 6.6 and earlier.
 

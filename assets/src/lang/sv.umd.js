@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'Sidproblem',
       SETTINGS: 'Inställningar',
       DEVELOPER_CHECKS: 'Utvecklarkontroller',
-      DEVELOPER_DESC: 'Kontrollerar problem som kan kräva kodningskunskaper för att åtgärda.',
+      DEVELOPER_DESC: 'Kontrollerar problem som kan kräva kodningskunskaper för att åtgärdas, såsom HTML-attribut, formulär och mer.',
       DARK_MODE: 'Mörkt läge',
       SHORTCUT_SR: 'Hoppa till problem. Kortkommando: Alt + punkt',
       SKIP_TO_ISSUE: 'Hoppa till problem',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'totala problem hittades.',
       NOT_VISIBLE: 'Objektet du försöker visa är inte synligt: det kan vara gömt eller finnas inuti en dragspelskomponent eller en flikkomponent. Här är en förhandsvisning:',
       MISSING_ROOT: 'Hela sidan kontrolleras för tillgänglighet eftersom målområdet <code>%(root)</code> inte existerar.',
+      MISSING_READABILITY_ROOT: 'Läsbarhetspoängen baseras på innehållsområdet <code>%(fallback)</code>, eftersom målområdet <code>%(root)</code> inte existerar.',
       HEADING_NOT_VISIBLE: 'Rubriken är inte synlig; den kan vara gömd eller inuti ett dragspel eller en flikkomponent.',
       SKIP_TO_PAGE_ISSUES: 'Hoppa till sidans problem',
       CONSOLE_ERROR: 'Tyvärr, men det finns ett problem med tillgänglighetskontrollen på den här sidan. Kan du <a href="%(link)">rapportera det via det här formuläret</a> eller på <a href="%(link)">GitHub</a>?',
+      APPEARANCE: 'Utseende',
+      MOVE_PANEL: 'Flytta panel',
 
       // Export
       DATE: 'Datum',
@@ -174,10 +177,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Bilden används som en länk med omgivande text, dock borde alt-attributet markeras som dekorativt eller null.',
       MISSING_ALT_LINK: 'Bilden används som länk men saknar alt-text! Se till att alt-texten beskriver vart länken tar dig.',
       MISSING_ALT: 'Saknar alt-text! Om bilden förmedlar en historia, stämning eller viktig information – se till att beskriva bilden.',
-      LINK_ALT_FILE_EXT: 'Filändelse hittades i alt-texten. Se till att alt-texten beskriver destinationen för länken, inte en bokstavlig beskrivning av bilden. Ta bort: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Alternativtext ska inte inkludera filändelser eller bilddimensioner. Se till att alt-texten beskriver destinationen för länken, inte en bokstavlig beskrivning av bilden. Ta bort: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Hittade icke-beskrivande eller platshållande alt-text i en länkad bild. Se till att alt-texten beskriver länkens destination, och inte är en bokstavlig beskrivning av bilden. Ersätt följande alt-text. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'Hjälpmedel visar redan att detta är en bild, så &quot;<strong {C}>%(ERROR)</strong>&quot; kan vara överflödig. Se till att alt-texten beskriver länkens destination, och inte är en bokstavlig beskrivning av bilden. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Filändelse hittades i alt-texten. Om bilden förmedlar en historia, stämning eller viktig information – se till att beskriva bilden. Ta bort: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Alternativtext ska inte inkludera filändelser eller bilddimensioner. Om bilden förmedlar en historia, stämning eller viktig information – se till att beskriva bilden. Ta bort: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Hittade icke-beskrivande eller platshållande alt-text. Ersätt följande alt-text med något mer meningsfullt. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Hjälpmedel visar redan att detta är en bild, så &quot;<strong {C}>%(ERROR)</strong>&quot; kan vara överflödig. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'Bilden i länken är markerad som dekorativ och det finns ingen länktext. Vänligen lägg till alternativ text till bilden som beskriver länkens destination.',

@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'Vprašanja strani',
       SETTINGS: 'Nastavitve',
       DEVELOPER_CHECKS: 'Preverjanje razvijalca',
-      DEVELOPER_DESC: 'Preveri težave, ki morda zahtevajo znanje programiranja za odpravo.',
+      DEVELOPER_DESC: 'Preverja težave, katerih odpravljanje lahko zahteva znanje kodiranja, kot so HTML atributi, obrazci in drugo.',
       DARK_MODE: 'Temni način',
       SHORTCUT_SR: 'Preskoči na številko. Bližnjica do tipkovnice: Alt S',
       SKIP_TO_ISSUE: 'Preskoči na vprašanje',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'skupno število najdenih vprašanj.',
       NOT_VISIBLE: 'Element, ki si ga želite ogledati, ni viden; morda je skrit ali pa je znotraj komponente harmonike ali zavihka. Tukaj je predogled:',
       MISSING_ROOT: 'Celotna stran je bila preverjena glede dostopnosti, ker ciljno območje <code>%(root)</code> ne obstaja.',
+      MISSING_READABILITY_ROOT: 'Ocena berljivosti temelji na vsebinski površini <code>%(fallback)</code>, ker ciljno območje <code>%(root)</code> ne obstaja.',
       HEADING_NOT_VISIBLE: 'Glava ni vidna; lahko je skrita ali znotraj komponente harmonike ali zavihka.',
       SKIP_TO_PAGE_ISSUES: 'Preskoči na stran Vprašanja',
       CONSOLE_ERROR: 'Opravičujemo se, vendar je na tej strani prišlo do težave s preverjanjem dostopnosti. Ali jo lahko <a href="%(link)">prijavite prek tega obrazca</a> ali na <a href="%(link)">GitHub</a>?',
+      APPEARANCE: 'Izgled',
+      MOVE_PANEL: 'Premakni ploščo',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Pokaži %(dismissCount) zavrnjeno',
@@ -191,10 +194,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Slika se uporablja kot povezava z okoliškim besedilom, čeprav bi moral biti atribut alt označen kot okrasni ali ničen.',
       MISSING_ALT_LINK: 'Slika se uporablja kot povezava, vendar nima besedila Alt! Prepričajte se, da besedilo alt opisuje, kam vas bo povezava pripeljala.',
       MISSING_ALT: 'Manjka besedilo alt! Če slika sporoča zgodbo, razpoloženje ali pomembne informacije, jo obvezno opišite.',
-      LINK_ALT_FILE_EXT: 'Najdena razširitev datoteke v besedilu alt. Prepričajte se, da besedilo alt opisuje cilj povezave in ne dobesednega opisa slike. Odstrani: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Alternativni tekst ne sme vsebovati končnice datotek ali dimenzije slik. Prepričajte se, da besedilo alt opisuje cilj povezave in ne dobesednega opisa slike. Odstrani: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'V povezani sliki je bilo najdeno neopisno ali nadomestno besedilo alt. Prepričajte se, da besedilo alt opisuje cilj povezave in ne dobesednega opisa slike. Zamenjajte naslednje besedilo alt. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'Pomožne tehnologije že označujejo, da gre za sliko, zato je &quot;<strong {C}>%(ERROR)</strong>&quot; morda odveč. Zagotovite, da besedilo alt opisuje cilj povezave in ne dobesednega opisa slike. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Najdena razširitev datoteke v besedilu alt. Če slika sporoča zgodbo, razpoloženje ali pomembne informacije, jo obvezno opišite. Odstrani: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Alternativni tekst ne sme vsebovati končnice datotek ali dimenzije slik. Če slika sporoča zgodbo, razpoloženje ali pomembne informacije, jo obvezno opišite. Odstrani: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Najdeno neopisno ali nadomestno besedilo alt. Naslednje besedilo alt zamenjajte z bolj smiselnim. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Pomožne tehnologije že označujejo, da gre za sliko, zato je &quot;<strong {C}>%(ERROR)</strong>&quot; morda odveč. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'Slika v povezavi je označena kot okrasna in nima besedila povezave. Sliki dodajte besedilo alt, ki opisuje cilj povezave.',

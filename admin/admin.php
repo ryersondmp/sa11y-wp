@@ -78,14 +78,6 @@ function sa11y_setting_sections_fields()
     'sa11y'
   );
 
-  // Section: Embedded content.
-  add_settings_section(
-    'sa11y_embedded_content_settings',
-    esc_html__(SA11Y_SECTION["EMBEDDED"]),
-    'embedded_content_callback',
-    'sa11y'
-  );
-
   // Section: Advanced section.
   add_settings_section(
     'sa11y_advanced_settings',
@@ -118,15 +110,6 @@ function sa11y_setting_sections_fields()
     ['label_for' => 'sa11y_target']
   );
 
-  // Field: Add panel position.
-  add_settings_field(
-    'sa11y_panel_position',
-    esc_html__(SA11Y_LABEL["POSITION"]),
-    'sa11y_panel_position_field',
-    'sa11y',
-    'sa11y_general_settings',
-  );
-
   // Field: Developer checks on by default
   add_settings_field(
     'sa11y_developer_checks',
@@ -135,6 +118,16 @@ function sa11y_setting_sections_fields()
     'sa11y',
     'sa11y_general_settings',
     ['label_for' => 'sa11y_developer_checks']
+  );
+
+  // Field: Show "Edit" link in Images panel.
+  add_settings_field(
+    'sa11y_edit_image_link',
+    esc_html__(SA11Y_LABEL["EDIT_IMAGE_LINK"]),
+    'sa11y_edit_image_link_field',
+    'sa11y',
+    'sa11y_general_settings',
+    ['label_for' => 'sa11y_edit_image_link']
   );
 
   // Field: Add Readability checkbox setting.
@@ -247,36 +240,6 @@ function sa11y_setting_sections_fields()
     ['label_for' => 'sa11y_links_to_flag']
   );
 
-  // Field: Video content.
-  add_settings_field(
-    'sa11y_video_sources',
-    esc_html__(SA11Y_LABEL["VIDEO"]),
-    'sa11y_video_sources_field',
-    'sa11y',
-    'sa11y_embedded_content_settings',
-    ['label_for' => 'sa11y_video_sources']
-  );
-
-  // Field: Audio content.
-  add_settings_field(
-    'sa11y_audio_sources',
-    esc_html__(SA11Y_LABEL["AUDIO"]),
-    'sa11y_audio_sources_field',
-    'sa11y',
-    'sa11y_embedded_content_settings',
-    ['label_for' => 'sa11y_audio_sources']
-  );
-
-  // Field: dataviz_sources content.
-  add_settings_field(
-    'sa11y_dataviz_sources',
-    esc_html__(SA11Y_LABEL["DATAVIZ"]),
-    'sa11y_dataviz_sources_field',
-    'sa11y',
-    'sa11y_embedded_content_settings',
-    ['label_for' => 'sa11y_dataviz_sources']
-  );
-
   // Field: Add exports feature.
   add_settings_field(
     'sa11y_export_results',
@@ -347,27 +310,6 @@ function sa11y_target_field()
 <?php
 }
 
-// Option: Panel Position
-function sa11y_panel_position_field()
-{
-  $settings = sa11y_get_settings('sa11y_panel_position');
-?>
-  <fieldset>
-    <legend>
-      <?php echo wp_kses(SA11Y_DESC["PANEL_POSITION"]["DESCRIPTION"], SA11Y_ALLOWED_HTML); ?>
-    </legend>
-    <label for="sa11y-left">
-      <input id="sa11y-left" type="radio" name="sa11y_settings[sa11y_panel_position]" value="left" <?php checked('left', $settings); ?> />
-      <?php echo esc_html_e(SA11Y_DESC["PANEL_POSITION"]["LEFT"]); ?>
-    </label>
-    <label for="sa11y-right">
-      <input id="sa11y-right" type="radio" name="sa11y_settings[sa11y_panel_position]" value="right" <?php checked('right', $settings); ?> />
-      <?php echo esc_html_e(SA11Y_DESC["PANEL_POSITION"]["RIGHT"]); ?>
-    </label>
-  </fieldset>
-<?php
-}
-
 // Option: developer checks field.
 function sa11y_developer_checks_field()
 {
@@ -376,6 +318,18 @@ function sa11y_developer_checks_field()
   <input type="checkbox" id="sa11y_developer_checks" name="sa11y_settings[sa11y_developer_checks]" value="1" <?php checked(1, $settings); ?> aria-describedby="developer_checks_desc" />
   <p id="developer_checks_desc">
     <?php echo wp_kses(SA11Y_DESC["DEVELOPER_CHECKS"], SA11Y_ALLOWED_HTML); ?>
+  </p>
+<?php
+}
+
+// Option: Show "Edit" link within the Images panel.
+function sa11y_edit_image_link_field()
+{
+  $settings = sa11y_get_settings('sa11y_edit_image_link');
+?>
+  <input type="checkbox" id="sa11y_developer_checks" name="sa11y_settings[sa11y_edit_image_link]" value="1" <?php checked(1, $settings); ?> aria-describedby="edit_image_link_desc" />
+  <p id="edit_image_link_desc">
+    <?php echo wp_kses(SA11Y_DESC["EDIT_IMAGE_LINK"], SA11Y_ALLOWED_HTML); ?>
   </p>
 <?php
 }
@@ -523,70 +477,6 @@ function sa11y_links_to_flag_field()
 <?php
 }
 
-// Section: Embedded Content section description.
-function embedded_content_callback()
-{
-?>
-  <p>
-    <?php echo wp_kses(SA11Y_DESC["EMBEDDED_CONTENT_DESCRIPTION"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-<?php
-}
-
-// Option: Video field.
-function sa11y_video_sources_field()
-{
-  $settings = sa11y_get_settings('sa11y_video_sources');
-?>
-  <input <?php echo SA11Y_TEXT_FIELD_EXTRA ?> id="sa11y_video_sources" name="sa11y_settings[sa11y_video_sources]" value="<?php echo esc_attr($settings); ?>" aria-describedby="video_desc" />
-  <p id="video_desc">
-    <?php echo wp_kses(SA11Y_DESC["VIDEO"]["DESCRIPTION"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-  <details>
-    <summary>
-      <?php echo esc_html_e(SA11Y_DESC["VIDEO"]["SHOW_SOURCES"]); ?>
-    </summary>
-    <p><?php echo esc_html_e(SA11Y_DESC["VIDEO"]["SOURCES"]); ?></p>
-  </details>
-<?php
-}
-
-// Option: Audio field.
-function sa11y_audio_sources_field()
-{
-  $settings = sa11y_get_settings('sa11y_audio_sources');
-?>
-  <input <?php echo SA11Y_TEXT_FIELD_EXTRA ?> id="sa11y_audio_sources" name="sa11y_settings[sa11y_audio_sources]" value="<?php echo esc_attr($settings); ?>" aria-describedby="audio_desc" />
-  <p id="audio_desc">
-    <?php echo wp_kses(SA11Y_DESC["AUDIO"]["DESCRIPTION"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-  <details>
-    <summary>
-      <?php echo esc_html_e(SA11Y_DESC["AUDIO"]["SHOW_SOURCES"]); ?>
-    </summary>
-    <p><?php echo esc_html_e(SA11Y_DESC["AUDIO"]["SOURCES"]); ?></p>
-  </details>
-<?php
-}
-
-// Option: Data visualizations sources.
-function sa11y_dataviz_sources_field()
-{
-  $settings = sa11y_get_settings('sa11y_dataviz_sources');
-?>
-  <input <?php echo SA11Y_TEXT_FIELD_EXTRA ?> id="sa11y_dataviz_sources" name="sa11y_settings[sa11y_dataviz_sources]" value="<?php echo esc_attr($settings); ?>" aria-describedby="dataviz_desc" />
-  <p id="dataviz_desc">
-    <?php echo wp_kses(SA11Y_DESC["DATA_VIZ"]["DESCRIPTION"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-  <details>
-    <summary>
-      <?php echo esc_html_e(SA11Y_DESC["DATA_VIZ"]["SHOW_SOURCES"]); ?>
-    </summary>
-    <p><?php echo esc_html_e(SA11Y_DESC["DATA_VIZ"]["SOURCES"]); ?></p>
-  </details>
-<?php
-}
-
 // Option: Export results option.
 function sa11y_export_results_field()
 {
@@ -633,7 +523,17 @@ function sa11y_extra_props_field()
     <?php
     $link = 'https://sa11y.netlify.app/developers/props/';
     $string = sprintf(SA11Y_DESC["PROPS"], $link);
-    echo wp_kses($string, ['a' => ['href' => []]]);
+    echo wp_kses($string, [
+      'a' => [
+        'href' => [],
+        'target' => [],
+        'rel' => [],
+      ],
+      'span' => [
+        'class' => [],
+        'aria-hidden' => [],
+      ],
+    ]);
     ?>
   </p>
 <?php
@@ -674,6 +574,7 @@ function sa11y_settings_validate($settings)
   $checkboxes = [
     'sa11y_enable',
     'sa11y_developer_checks',
+    'sa11y_edit_image_link',
     'sa11y_readability',
     'sa11y_export_results',
   ];
@@ -682,15 +583,6 @@ function sa11y_settings_validate($settings)
       $settings[$key] = sa11y_sanitize_checkboxes($settings[$key]);
     } else {
       $settings[$key] = 0;
-    }
-  }
-
-  /* Validate: Panel position */
-  if (isset($settings['sa11y_panel_position'])) {
-    $sanitized = sanitize_key($settings['sa11y_panel_position']);
-    $valid_position = ['left', 'right'];
-    if (!in_array($sanitized, $valid_position, true)) {
-      $settings['sa11y_panel_position'] = $settings['sa11y_panel_position'] ?? 'right';
     }
   }
 
@@ -719,16 +611,6 @@ function sa11y_settings_validate($settings)
   ];
   foreach ($textfields as $key) {
     $settings[$key] = sa11y_sanitize_text_fields($settings[$key]);
-  }
-
-  /* Sanitize: fields (extra) */
-  $extraSanitizeKeys = [
-    'sa11y_video_sources',
-    'sa11y_audio_sources',
-    'sa11y_dataviz_sources',
-  ];
-  foreach ($extraSanitizeKeys as $key) {
-    $settings[$key] = sa11y_sanitize_extra_text_fields($settings[$key]);
   }
 
   /* Sanitize: textareas */

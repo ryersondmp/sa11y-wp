@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'Problemas de página',
       SETTINGS: 'Configurações',
       DEVELOPER_CHECKS: 'Verificações do desenvolvedor',
-      DEVELOPER_DESC: 'Verifica problemas que podem precisar de conhecimentos de programação para serem corrigidos.',
+      DEVELOPER_DESC: 'Verifica problemas que podem exigir conhecimento de codificação para correção, como atributos HTML, formulários e mais.',
       DARK_MODE: 'Modo escuro',
       SHORTCUT_SR: 'Pular para a edição. Atalho de teclado: Alt S',
       SKIP_TO_ISSUE: 'Pular para a edição',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'total de problemas encontrados.',
       NOT_VISIBLE: 'O item que você está tentando visualizar não está visível; ele pode estar oculto ou dentro de um componente de acordeão ou guia. Aqui está uma visualização:',
       MISSING_ROOT: 'A página inteira foi verificada quanto à acessibilidade porque a área de destino <code>%(root)</code> não existe.',
+      MISSING_READABILITY_ROOT: 'A pontuação de legibilidade é baseada na área de conteúdo <code>%(fallback)</code>, pois a área alvo <code>%(root)</code> não existe.',
       HEADING_NOT_VISIBLE: 'O cabeçalho não é visível; ele pode estar oculto ou dentro de um componente de acordeão ou guia.',
       SKIP_TO_PAGE_ISSUES: 'Pular para os problemas da página',
       CONSOLE_ERROR: 'Desculpe, mas há um problema com o verificador de acessibilidade nesta página. Você pode <a href="%(link)">relatar o problema por meio deste formulário</a> ou no <a href="%(link)">GitHub</a>?',
+      APPEARANCE: 'Aparência',
+      MOVE_PANEL: 'Mover painel',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Mostrar %(dismissCount) ignorados',
@@ -192,10 +195,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'A imagem está sendo usada como um link com texto ao redor, embora o atributo alt deva ser marcado como decorativo ou nulo.',
       MISSING_ALT_LINK: 'A imagem está sendo usada como um link, mas está faltando o texto alternativo! Certifique-se de que o texto alternativo descreva para onde o link leva você.',
       MISSING_ALT: 'Texto alternativo ausente! Se a imagem transmitir uma história, um clima ou informações importantes, não deixe de descrevê-la.',
-      LINK_ALT_FILE_EXT: 'Extensão de arquivo encontrada no texto alternativo. Certifique-se de que o texto alternativo descreva o destino do link, e não uma descrição literal da imagem. Remover: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'O texto alternativo não deve incluir extensões de arquivo ou dimensões da imagem. Certifique-se de que o texto alternativo descreva o destino do link, e não uma descrição literal da imagem. Remover: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Encontrado texto alternativo não descritivo ou de espaço reservado em uma imagem vinculada. Certifique-se de que o texto alternativo descreva o destino do link e não uma descrição literal da imagem. Substitua o seguinte texto alternativo. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'As tecnologias assistivas já indicam que se trata de uma imagem, portanto, &quot;<strong {C}>%(ERROR)</strong>&quot; pode ser redundante. Certifique-se de que o texto alternativo descreva o destino do link, e não uma descrição literal da imagem. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Extensão do arquivo no texto alternativo encontrado. Se a imagem transmitir uma história, um clima ou informações importantes, não deixe de descrevê-la. Remover: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'O texto alternativo não deve incluir extensões de arquivo ou dimensões da imagem. Se a imagem transmitir uma história, um clima ou informações importantes, não deixe de descrevê-la. Remover: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Texto alternativo não descritivo ou de espaço reservado encontrado. Substitua o texto alternativo a seguir por algo mais significativo. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'As tecnologias assistivas já indicam que se trata de uma imagem, portanto, &quot;<strong {C}>%(ERROR)</strong>&quot; pode ser redundante. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'A imagem no link está marcada como decorativa e não há texto de link. Adicione um texto alternativo à imagem que descreva o destino do link.',

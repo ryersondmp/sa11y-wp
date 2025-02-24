@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'Pagina problemen',
       SETTINGS: 'Instellingen',
       DEVELOPER_CHECKS: 'Ontwikkelaarscontroles',
-      DEVELOPER_DESC: 'Controleert op problemen die mogelijk programmeerkennis vereisen om op te lossen.',
+      DEVELOPER_DESC: 'Controleert op problemen die mogelijk programmeerkennis vereisen om op te lossen, zoals HTML-attributen, formulieren en meer.',
       DARK_MODE: 'Donkere modus',
       SHORTCUT_SR: 'Naar uitgave gaan. Sneltoets: Alt S',
       SKIP_TO_ISSUE: 'Doorgaan naar uitgave',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'totaal aantal gevonden problemen.',
       NOT_VISIBLE: 'Het item dat je probeert te bekijken is niet zichtbaar; het kan verborgen zijn of in een accordeon of tabbladcomponent zitten. Hier is een voorbeeld:',
       MISSING_ROOT: 'De volledige pagina is gecontroleerd op toegankelijkheid omdat het doelgebied <code>%(root)</code> niet bestaat.',
+      MISSING_READABILITY_ROOT: 'De leesbaarheidsscore is gebaseerd op het inhoudsgebied <code>%(fallback)</code>, omdat het doelgebied <code>%(root)</code> niet bestaat.',
       HEADING_NOT_VISIBLE: 'De kop is niet zichtbaar; hij kan verborgen zijn of in een accordeon- of tabbladcomponent staan.',
       SKIP_TO_PAGE_ISSUES: 'Doorgaan naar paginanummers',
       CONSOLE_ERROR: 'Sorry, maar er is een probleem met de toegankelijkheidscontrole op deze pagina. Kunt u dit alstublieft <a href="%(link)">melden via dit formulier</a> of op <a href="%(link)">GitHub</a>?',
+      APPEARANCE: 'Uiterlijk',
+      MOVE_PANEL: 'Verplaats paneel',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Toon %(dismissCount) afgewezen',
@@ -200,10 +203,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Afbeelding wordt gebruikt als een link met omringende tekst, hoewel het alt-attribuut als decoratief of null moet worden gemarkeerd.',
       MISSING_ALT_LINK: 'Afbeelding wordt gebruikt als link maar alt-tekst ontbreekt! Zorg ervoor dat de alt-tekst beschrijft waar de link naartoe leidt.',
       MISSING_ALT: 'Ontbrekende alt-tekst! Als de afbeelding een verhaal, sfeer of belangrijke informatie overbrengt, zorg er dan voor dat je de afbeelding beschrijft.',
-      LINK_ALT_FILE_EXT: 'Bestandsextensie in de alt-tekst gevonden. Zorg ervoor dat de alt-tekst de bestemming van de link beschrijft en niet een letterlijke beschrijving van de afbeelding. Verwijderen: <strong {C}>%(ERROR)</strong>. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Alternatieve tekst mag geen bestandsextensies of afbeeldingsdimensies bevatten. Zorg ervoor dat de alt-tekst de bestemming van de link beschrijft en niet een letterlijke beschrijving van de afbeelding. Verwijderen: <strong {C}>%(ERROR)</strong>. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Niet-beschrijvende of plaatsvervangende alt-tekst binnen een gekoppelde afbeelding gevonden. Zorg ervoor dat de alt-tekst de bestemming van de link beschrijft en niet een letterlijke beschrijving van de afbeelding. Vervang de volgende alt-tekst. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'Hulptechnologieën geven al aan dat het om een afbeelding gaat, dus &quot;<strong {C}>%(ERROR)</strong>&quot; kan overbodig zijn. Zorg ervoor dat de alt-tekst de bestemming van de link beschrijft en niet een letterlijke beschrijving van de afbeelding. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Bestandsextensie in de gevonden alt-tekst. Als de afbeelding een verhaal, stemming of belangrijke informatie overbrengt, zorg er dan voor dat je de afbeelding beschrijft. Verwijderen: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Alternatieve tekst mag geen bestandsextensies of afbeeldingsdimensies bevatten. Als de afbeelding een verhaal, stemming of belangrijke informatie overbrengt, zorg er dan voor dat je de afbeelding beschrijft. Verwijderen: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Niet-beschrijvende of plaatshouder alt-tekst gevonden. Vervang de volgende alt-tekst door iets dat meer betekenis heeft. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Hulptechnologieën geven al aan dat dit een afbeelding is, dus &quot;<strong {C}>%(ERROR)</strong>&quot; kan overbodig zijn. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_HIDDEN_FOCUSABLE: 'De link heeft <code>aria-hidden=&quot;true&quot;</code>, maar is nog steeds toegankelijk met het toetsenbord. Als je van plan bent om een overbodige of dubbele link te verbergen, voeg dan ook <code>tabindex=&quot;-1&quot;</code> toe.',

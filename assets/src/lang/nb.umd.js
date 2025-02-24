@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'Side Problemer',
       SETTINGS: 'Innstillinger',
       DEVELOPER_CHECKS: 'Utviklerkontroller',
-      DEVELOPER_DESC: 'Sjekker etter problemer som kan kreve kodekunnskaper for å fikse.',
+      DEVELOPER_DESC: 'Sjekker etter problemer som kan kreve kodingkunnskaper for å fikse, for eksempel HTML-attributter, skjemaer og mer.',
       DARK_MODE: 'Mørk modus',
       SHORTCUT_SR: 'Gå til utgaven. Snarvei til tastaturet: Alt S',
       SKIP_TO_ISSUE: 'Gå til utgaven',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'totalt antall problemer funnet.',
       NOT_VISIBLE: 'Elementet du prøver å se, er ikke synlig; det kan være skjult eller inne i en trekkspill- eller fanekomponent. Her er en forhåndsvisning:',
       MISSING_ROOT: 'Hele siden ble kontrollert for tilgjengelighet fordi målområdet <code>%(root)</code> ikke finnes.',
+      MISSING_READABILITY_ROOT: 'Lesbarhetspoengene er basert på innholdsområdet <code>%(fallback)</code>, fordi målområdet <code>%(root)</code> ikke finnes.',
       HEADING_NOT_VISIBLE: 'Overskriften er ikke synlig; den kan være skjult eller inne i en trekkspill- eller fanekomponent.',
       SKIP_TO_PAGE_ISSUES: 'Gå til sideproblemer',
       CONSOLE_ERROR: 'Beklager, men det er et problem med tilgjengelighetskontrollen på denne siden. Kan du <a href="%(link)">rapportere det via dette skjemaet</a> eller på <a href="%(link)">GitHub</a>?',
+      APPEARANCE: 'Utseende',
+      MOVE_PANEL: 'Flytt panel',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Vis %(dismissCount) avviste',
@@ -195,10 +198,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Bildet brukes som lenke med omkringliggende tekst, selv om alt-attributtet skal være merket som dekorativt eller null.',
       MISSING_ALT_LINK: 'Bildet brukes som lenke, men mangler alt-tekst! Sørg for at alt-teksten beskriver hvor lenken fører deg.',
       MISSING_ALT: 'Manglende alt-tekst! Hvis bildet formidler en historie, en stemning eller viktig informasjon - sørg for å beskrive bildet.',
-      LINK_ALT_FILE_EXT: 'Filendelsen i alt-teksten ble funnet. Sørg for at alt-teksten beskriver målet for lenken, ikke en bokstavelig beskrivelse av bildet. Fjern dette: <strong {C}>%(ERROR)</strong>. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Alternativ tekst bør ikke inkludere filendelser eller bildestørrelser. Sørg for at alt-teksten beskriver målet for lenken, ikke en bokstavelig beskrivelse av bildet. Fjern dette: <strong {C}>%(ERROR)</strong>. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Alt-tekst uten beskrivelse eller plassholder i et lenket bilde funnet. Sørg for at alt-teksten beskriver målet for lenken, ikke en bokstavelig beskrivelse av bildet. Erstatt følgende alt-tekst:. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'Hjelpemidler indikerer allerede at dette er et bilde, så &quot;<strong {C}>%(ERROR)</strong>&quot; kan være overflødig. Sørg for at alt-teksten beskriver målet for lenken, ikke en bokstavelig beskrivelse av bildet. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Filtypen i alt-teksten som er funnet. Hvis bildet formidler en historie, en stemning eller viktig informasjon - husk å beskrive bildet. Fjern dette: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Alternativ tekst bør ikke inkludere filendelser eller bildestørrelser. Hvis bildet formidler en historie, en stemning eller viktig informasjon - husk å beskrive bildet. Fjern dette: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Ikke-beskrivende alt-tekst eller plassholder-alt-tekst funnet. Erstatt følgende alt-tekst med noe mer meningsfylt. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Hjelpemidler indikerer allerede at dette er et bilde, så &quot;<strong {C}>%(ERROR)</strong>&quot; kan være overflødig. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'Bildet i lenken er merket som dekorativt, og det er ingen lenketekst. Legg til alt-tekst i bildet som beskriver lenkens destinasjon.',

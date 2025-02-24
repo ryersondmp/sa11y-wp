@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -42,7 +42,7 @@
       PAGE_ISSUES: 'Problemy ze stroną',
       SETTINGS: 'Ustawienia',
       DEVELOPER_CHECKS: 'Kontrole dewelopera',
-      DEVELOPER_DESC: 'Sprawdza problemy, które mogą wymagać znajomości kodowania do naprawy.',
+      DEVELOPER_DESC: 'Sprawdza problemy, których naprawa może wymagać znajomości kodowania, takie jak atrybuty HTML, formularze i inne.',
       DARK_MODE: 'Tryb ciemny',
       SHORTCUT_SR: 'Przejdź do problemu. Klawisze skrótu: lewy Option',
       SKIP_TO_ISSUE: 'Przejdź do problemu',
@@ -54,9 +54,12 @@
       TOTAL_FOUND: 'ogółem wykrytych problemów.',
       NOT_VISIBLE: 'Element, który próbujesz wyświetlić, nie jest widoczny; może być ukryty lub znajdować się wewnątrz akordeonu lub karty. Tutaj jest podgląd:',
       MISSING_ROOT: 'Sprawdzono dostępność całej strony, ponieważ obszar docelowy nie istnieje: <code>%(root)</code>',
+      MISSING_READABILITY_ROOT: 'Ocena czytelności opiera się na obszarze treści <code>%(fallback)</code>, ponieważ docelowy obszar <code>%(root)</code> nie istnieje.',
       HEADING_NOT_VISIBLE: 'Nagłówek nie jest widoczny; może być ukryty lub wewnątrz komponentu akordeonu lub tabulatora.',
       SKIP_TO_PAGE_ISSUES: 'Przejdź do problemów ze stroną',
       CONSOLE_ERROR: 'Przepraszamy, ale wystąpił problem z narzędziem do sprawdzania ułatwień dostępu na tej stronie. Czy możesz <a href="%(link)">zgłosić to za pomocą tego formularza</a> lub na <a href="%(link)">GitHub</a>?',
+      APPEARANCE: 'Wygląd',
+      MOVE_PANEL: 'Przenieś panel',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Pokaż %(dismissCount) odrzucone',
@@ -187,10 +190,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Obraz jest używany razem z sąsiadującym tekstem jako łącze. Obraz powinien być oznaczony jako dekoracyjny albo atrybut alt obrazu powinien być pusty.',
       MISSING_ALT_LINK: 'Obraz jest używany jako łącze, ale brakuje tekstu alternatywnego! Dodaj tekst alternatywny, który mówi, dokąd prowadzi łącze.',
       MISSING_ALT: 'Brak tekstu alternatywnego! Jeśli obraz przekazuje historię, nastrój lub ważne informacje - przedstaw je w tekście alternatywnym.',
-      LINK_ALT_FILE_EXT: 'W tekście alt znaleziono rozszerzenie nazwy pliku. Upewnij się, że tekst alternatywny opisuje miejsce docelowe łącza, a nie treść lub wygląd obrazu. Usuń wyraz(y): <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Tekst alternatywny nie powinien zawierać rozszerzeń plików ani wymiarów obrazów. Upewnij się, że tekst alternatywny opisuje miejsce docelowe łącza, a nie treść lub wygląd obrazu. Usuń wyraz(y): <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Znaleziono nieopisowy lub zastępczy tekst alt w obrazie będącym łączem. Upewnij się, że tekst alternatywny opisuje miejsce docelowe łącza, a nie treść lub wygląd obrazu. Zastąp następujący tekst alt. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>.',
       LINK_SUS_ALT: 'Technologie wspomagające już wskazują, że jest to obraz, więc &quot;<strong {C}>%(ERROR)</strong>&quot; mogą być zbędne. Upewnij się, że tekst alternatywny opisuje miejsce docelowe łącza, a nie treść lub wygląd obrazu. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'W tekście alt znaleziono rozszerzenie nazwy pliku. Upewnij się, że tekst alternatywny opisuje miejsce docelowe łącza, a nie treść lub wygląd obrazu. Usuń wyraz(y): <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Tekst alternatywny nie powinien zawierać rozszerzeń plików ani wymiarów obrazów. Upewnij się, że tekst alternatywny opisuje miejsce docelowe łącza, a nie treść lub wygląd obrazu. Usuń wyraz(y): <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Znaleziono nieopisowy lub zastępczy tekst alt. Zamień poniższy tekst alt na coś bardziej znaczącego. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>.',
       SUS_ALT: 'Technologie wspomagające już wskazują, że jest to obraz, więc &quot;<strong {C}>%(ERROR)</strong>&quot; mogą być zbędne. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'Obraz w łączu jest oznaczony jako dekoracyjny i nie ma tekstu łącza. Dodaj do obrazu tekst alt, który opisze miejsce docelowe łącza.',

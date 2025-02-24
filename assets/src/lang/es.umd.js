@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -42,7 +42,7 @@
       PAGE_ISSUES: 'Problemas de la Página',
       SETTINGS: 'Ajustes',
       DEVELOPER_CHECKS: 'Verificaciones del desarrollador',
-      DEVELOPER_DESC: 'Verifica problemas que pueden requerir conocimientos de programación para solucionarse.',
+      DEVELOPER_DESC: 'Verifica problemas que pueden requerir conocimientos de programación para solucionarse, como atributos HTML, formularios y más.',
       DARK_MODE: 'Modo Oscuro',
       SHORTCUT_SR: 'Saltar Problema. Atajo de teclado: Alt S',
       SKIP_TO_ISSUE: 'Saltar Problema',
@@ -54,9 +54,12 @@
       TOTAL_FOUND: 'Total de problemas encontrados.',
       NOT_VISIBLE: 'El item que estas intentando ver no es visible; puede estar oculto o dentro de un componente de acordeón o pestaña. Aquí hay una vista previa:',
       MISSING_ROOT: 'Se comprobó la accesibilidad de la página completa porque el área de destino <code>%(root)</code> no existe.',
+      MISSING_READABILITY_ROOT: 'La puntuación de legibilidad se basa en el área de contenido <code>%(fallback)</code>, porque el área objetivo <code>%(root)</code> no existe.',
       HEADING_NOT_VISIBLE: 'El encabezado no es visible; puede estar oculto o dentro de un componente de acordeón o pestaña.',
       SKIP_TO_PAGE_ISSUES: 'Saltar problemas de la página',
       CONSOLE_ERROR: 'Lo siento, pero hay un problema con el comprobador de accesibilidad en esta página. Puedes por favor <a href="%(link)">reportarlo a través de este formulario</a> or on <a href="%(link)">GitHub</a>?',
+      APPEARANCE: 'Apariencia',
+      MOVE_PANEL: 'Mover panel',
 
       // Export
       DATE: 'Fecha',
@@ -169,10 +172,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'La imagen se utiliza como vínculo con el texto circundante, aunque el atributo alt debe marcarse como decorativo o nulo.',
       MISSING_ALT_LINK: 'La imagen se está utilizando como enlace, ¡pero falta el texto alternativo! Asegúrese de que el texto alternativo describa a dónde lo lleva el enlace.',
       MISSING_ALT: '¡Falta el texto alternativo! Si la imagen transmite una historia, un estado de ánimo o información importante, asegúrese de describir la imagen.',
-      LINK_ALT_FILE_EXT: 'Extensión de archivo dentro del texto alternativo encontrado. Asegúrese de que el texto alternativo describa el destino del enlace, no una descripción literal de la imagen. Eliminar: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'El texto alternativo no debe incluir extensiones de archivos ni dimensiones de imágenes. Asegúrese de que el texto alternativo describa el destino del enlace, no una descripción literal de la imagen. Eliminar: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Se encontró texto alternativo no descriptivo o de marcador de posición dentro de una imagen vinculada. Asegúrese de que el texto alternativo describa el destino del enlace, no una descripción literal de la imagen. Reemplace el siguiente texto alternativo. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'Las tecnologías de asistencia ya indican que se trata de una imagen, por lo que &quot;<strong {C}>%(ERROR)</strong>&quot; puede ser redundante. Asegúrese de que el texto alternativo describa el destino del enlace, no una descripción literal de la imagen. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Extensión de archivo dentro del texto alternativo encontrado. Si la imagen transmite una historia, un estado de ánimo o información importante, asegúrese de describir la imagen. Eliminar: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'El texto alternativo no debe incluir extensiones de archivos ni dimensiones de imágenes. Si la imagen transmite una historia, un estado de ánimo o información importante, asegúrese de describir la imagen. Eliminar: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Se encontró texto alternativo no descriptivo o de marcador de posición. Reemplace el siguiente texto alternativo con algo más significativo. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Las tecnologías de asistencia ya indican que se trata de una imagen, por lo que &quot;<strong {C}>%(ERROR)</strong>&quot; puede ser redundante. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'La imagen dentro del enlace está marcada como decorativa y no hay texto de enlace. Agregue texto alternativo a la imagen que describa el destino del enlace.',

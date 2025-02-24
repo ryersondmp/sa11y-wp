@@ -16,10 +16,10 @@ define('SA11Y_LABEL', [
   'SA11Y_ADVANCED' => __('Sa11y - Advanced Settings', 'sa11y-i18n'),
   'ENABLE' => __('Enable Sa11y', 'sa11y-i18n'),
   'TARGET' => __('Target area to check', 'sa11y-i18n'),
-  'POSITION' => __('Panel position', 'sa11y-i18n'),
   'CONTRAST' => __('Contrast', 'sa11y-i18n'),
   'LINKS_ADVANCED' => __('Links (Advanced)', 'sa11y-i18n'),
   'DEVELOPER_CHECKS' => __('Developer checks', 'sa11y-i18n'),
+  'EDIT_IMAGE_LINK' => __('Show "Edit" links in Images panel', 'sa11y-i18n'),
   'READABILITY' => __('Readability', 'sa11y-i18n'),
   'READABILITY_TARGET' => __('Readability target area', 'sa11y-i18n'),
   'READABILITY_EXCLUSIONS' => __('Readability exclusions', 'sa11y-i18n'),
@@ -43,11 +43,6 @@ define('SA11Y_LABEL', [
 /* Setting descriptions */
 define('SA11Y_DESC', [
   'ENABLE' => __('Enable for all administrators, editors, authors, contributors, and anyone who has permissions to edit posts and pages.', 'sa11y-i18n'),
-  'PANEL_POSITION' => [
-    'DESCRIPTION' => __('Display Sa11y\'s main panel on the left or right side.', 'sa11y-i18n'),
-    'LEFT' => __('Left', 'sa11y-i18n'),
-    'RIGHT' => __('Right', 'sa11y-i18n'),
-  ],
   'CHECK_ROOT' => __('Input a <strong>single selector</strong> to target a specific region of your website. For example, use <code>main</code> to scan the main content region only.', 'sa11y-i18n'),
   'CHECK_ROOT_NETWORK' => __('<strong>Important ⚠️:</strong> This selector <strong>must</strong> be common to <strong>all</strong> themes.', 'sa11y-i18n'),
   'NETWORK_EXCLUSIONS' => __('Create global exclusions or ignore repetitive elements using CSS selectors. Use a comma to separate multiple selectors. View <a href="%s">CSS selectors reference.</a>', 'sa11y-i18n'),
@@ -57,6 +52,7 @@ define('SA11Y_DESC', [
   'NETWORK_OVERRIDE_SECTION' => __('<strong>Note:</strong> Admins can override the settings in this section.', 'sa11y-i18n'),
   'NETWORK_CANNOT_OVERRIDE_SECTION' => __('<strong>Note:</strong> Admins <strong>cannot</strong> override the settings in this section.', 'sa11y-i18n'),
   'DEVELOPER_CHECKS' => __('Set the "Developer checks" toggle to "On" by default in the Settings panel.', 'sa11y-i18n'),
+  'EDIT_IMAGE_LINK' => __('Experimental feature! Enabling this option adds an "Edit" link to each image in the Images panel if it\'s uploaded to the Media Library, allowing content authors to quickly add alt text.', 'sa11y-i18n'),
   'READABILITY' => __('Show Readability switch in the Settings panel. Check readability score of content based on Flesch reading-ease.', 'sa11y-i18n'),
   'READABILITY_TARGET' => __('Input a <strong>single selector</strong> to target a specific region of your website. For example, use <code>main</code> to scan the main content region only.', 'sa11y-i18n'),
   'READABILITY_IGNORE' => __('Exclude specific elements from the readability analysis. Only paragraph or list content is analyzed. Content within navigation elements are ignored by default.', 'sa11y-i18n'),
@@ -87,7 +83,7 @@ define('SA11Y_DESC', [
   ],
   'NO_RUN' => __('Provide a list of selectors that are <strong>unique to pages</strong>. If any of the elements exist on the page, Sa11y will not scan or appear.', 'sa11y-i18n'),
   'SHADOW' => __('Provide a list of all known web components or containers with an open shadow DOM.', 'sa11y-i18n'),
-  'PROPS' => __('Props allow you to easily customize Sa11y. Use a comma to seperate multiple key/value pairs. Refer to <a href="%s">documentation.</a>', 'sa11y-i18n'),
+  'PROPS' => __('Props allow you to easily customize Sa11y. Use a comma to seperate multiple key/value pairs. Refer to <a href="%s" target="_blank" rel="noopener">documentation. <span class="screen-reader-text">(opens new tab)</span><span aria-hidden="true">🔗</span></a>', 'sa11y-i18n'),
   'TIMESTAMP' => __('Settings last updated by %s on %s.', 'sa11y-i18n'),
   'SAVE' => __('Save Settings', 'sa11y-i18n'),
   'EXPORT_RESULTS_DESC' => __('Allow editors to export results as CSV or HTML.', 'sa11y-i18n')

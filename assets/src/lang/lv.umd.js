@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'Lapas problēmas',
       SETTINGS: 'Iestatījumi',
       DEVELOPER_CHECKS: 'Izstrādātāja pārbaudes',
-      DEVELOPER_DESC: 'Pārbauda problēmas, kurām iespējams nepieciešamas programmēšanas zināšanas, lai tās novērstu.',
+      DEVELOPER_DESC: 'Pārbauda problēmas, kuru novēršanai var būt nepieciešamas programmēšanas zināšanas, piemēram, HTML atribūtus, veidlapas un citus.',
       DARK_MODE: 'Tumšais režīms',
       SHORTCUT_SR: 'Pāriet uz nākamo numuru. Tastatūras saīsne: Alt S',
       SKIP_TO_ISSUE: 'Pāriet uz jautājumu',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'kopējais atrasto problēmu skaits.',
       NOT_VISIBLE: 'Mēģinātais apskatīt vienums nav redzams; iespējams, tas ir paslēpts vai atrodas akordeona vai cilnes komponenta iekšpusē. Šeit ir priekšskatījums:',
       MISSING_ROOT: 'Tika pārbaudīta visas lapas pieejamība, jo mērķa apgabals <code>%(root)</code> nepastāv.',
+      MISSING_READABILITY_ROOT: 'Lasāmības vērtējums ir balstīts uz satura apgabalu <code>%(fallback)</code>, jo mērķa apgabals <code>%(root)</code> nepastāv.',
       HEADING_NOT_VISIBLE: 'Virsraksts nav redzams; tas var būt paslēpts vai akordeona vai cilnes komponenta iekšpusē.',
       SKIP_TO_PAGE_ISSUES: 'Pāriet uz lapas jautājumiem',
       CONSOLE_ERROR: 'Atvainojiet, bet šajā lapā ir problēma ar pieejamības pārbaudītāju. Vai varat, lūdzu, <a href="%(link)">ziņot par to, izmantojot šo formu</a> vai <a href="%(link)">GitHub</a>?',
+      APPEARANCE: 'Izskats',
+      MOVE_PANEL: 'Pārvietot paneli',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Rādīt %(dismissCount) noraidītos',
@@ -192,10 +195,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Attēls tiek izmantots kā saite ar apkārtējo tekstu, lai gan atribūtam alt jābūt atzīmētam kā dekoratīvam vai nulles atribūtam.',
       MISSING_ALT_LINK: 'Attēls tiek izmantots kā saite, bet tam trūkst teksta! Lūdzu, pārliecinieties, ka alt tekstā ir aprakstīts, uz kurieni jūs aizved saite.',
       MISSING_ALT: 'Trūkst alt teksta! Ja attēls ir stāsts, noskaņa vai svarīga informācija, noteikti aprakstiet attēlu.',
-      LINK_ALT_FILE_EXT: 'Atrasts faila paplašinājums alt tekstā. Pārliecinieties, ka alt teksts apraksta saites galamērķi, nevis burtisku attēla aprakstu. Noņemt: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Alternatīvais teksts nedrīkst ietvert failu paplašinājumus vai attēlu izmērus. Pārliecinieties, ka alt teksts apraksta saites galamērķi, nevis burtisku attēla aprakstu. Noņemt: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Atrasts nenoteikts vai aizvietotājs alt teksts saistītajā attēlā. Pārliecinieties, ka alt teksts apraksta saites galamērķi, nevis burtisku attēla aprakstu. Aizstājiet šādu alt tekstu. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'Palīgtehnoloģijas jau norāda, ka tas ir attēls, tāpēc &quot;<strong {C}>%(ERROR)</strong>&quot; var būt lieks. Pārliecinieties, ka alt teksts apraksta saites galamērķi, nevis burtisku attēla aprakstu. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Atrasts faila paplašinājums alt tekstā. Ja attēls ir stāsts, noskaņa vai svarīga informācija, noteikti aprakstiet attēlu. Noņemt: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Alternatīvais teksts nedrīkst ietvert failu paplašinājumus vai attēlu izmērus. Ja attēls ir stāsts, noskaņa vai svarīga informācija, noteikti aprakstiet attēlu. Noņemt: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Atrasts nenoteikts vai aizvietotājs alt teksts. Aizstājiet šādu alt tekstu ar jēgpilnāku. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Palīgtehnoloģijas jau norāda, ka tas ir attēls, tāpēc &quot;<strong {C}>%(ERROR)</strong>&quot; var būt lieks. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'Attēls saitē ir atzīmēts kā dekoratīvs, un saites teksta nav. Lūdzu, pievienojiet attēlam alt tekstu, kas apraksta saites galamērķi.',

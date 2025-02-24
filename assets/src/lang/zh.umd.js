@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: '页码问题',
       SETTINGS: '设置',
       DEVELOPER_CHECKS: '开发者检查',
-      DEVELOPER_DESC: '检查可能需要编码知识来修复的问题。',
+      DEVELOPER_DESC: '检查可能需要编码知识来修复的问题，例如 HTML 属性、表单等。',
       DARK_MODE: '黑暗模式',
       SHORTCUT_SR: '跳到问题。键盘快捷方式: Alt S',
       SKIP_TO_ISSUE: '跳到问题',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: '发现的总问题。',
       NOT_VISIBLE: '你试图查看的项目是不可见的；它可能是隐藏的或在一个手风琴或标签组件内。这里有一个预览: ',
       MISSING_ROOT: '由于目标区域<code>%(root)</code>不存在, 全页面被检查为可访问性。',
+      MISSING_READABILITY_ROOT: '可读性评分基于<code>%(fallback)</code>内容区域，因为目标区域<code>%(root)</code>不存在。',
       HEADING_NOT_VISIBLE: '标题是不可见的；它可能是隐藏的或在手风琴或标签组件内。',
       SKIP_TO_PAGE_ISSUES: '跳到页面问题',
       CONSOLE_ERROR: '对不起, 本页面的可访问性检查器有问题。您能否<a href="%(link)">通过此表格</a>或<a href="%(link)">GitHub</a>报告?',
+      APPEARANCE: '外观',
+      MOVE_PANEL: '移动面板',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: '显示 %(dismissCount) 被忽略的',
@@ -190,10 +193,10 @@
       MISSING_ALT_LINK_HAS_TEXT: '图片被用作带有周围文本的链接, 尽管alt属性应被标记为装饰性或空。',
       MISSING_ALT_LINK: '图像被用作链接，但缺少替代文本！请确保替代文本描述了链接将您带到的位置。',
       MISSING_ALT: '缺少替代文本！如果图像传达了故事、情绪或重要信息 - 请务必描述图像。',
-      LINK_ALT_FILE_EXT: '在alt文本中发现文件扩展名。确保alt文本描述链接的目的地, 而不是图片的字面描述。删除: <strong {C}>%(ERROR)</strong>. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: '替代文本不应包含文件扩展名或图像尺寸。确保alt文本描述链接的目的地, 而不是图片的字面描述。删除: <strong {C}>%(ERROR)</strong>. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: '发现链接图片中的非描述性或占位符的alt文本。确保alt文本描述了链接的目的地, 而不是图像的字面描述。替换以下alt文本. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: '辅助技术已经表明这是一张图片, 所以&quot;<strong {C}>%(ERROR)</strong>&quot; 可能是多余的。确保alt文本描述了链接的目的地, 而不是图像的字面描述。<hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: '在alt文本内找到文件扩展名。如果图片传达了一个故事、情绪或重要信息--一定要描述图片。删除: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: '替代文本不应包含文件扩展名或图像尺寸。如果图片传达了一个故事、情绪或重要信息--一定要描述图片。删除: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: '发现非描述性或占位符的alt文本。用更有意义的内容替换下面的alt文本. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>。',
       SUS_ALT: '辅助技术已经表明这是一张图片, 所以&quot;<strong {C}>%(ERROR)</strong>&quot; 可能是多余的。<hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: '链接中的图像被标记为装饰性的, 没有链接文本。请在图片上添加描述链接目的地的alt文本。',

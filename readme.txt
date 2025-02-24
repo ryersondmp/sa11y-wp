@@ -4,7 +4,7 @@ Tags: accessibility, accessibility automated testing, accessibility checker, wca
 Requires at least: 5.6
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 1.1.9
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Sa11y works in **Preview** mode.
 
 = Features =
 
-* Over 50 checks.
+* Over 80 checks.
 * Concise tooltips explain issues right at the source.
 * Automatically checks content once the page has loaded.
 * Highly customizable. Turn off or hide irrelevant checks.
@@ -36,6 +36,13 @@ Visit the [project website](https://sa11y.netlify.app/) for a demo or to learn m
 4. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.2.0 =
+* Upgrade to Sa11y 4.1.1
+* Simplified admin settings page. Removal of "Panel Position" option and embedded content sources.
+* Content authors can now change the panel position through Sa11y's settings panel.
+* Enhanced "Extra Props" section. Admins can customize or turn off any check programatically via props.
+* New experimental setting! Show "Edit" links in Images panel: Enabling this option will show an "Edit" link for each image in the Images panel if uploaded to the Media Library. This allows content authors to quickly add alt text to an image.
 
 = 1.1.9 =
 * Fixed a bug affecting WordPress versions 6.6 and earlier.

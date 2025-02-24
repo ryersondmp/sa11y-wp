@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'Sayfa Sorunları',
       SETTINGS: 'Ayarlar',
       DEVELOPER_CHECKS: 'Geliştirici kontrolleri',
-      DEVELOPER_DESC: 'Düzeltilmesi için kodlama bilgisi gerektirebilecek sorunları kontrol eder.',
+      DEVELOPER_DESC: 'HTML öznitelikleri, formlar gibi düzeltilmesi için kodlama bilgisi gerektirebilecek sorunları kontrol eder.',
       DARK_MODE: 'Karanlık mod',
       SHORTCUT_SR: 'Konuya geç. Klavye kısayolu: Alt S',
       SKIP_TO_ISSUE: 'Konuya geç',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'toplam sorun bulundu.',
       NOT_VISIBLE: 'Görüntülemeye çalıştığınız öğe görünmüyor; gizli veya bir akordeon ya da sekme bileşeninin içinde olabilir. İşte bir önizleme:',
       MISSING_ROOT: '<code>%(root)</code> hedef alanı mevcut olmadığı için sayfanın tamamı erişilebilirlik açısından kontrol edildi.',
+      MISSING_READABILITY_ROOT: 'Okunabilirlik puanı, <code>%(fallback)</code> içerik alanına dayanmaktadır çünkü hedef alan <code>%(root)</code> mevcut değildir.',
       HEADING_NOT_VISIBLE: 'Başlık görünür değildir; gizli veya bir akordeon ya da sekme bileşeninin içinde olabilir.',
       SKIP_TO_PAGE_ISSUES: 'Sayfa Sorunlarına Geç',
       CONSOLE_ERROR: 'Üzgünüz, ancak bu sayfadaki erişilebilirlik denetleyicisinde bir sorun var. Lütfen <a href="%(link)">bu form</a> aracılığıyla veya <a href="%(link)">GitHub</a> üzerinden bildirebilir misiniz?',
+      APPEARANCE: 'Görünüm',
+      MOVE_PANEL: 'Paneli taşı',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Göster %(dismissCount) reddedilmiş',
@@ -190,10 +193,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Görüntü, çevresindeki metinle birlikte bir bağlantı olarak kullanılıyor, ancak alt özniteliği dekoratif veya boş olarak işaretlenmelidir.',
       MISSING_ALT_LINK: 'Resim bağlantı olarak kullanılıyor ancak alt metni eksik! Lütfen alt metnin bağlantının sizi nereye götüreceğini açıkladığından emin olun.',
       MISSING_ALT: 'Eksik alt metin! Görsel bir hikaye, ruh hali veya önemli bir bilgi aktarıyorsa, görseli tanımladığınızdan emin olun.',
-      LINK_ALT_FILE_EXT: 'Alt metin içinde dosya uzantısı bulundu. Alt metnin, görüntünün gerçek bir tanımını değil, bağlantının hedefini açıkladığından emin olun. Kaldırın: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Alternatif metin, dosya uzantıları veya resim boyutlarını içermemelidir. Alt metnin, görüntünün gerçek bir tanımını değil, bağlantının hedefini açıkladığından emin olun. Kaldırın: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Bağlantılı bir resim içinde tanımlayıcı olmayan veya yer tutucu alt metin bulundu. Alt metnin, görüntünün gerçek bir tanımını değil, bağlantının hedefini açıkladığından emin olun. Aşağıdaki alt metni değiştirin. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'Yardımcı teknolojiler zaten bunun bir resim olduğunu gösterir, bu nedenle &quot;<strong {C}>%(ERROR)</strong>&quot; gereksiz olabilir. Alt metnin, resmin gerçek bir tanımını değil, bağlantının hedefini açıkladığından emin olun. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Bulunan alt metin içinde dosya uzantısı. Görsel bir hikaye, ruh hali veya önemli bir bilgi aktarıyorsa, görseli tanımladığınızdan emin olun. Kaldırın: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Alternatif metin, dosya uzantıları veya resim boyutlarını içermemelidir. Görsel bir hikaye, ruh hali veya önemli bir bilgi aktarıyorsa, görseli tanımladığınızdan emin olun. Kaldırın: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Tanımlayıcı olmayan veya yer tutucu alt metin bulundu. Aşağıdaki alt metni daha anlamlı bir metinle değiştirin. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Yardımcı teknolojiler zaten bunun bir resim olduğunu belirtmektedir, bu nedenle &quot;<strong {C}>%(ERROR)</strong>&quot; gereksiz olabilir. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'Bağlantı içindeki resim dekoratif olarak işaretlenmiş ve bağlantı metni yok. Lütfen resme bağlantının hedefini açıklayan alt metin ekleyin.',

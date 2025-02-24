@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'Probleme de pagină',
       SETTINGS: 'Setări',
       DEVELOPER_CHECKS: 'Verificări ale dezvoltatorului',
-      DEVELOPER_DESC: 'Verifică problemele care ar putea necesita cunoștințe de programare pentru a fi rezolvate.',
+      DEVELOPER_DESC: 'Verifică problemele care pot necesita cunoștințe de programare pentru a fi remediate, cum ar fi atributele HTML, formularele și altele.',
       DARK_MODE: 'Modul întunecat',
       SHORTCUT_SR: 'Treceți la număr. Scurtătură de la tastatură: Alt S',
       SKIP_TO_ISSUE: 'Treci la subiect',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'numărul total de probleme găsite.',
       NOT_VISIBLE: 'Elementul pe care încercați să îl vizualizați nu este vizibil; este posibil să fie ascuns sau să se afle în interiorul unui acordeon sau al unei componente de tablă. Iată o previzualizare:',
       MISSING_ROOT: 'Pagina completă a fost verificată din punct de vedere al accesibilității deoarece zona țintă <code>%(root)</code> nu există.',
+      MISSING_READABILITY_ROOT: 'Scorul de lizibilitate se bazează pe zona de conținut <code>%(fallback)</code>, deoarece zona țintă <code>%(root)</code> nu există.',
       HEADING_NOT_VISIBLE: 'Rubrica nu este vizibilă; poate fi ascunsă sau în interiorul unui acordeon sau al unei componente de tablă.',
       SKIP_TO_PAGE_ISSUES: 'Treceți la pagina Probleme',
       CONSOLE_ERROR: 'Ne pare rău, dar există o problemă cu verificatorul de accesibilitate de pe această pagină. Puteți vă rog <a href="%(link)">raportați-o prin intermediul acestui formular</a> sau pe <a href="%(link)">GitHub</a>?',
+      APPEARANCE: 'Aparență',
+      MOVE_PANEL: 'Mută panoul',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Arată %(dismissCount) respinse',
@@ -192,10 +195,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Imaginea este utilizată ca link cu text în jur, deși atributul alt ar trebui să fie marcat ca fiind decorativ sau nul.',
       MISSING_ALT_LINK: 'Imaginea este folosită ca link, dar lipsește textul alt! Vă rugăm să vă asigurați că textul alternativ descrie unde vă duce link-ul.',
       MISSING_ALT: 'Lipsește alt text! Dacă imaginea transmite o poveste, o stare de spirit sau o informație importantă, nu uitați să descrieți imaginea.',
-      LINK_ALT_FILE_EXT: 'Extensia fișierului din textul alternativ găsit. Asigurați-vă că textul alternativ descrie destinația linkului și nu o descriere literală a imaginii. Eliminați: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Textul alternativ nu trebuie să includă extensii de fișiere sau dimensiuni ale imaginii. Asigurați-vă că textul alternativ descrie destinația linkului și nu o descriere literală a imaginii. Eliminați: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Text alt necorespunzător sau cu caracter de locțiitor într-o imagine legată găsit. Asigurați-vă că textul alternativ descrie destinația linkului și nu o descriere literală a imaginii. Înlocuiți următorul text alt. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>.',
       LINK_SUS_ALT: 'Tehnologiile asistive indică deja că aceasta este o imagine, astfel încât &quot;<strong {C}>%(ERROR)</strong>&quot; poate fi redundant. Asigurați-vă că textul alt descrie destinația linkului, nu o descriere literală a imaginii. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Extensia fișierului din textul alternativ găsit. Dacă imaginea transmite o poveste, o stare de spirit sau o informație importantă, nu uitați să descrieți imaginea. Eliminați: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Textul alternativ nu trebuie să includă extensii de fișiere sau dimensiuni ale imaginii. Dacă imaginea transmite o poveste, o stare de spirit sau o informație importantă, nu uitați să descrieți imaginea. Eliminați: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'A fost găsit un text alt nedescriptat sau un text alt de tip placeholder. Înlocuiți următorul text alt cu ceva mai semnificativ. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>.',
       SUS_ALT: 'Tehnologiile asistive indică deja că aceasta este o imagine, astfel încât &quot;<strong {C}>%(ERROR)</strong>&quot; poate fi redundant. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'Imaginea din cadrul linkului este marcată ca fiind decorativă și nu există text de link. Vă rugăm să adăugați la imagine un text alt care să descrie destinația linkului.',

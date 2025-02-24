@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'Masalah Halaman',
       SETTINGS: 'Pengaturan',
       DEVELOPER_CHECKS: 'Pemeriksaan pengembang',
-      DEVELOPER_DESC: 'Memeriksa masalah yang mungkin memerlukan pengetahuan pemrograman untuk diperbaiki.',
+      DEVELOPER_DESC: 'Memeriksa masalah yang mungkin memerlukan pengetahuan pemrograman untuk diperbaiki, seperti atribut HTML, formulir, dan lainnya.',
       DARK_MODE: 'Mode gelap',
       SHORTCUT_SR: 'Loncat ke masalah. Pintasan papan ketik: Alt S',
       SKIP_TO_ISSUE: 'Loncat ke masalah',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'total masalah yang ditemukan.',
       NOT_VISIBLE: 'Item yang ingin Anda lihat tidak terlihat; item tersebut mungkin tersembunyi atau berada di dalam komponen akordeon atau tab. Berikut ini adalah pratinjau:',
       MISSING_ROOT: 'Halaman penuh diperiksa aksesibilitasnya karena area target <code>%(root)</code> tidak ada.',
+      MISSING_READABILITY_ROOT: 'Skor keterbacaan didasarkan pada area konten <code>%(fallback)</code>, karena area target <code>%(root)</code> tidak ada.',
       HEADING_NOT_VISIBLE: 'Judul tidak terlihat; judul mungkin tersembunyi atau berada di dalam komponen akordeon atau tab.',
       SKIP_TO_PAGE_ISSUES: 'Loncat ke Halaman Masalah',
       CONSOLE_ERROR: 'Maaf, ada masalah dengan pemeriksa aksesibilitas di halaman ini. Bisakah Anda <a href="%(link)">melaporkannya melalui formulir ini</a> atau di <a href="%(link)">GitHub</a>?',
+      APPEARANCE: 'Tampilan',
+      MOVE_PANEL: 'Pindahkan panel',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Tampilkan %(dismissCount) diabaikan',
@@ -194,10 +197,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Gambar digunakan sebagai tautan dengan teks di sekitarnya, meskipun atribut alt harus ditandai sebagai dekoratif atau nol.',
       MISSING_ALT_LINK: 'Gambar digunakan sebagai tautan tetapi tidak memiliki teks alt! Pastikan teks alt menjelaskan ke mana tautan tersebut membawa Anda.',
       MISSING_ALT: 'Teks alt yang hilang! Jika gambar menyampaikan suatu cerita, suasana hati, atau informasi penting - pastikan untuk mendeskripsikan gambar tersebut.',
-      LINK_ALT_FILE_EXT: 'Ekstensi file dalam teks alt ditemukan. Pastikan teks alt menjelaskan tujuan tautan, bukan deskripsi harfiah dari gambar. Hapus: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Teks alternatif tidak boleh menyertakan ekstensi file atau dimensi gambar. Pastikan teks alt menjelaskan tujuan tautan, bukan deskripsi harfiah dari gambar. Hapus: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Teks alt non-deskripsi atau placeholder dalam gambar yang ditautkan ditemukan. Pastikan teks alt mendeskripsikan tujuan tautan, bukan deskripsi harfiah gambar. Ganti teks alt berikut ini. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'Teknologi bantuan sudah menunjukkan bahwa ini adalah gambar, jadi &quot;<strong {C}>%(ERROR)</strong>&quot; mungkin berlebihan. Pastikan teks alt menjelaskan tujuan tautan, bukan deskripsi harfiah dari gambar. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Ekstensi file dalam teks alt ditemukan. Jika gambar menyampaikan cerita, suasana hati, atau informasi penting - pastikan untuk mendeskripsikan gambar. Hapus: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Teks alternatif tidak boleh menyertakan ekstensi file atau dimensi gambar. Jika gambar menyampaikan cerita, suasana hati, atau informasi penting - pastikan untuk mendeskripsikan gambar. Hapus: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Teks alt non-deskripsi atau placeholder ditemukan. Ganti teks alt berikut dengan sesuatu yang lebih bermakna. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Teknologi bantuan sudah menunjukkan bahwa ini adalah gambar, jadi &quot;<strong {C}>%(ERROR)</strong>&quot; mungkin berlebihan. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'Gambar di dalam tautan ditandai sebagai dekoratif dan tidak ada teks tautan. Tambahkan teks alt ke gambar yang menjelaskan tujuan tautan.',

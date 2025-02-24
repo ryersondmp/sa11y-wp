@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'ページの問題',
       SETTINGS: '設定方法',
       DEVELOPER_CHECKS: '開発者チェック',
-      DEVELOPER_DESC: '修正にプログラミング知識が必要な可能性のある問題をチェックします。',
+      DEVELOPER_DESC: 'HTML属性、フォームなど、修正にコーディング知識が必要な可能性がある問題をチェックします。',
       DARK_MODE: 'ダークモード',
       SHORTCUT_SR: '問題にスキップします。キーボードショートカットAlt S',
       SKIP_TO_ISSUE: '発行物へスキップ',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'が見つかりました。',
       NOT_VISIBLE: '表示しようとしているアイテムは表示されていません。非表示になっているか、アコーディオンやタブコンポーネントの中に入っている可能性があります。以下はプレビューです：',
       MISSING_ROOT: '対象領域<code>%(root)</code>が存在しないため、全ページのアクセシビリティを確認しました。',
+      MISSING_READABILITY_ROOT: '可読性スコアは<code>%(fallback)</code>のコンテンツ領域に基づいています。ターゲット領域<code>%(root)</code>が存在しないためです。',
       HEADING_NOT_VISIBLE: '見出しは表示されません。非表示になっていたり、アコーディオンやタブコンポーネントの中に入っていたりすることがあります。',
       SKIP_TO_PAGE_ISSUES: 'ページの先頭へ戻る',
       CONSOLE_ERROR: '申し訳ありませんが、このページのアクセシビリティチェッカーに問題があります。<a href="%(link)">このフォーム</a>または<a href="%(link)">GitHub</a>で報告していただけませんでしょうか',
+      APPEARANCE: '外観',
+      MOVE_PANEL: 'パネルを移動',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: '%(dismissCount) 無視を表示',
@@ -200,10 +203,10 @@
       MISSING_ALT_LINK_HAS_TEXT: '画像が周囲のテキストと一緒にリンクとして使用されていますが、alt属性は装飾用としてマークされる必要があります。',
       MISSING_ALT_LINK: '画像がリンクとして使用されていますが、altテキストがありません！リンクがどこに向かうかを説明するaltテキストを確認してください。',
       MISSING_ALT: 'altテキストがありません！画像が物語やムード、重要な情報を伝えている場合は、画像を説明してください。',
-      LINK_ALT_FILE_EXT: 'altテキスト内にファイルの拡張子が見つかりました。altテキストが画像のリンク先を説明しているかどうか、画像の文字通りの説明ではないことを確認してください。<hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: '代替テキストにはファイル拡張子や画像の寸法を含めてはいけません。altテキストが画像のリンク先を説明しているかどうか、画像の文字通りの説明ではないことを確認してください。<hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'リンクされた画像内の記述のないまたはプレースホルダーのaltテキストが見つかりました。altテキストが画像のリンク先を説明していることを確認してください。<hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: '支援技術はすでにこれが画像であることを示しているため、「<strong {C}>%(ERROR)</strong>」は冗長かもしれません。altテキストが画像のリンク先を説明していることを確認してください。<hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'altテキスト内にファイルの拡張子が見つかりました。画像が物語やムード、重要な情報を伝えている場合は、画像を説明してください。<hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: '代替テキストにはファイル拡張子や画像の寸法を含めてはいけません。画像が物語やムード、重要な情報を伝えている場合は、画像を説明してください。<hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: '記述のないまたはプレースホルダーのaltテキストが見つかりました。次のaltテキストをより意味のあるものに置き換えてください。<hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: '支援技術はすでにこれが画像であることを示しているため、「<strong {C}>%(ERROR)</strong>」は冗長かもしれません。<hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: '画像内のリンクが装飾用としてマークされており、リンクテキストがありません。リンクの目的を説明するaltテキストを画像に追加してください。',

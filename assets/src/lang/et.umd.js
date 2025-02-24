@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'Lehekülje probleemid',
       SETTINGS: 'Seaded',
       DEVELOPER_CHECKS: 'Arendaja kontrollid',
-      DEVELOPER_DESC: 'Kontrollib probleeme, mille lahendamiseks võib olla vajalik kodeerimisoskus.',
+      DEVELOPER_DESC: 'Kontrollib probleeme, mille lahendamiseks võib vaja minna kodeerimise teadmisi, näiteks HTML atribuudid, vormid ja muu.',
       DARK_MODE: 'Tume režiim',
       SHORTCUT_SR: 'Hüpake väljaandele. Klaviatuuri otsetee: S',
       SKIP_TO_ISSUE: 'Väljundi juurde hüpata',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'kõik leitud probleemid kokku.',
       NOT_VISIBLE: 'Objekt, mida üritate vaadata, ei ole nähtav; see võib olla peidetud või olla akordioni või vahekaardikomponendi sees. Siin on eelvaade:',
       MISSING_ROOT: 'Täielik lehekülg kontrolliti ligipääsetavuse osas, sest sihtala <code>%(root)</code> ei ole olemas.',
+      MISSING_READABILITY_ROOT: 'Loetavuse skoor põhineb sisu alal <code>%(fallback)</code>, kuna sihtpiirkond <code>%(root)</code> ei eksisteeri.',
       HEADING_NOT_VISIBLE: 'Pealkiri ei ole nähtav; see võib olla peidetud või olla akordioni või vahekaardikomponendi sees.',
       SKIP_TO_PAGE_ISSUES: 'Skip to Page Issues (lehekülje probleemid)',
       CONSOLE_ERROR: 'Vabandame, kuid selle lehekülje ligipääsetavuse kontrolliga on probleem. Kas te saaksite <a href="%(link)">teavitada sellest selle vormi kaudu</a> või <a href="%(link)">GitHubis</a>?',
+      APPEARANCE: 'Välimus',
+      MOVE_PANEL: 'Liiguta paneel',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Kuva %(dismissCount) eiratud',
@@ -195,10 +198,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Pilti kasutatakse lingina koos ümbritseva tekstiga, kuigi alt-atribuut peaks olema märgitud dekoratiivseks või null.',
       MISSING_ALT_LINK: 'Pilti kasutatakse lingina, kuid puudub alt-tekst! Palun veenduge, et alt-tekst kirjeldab, kuhu link viib.',
       MISSING_ALT: 'Puuduv alt-tekst! Kui pilt edastab lugu, meeleolu või olulist teavet - kirjeldage kindlasti pilti.',
-      LINK_ALT_FILE_EXT: 'Alt-tekstis olev faililaiend leitud. Veenduge, et alt-tekst kirjeldab lingi sihtkohta, mitte pildi sõna-sõnalist kirjeldust. Eemaldage: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Alternatiivtekst ei tohiks sisaldada faililaiendeid ega pildi mõõtmeid. Veenduge, et alt-tekst kirjeldab lingi sihtkohta, mitte pildi sõna-sõnalist kirjeldust. Eemaldage: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Leitud lingitud pildi sees olev mittekirjeldav või paigutatud alt-tekst. Veenduge, et alt-tekst kirjeldab lingi sihtkohta, mitte pildi sõna-sõnalist kirjeldust. Asendage järgmine alt-tekst. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'Abitehnoloogiad näitavad juba, et tegemist on pildiga, seega võib &quot;<strong {C}>%(ERROR)</strong>&quot; olla üleliigne. Veenduge, et alt-tekst kirjeldab lingi sihtkohta, mitte pildi sõna-sõnalist kirjeldust. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Alt-tekstis olev faililaiend leitud. Kui pilt edastab lugu, meeleolu või olulist teavet - kirjeldage kindlasti pilti. Eemaldage: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Alternatiivtekst ei tohiks sisaldada faililaiendeid ega pildi mõõtmeid. Kui pilt edastab lugu, meeleolu või olulist teavet - kirjeldage kindlasti pilti. Eemaldage: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Leitud mittekirjeldav või paigutatud alt-tekst. Asendage järgmine alt-tekst millegi sisukamaga. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Abitehnoloogiad näitavad juba, et tegemist on pildiga, seega &quot;<strong {C}>%(ERROR)</strong>&quot; võib olla üleliigne. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'Linki sees olev pilt on märgitud dekoratiivseks ja lingi tekst puudub. Palun lisage pildile alt-tekst, mis kirjeldab lingi sihtkohta.',

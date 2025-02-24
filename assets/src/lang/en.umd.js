@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -42,7 +42,7 @@
       PAGE_ISSUES: 'Page Issues',
       SETTINGS: 'Settings',
       DEVELOPER_CHECKS: 'Developer checks',
-      DEVELOPER_DESC: 'Checks for issues that may need coding knowledge to fix.',
+      DEVELOPER_DESC: 'Checks for issues that may need coding knowledge to fix, such as HTML attributes, forms, and more.',
       DARK_MODE: 'Dark mode',
       SHORTCUT_SR: 'Skip to issue. Keyboard shortcut: Alt S',
       SKIP_TO_ISSUE: 'Skip to issue',
@@ -54,9 +54,12 @@
       TOTAL_FOUND: 'total issues found.',
       NOT_VISIBLE: 'The item you are trying to view is not visible; it may be hidden or inside of an accordion or tab component. Here is a preview:',
       MISSING_ROOT: 'The full page was checked for accessibility because the target area <code>%(root)</code> does not exist.',
+      MISSING_READABILITY_ROOT: 'The readability score is based on the <code>%(fallback)</code> content area, because the target area <code>%(root)</code> does not exist.',
       HEADING_NOT_VISIBLE: 'Heading is not visible; it may be hidden or inside of an accordion or tab component.',
       SKIP_TO_PAGE_ISSUES: 'Skip to Page Issues',
       CONSOLE_ERROR: 'Sorry, but there is an issue with the accessibility checker on this page. Can you please <a href="%(link)">report it through this form</a> or on <a href="%(link)">GitHub</a>?',
+      APPEARANCE: 'Appearance',
+      MOVE_PANEL: 'Move panel',
 
       // Export
       DATE: 'Date',
@@ -123,6 +126,7 @@
         'this page',
         'this link',
         'this website',
+        'this form',
         'view',
         'view our',
         'website',
@@ -174,10 +178,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Image is being used as a link with surrounding text, although the alt attribute should be marked as decorative.',
       MISSING_ALT_LINK: 'Image is being used as a link but is missing alt text! Please ensure alt text describes where the link takes you.',
       MISSING_ALT: 'Missing alt text! If the image conveys a story, mood, or important information, make sure to describe it clearly.',
-      LINK_ALT_FILE_EXT: 'File extension within the alt text found. Ensure the alt text describes the destination of the link, not a literal description of the image. Remove: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Alt text should not include file extensions or image dimensions. Ensure the alt text describes the destination of the link, not a literal description of the image. Remove: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Non-descript or placeholder alt text within a linked image found. Ensure the alt text describes the destination of the link, not a literal description of the image. Replace the following alt text. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'Assistive technologies already indicate that this is an image, so &quot;<strong {C}>%(ERROR)</strong>&quot; may be redundant. Ensure the alt text describes the destination of the link, not a literal description of the image. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'File extension within the alt text found. If the image conveys a story, mood, or important information, be sure to describe the image. Remove: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Alt text should not include file extensions or image dimensions. If the image conveys a story, mood, or important information, be sure to describe the image. Remove: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Non-descript or placeholder alt text found. Replace the following alt text with something more meaningful. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Assistive technologies already indicate that this is an image, so &quot;<strong {C}>%(ERROR)</strong>&quot; may be redundant. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'Image within link is marked as decorative and there is no link text. Please add alt text to the image that describes the destination of the link.',

@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: '페이지 문제',
       SETTINGS: '설정',
       DEVELOPER_CHECKS: '개발자 검사',
-      DEVELOPER_DESC: '수정하는 데 프로그래밍 지식이 필요할 수 있는 문제를 확인합니다.',
+      DEVELOPER_DESC: 'HTML 속성, 양식 등 수정에 코딩 지식이 필요할 수 있는 문제를 확인합니다.',
       DARK_MODE: '다크 모드',
       SHORTCUT_SR: '문제로 건너뛰기. 키보드 단축키: Alt S',
       SKIP_TO_ISSUE: '문제로 건너뛰기',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: '총 문제 발견.',
       NOT_VISIBLE: '보려는 항목이 보이지 않습니다. 숨겨져 있거나 아코디언 또는 탭 컴포넌트 안에 있을 수 있습니다. 미리 보기:',
       MISSING_ROOT: '타겟 영역 <code>%(root)</code>이(가) 없기 때문에 전체 페이지에 대한 접근성을 확인했습니다.',
+      MISSING_READABILITY_ROOT: '가독성 점수는 <code>%(fallback)</code> 콘텐츠 영역을 기반으로 합니다. 대상 영역 <code>%(root)</code>가 존재하지 않기 때문입니다.',
       HEADING_NOT_VISIBLE: '표시되지 않는 제목입니다. 숨겨져 있거나 아코디언 또는 탭 컴포넌트 안에 있을 수 있습니다.',
       SKIP_TO_PAGE_ISSUES: '페이지 문제로 건너뛰기',
       CONSOLE_ERROR: '죄송합니다. 이 페이지에서 접근성 점검기에 문제가 있습니다. <a href="%(link)">이 양식</a>이나 <a href="%(link)">GitHub</a>을 통해 신고해 주십시오.',
+      APPEARANCE: '모양',
+      MOVE_PANEL: '패널을 이동',
 
       // Export
       DATE: '날짜',
@@ -202,10 +205,10 @@
       MISSING_ALT_LINK_HAS_TEXT: '이미지가 주변 텍스트와 함께 링크로 사용되고 있지만 alt 속성은 장식용 또는 null로 표시되어야 합니다.',
       MISSING_ALT_LINK: '이미지가 링크로 사용 중이지만 대체 텍스트가 누락되었습니다! 링크가 어디로 연결되는지 설명하는 대체 텍스트를 입력하세요.',
       MISSING_ALT: '대체 텍스트가 누락되었습니다! 이미지가 스토리, 분위기 또는 중요한 정보를 전달하는 경우 이미지에 대한 설명을 반드시 기재하세요.',
-      LINK_ALT_FILE_EXT: '대체 텍스트 내의 파일 확장자를 찾았습니다. 대체 텍스트가 이미지에 대한 문자 그대로의 설명이 아니라 링크의 목적지를 설명하는지 확인하세요. 제거합니다: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: '대체 텍스트에는 파일 확장자나 이미지 크기가 포함되지 않아야 합니다. 대체 텍스트가 이미지에 대한 문자 그대로의 설명이 아니라 링크의 목적지를 설명하는지 확인하세요. 제거합니다: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: '링크된 이미지에 설명이 없거나 자리 표시자 대체 텍스트가 발견되었습니다. 대체 텍스트가 이미지에 대한 문자 그대로의 설명이 아니라 링크의 대상을 설명하는지 확인합니다. 다음 대체 텍스트를 교체합니다. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: '보조 기술은 이미 이미지임을 표시하므로 <strong {C}>%(ERROR)</strong>가 중복될 수 있습니다. 대체 텍스트가 이미지에 대한 문자 그대로의 설명이 아니라 링크의 목적지를 설명하는지 확인하세요. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: '대체 텍스트 내의 파일 확장자를 찾았습니다. 이미지가 스토리, 분위기 또는 중요한 정보를 전달하는 경우 이미지를 설명해야 합니다. 제거합니다: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: '대체 텍스트에는 파일 확장자나 이미지 크기가 포함되지 않아야 합니다. 이미지가 스토리, 분위기 또는 중요한 정보를 전달하는 경우 이미지를 설명해야 합니다. 제거합니다: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: '설명이 없거나 자리 표시자 대체 텍스트가 발견되었습니다. 다음 대체 텍스트를 더 의미 있는 것으로 바꾸세요. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: '보조 기술은 이미 이미지임을 표시하므로 <strong {C}>%(ERROR)</strong>가 중복될 수 있습니다. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: '링크 내 이미지는 장식용으로 표시되어 있으며 링크 텍스트가 없습니다. 링크의 목적지를 설명하는 대체 텍스트를 이미지에 추가하세요.',

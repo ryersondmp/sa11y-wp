@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'Sivukysymykset',
       SETTINGS: 'Asetukset',
       DEVELOPER_CHECKS: 'Kehittäjä tarkistukset',
-      DEVELOPER_DESC: 'Tarkistaa ongelmat, jotka saattavat vaatia ohjelmointitaitoja korjaamiseen.',
+      DEVELOPER_DESC: 'Tarkistaa ongelmat, joiden korjaaminen saattaa vaatia koodausosaamista, kuten HTML-attribuutit, lomakkeet ja muut.',
       DARK_MODE: 'Tumma tila',
       SHORTCUT_SR: 'Siirry aiheeseen. Pikanäppäin: S',
       SKIP_TO_ISSUE: 'Siirry asiaan',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'löydettyjen ongelmien kokonaismäärä.',
       NOT_VISIBLE: 'Kohde, jota yrität tarkastella, ei ole näkyvissä; se voi olla piilossa tai harmonikka- tai välilehtikomponentin sisällä. Tässä on esikatselu:',
       MISSING_ROOT: 'Koko sivun saavutettavuus tarkistettiin, koska kohdealuetta <code>%(root)</code> ei ole olemassa.',
+      MISSING_READABILITY_ROOT: 'Luettavuuspisteytys perustuu sisältöalueeseen <code>%(fallback)</code>, koska kohdealue <code>%(root)</code> ei ole olemassa.',
       HEADING_NOT_VISIBLE: 'Otsikko ei ole näkyvissä; se voi olla piilotettu tai harmonikka- tai välilehtiosan sisällä.',
       SKIP_TO_PAGE_ISSUES: 'Siirry sivulle Issues',
       CONSOLE_ERROR: 'Anteeksi, mutta tämän sivun saavutettavuuden tarkistuksessa on ongelma. Voisitko <a href="%(link)">ilmoittaa siitä tällä lomakkeella</a> tai <a href="%(link)">GitHubissa</a>?',
+      APPEARANCE: 'Ulkonäkö',
+      MOVE_PANEL: 'Siirrä paneeli',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Näytä %(dismissCount) ohitetut',
@@ -186,10 +189,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Kuvaa käytetään linkkinä ympäröivän tekstin kanssa, vaikka alt-attribuutti pitäisi merkitä koristeelliseksi tai nollaksi.',
       MISSING_ALT_LINK: 'Kuvaa käytetään linkkinä, mutta siitä puuttuu alt-teksti! Varmista, että alt-teksti kuvaa, minne linkki vie.',
       MISSING_ALT: 'Puuttuva alt-teksti! Jos kuva välittää tarinan, tunnelman tai tärkeää tietoa - muista kuvata kuva.',
-      LINK_ALT_FILE_EXT: 'Alt-tekstissä oleva tiedostopääte löydetty. Varmista, että alt-teksti kuvaa linkin määränpäätä, ei kuvan kirjaimellista kuvausta. Poista: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Vaihtoehtoinen teksti ei saa sisältää tiedostopäätteitä tai kuvan mittoja. Varmista, että alt-teksti kuvaa linkin määränpäätä, ei kuvan kirjaimellista kuvausta. Poista: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Linkitetyn kuvan sisältämä ei-kuvaava tai sijoitettu alt-teksti löydetty. Varmista, että alt-teksti kuvaa linkin määränpäätä, ei kuvan kirjaimellista kuvausta. Korvaa seuraava alt-teksti. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>.',
       LINK_SUS_ALT: 'Avustavat teknologiat osoittavat jo, että kyseessä on kuva, joten &quot;<strong {C}>%(ERROR)</strong>&quot; voi olla tarpeeton. Varmista, että alt-teksti kuvaa linkin määränpäätä, ei kuvan kirjaimellista kuvausta. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Alt-tekstissä oleva tiedostopääte löydetty. Jos kuva välittää tarinan, tunnelman tai tärkeän tiedon - muista kuvata kuva. Poista: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Vaihtoehtoinen teksti ei saa sisältää tiedostopäätteitä tai kuvan mittoja. Jos kuva välittää tarinan, tunnelman tai tärkeän tiedon - muista kuvata kuva. Poista: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Ei-kuvaava tai paikannettu alt-teksti löydetty. Korvaa seuraava alt-teksti jollain merkityksellisemmällä. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Avustavat teknologiat osoittavat jo, että kyseessä on kuva, joten &quot;<strong {C}>%(ERROR)</strong>&quot; voi olla tarpeeton. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'Linkissä oleva kuva on merkitty koristeeksi, eikä linkkitekstiä ole. Lisää kuvaan alt-teksti, joka kuvaa linkin kohdetta.',

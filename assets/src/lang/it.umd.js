@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -43,7 +43,7 @@
       PAGE_ISSUES: 'Problemi di pagina',
       SETTINGS: 'Impostazioni',
       DEVELOPER_CHECKS: 'Controlli sviluppatore',
-      DEVELOPER_DESC: 'Controlla i problemi che potrebbero richiedere conoscenze di programmazione per essere risolti.',
+      DEVELOPER_DESC: 'Controlla i problemi che potrebbero richiedere conoscenze di codifica per essere risolti, come attributi HTML, moduli e altro.',
       DARK_MODE: 'Modalità scura',
       SHORTCUT_SR: 'Passa al problema. Scorciatoia da tastiera: Alt S',
       SKIP_TO_ISSUE: 'Passa al numero',
@@ -55,9 +55,12 @@
       TOTAL_FOUND: 'totale dei problemi riscontrati.',
       NOT_VISIBLE: "L'elemento che si sta cercando di visualizzare non è visibile; potrebbe essere nascosto o all'interno di un componente fisarmonica o scheda. Ecco un'anteprima:",
       MISSING_ROOT: "La pagina completa è stata controllata per l'accessibilità perché l'area di destinazione <code>%(root)</code> non esiste.",
+      MISSING_READABILITY_ROOT: 'Il punteggio di leggibilità si basa sull’area di contenuto <code>%(fallback)</code>, perché l’area di destinazione <code>%(root)</code> non esiste.',
       HEADING_NOT_VISIBLE: "L'intestazione non è visibile; può essere nascosta o all'interno di un componente fisarmonica o scheda.",
       SKIP_TO_PAGE_ISSUES: 'Vai alla pagina Problemi',
       CONSOLE_ERROR: "Siamo spiacenti, ma c'è un problema con il verificatore di accessibilità di questa pagina. Puoi per favore <a href=\"%(link)\">riportarlo attraverso questo modulo</a> o su <a href=\"%(link)\">GitHub</a>?",
+      APPEARANCE: 'Aspetto',
+      MOVE_PANEL: 'Sposta pannello',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Mostra %(dismissCount) scartati',
@@ -193,10 +196,10 @@
       MISSING_ALT_LINK_HAS_TEXT: "L'immagine viene utilizzata come link con testo circostante, anche se l'attributo alt dovrebbe essere contrassegnato come decorativo o nullo.",
       MISSING_ALT_LINK: "L'immagine viene utilizzata come link ma manca il testo alt! Assicurarsi che il testo alt descriva dove porta il link.",
       MISSING_ALT: "Manca il testo alt! Se l'immagine trasmette una storia, uno stato d'animo o un'informazione importante, assicuratevi di descrivere l'immagine.",
-      LINK_ALT_FILE_EXT: "Estensione del file nel testo alt trovata. Assicurarsi che il testo alt descriva la destinazione del link e non una descrizione letterale dell'immagine. Rimuovere: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>",
+      LINK_ALT_FILE_EXT: "Il testo alternativo non dovrebbe includere estensioni di file o dimensioni dell'immagine. Assicurarsi che il testo alt descriva la destinazione del link e non una descrizione letterale dell'immagine. Rimuovere: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>",
       LINK_PLACEHOLDER_ALT: "Trovato testo alt non descrittivo o segnaposto in un'immagine collegata. Assicurarsi che il testo alt descriva la destinazione del link e non una descrizione letterale dell'immagine. Sostituire il seguente testo alt. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>",
       LINK_SUS_ALT: "Le tecnologie assistive indicano già che si tratta di un'immagine, quindi &quot;<strong {C}>%(ERROR)</strong>&quot; potrebbe essere ridondante. Assicuratevi che il testo alt descriva la destinazione del link e non una descrizione letterale dell'immagine. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>",
-      ALT_FILE_EXT: "Estensione del file nel testo alt trovato. Se l'immagine trasmette una storia, uno stato d'animo o un'informazione importante, assicuratevi di descrivere l'immagine. Rimuovere: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>",
+      ALT_FILE_EXT: "Il testo alternativo non dovrebbe includere estensioni di file o dimensioni dell'immagine. Se l'immagine trasmette una storia, uno stato d'animo o un'informazione importante, assicuratevi di descrivere l'immagine. Rimuovere: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>",
       ALT_PLACEHOLDER: 'Trovato testo alt non descrittivo o segnaposto. Sostituire il seguente testo alt con qualcosa di più significativo. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: "Le tecnologie assistive indicano già che si tratta di un'immagine, quindi &quot;<strong {C}>%(ERROR)</strong>&quot; potrebbe essere ridondante. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>",
       LINK_IMAGE_NO_ALT_TEXT: "L'immagine all'interno del link è contrassegnata come decorativa e non c'è testo di collegamento. Aggiungere all'immagine un testo alt che descriva la destinazione del link.",

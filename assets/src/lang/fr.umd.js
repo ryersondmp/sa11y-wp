@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -42,7 +42,7 @@
       PAGE_ISSUES: 'Problèmes de pages',
       SETTINGS: 'Paramètres',
       DEVELOPER_CHECKS: 'Vérifications du développeur',
-      DEVELOPER_DESC: 'Vérifie les problèmes qui peuvent nécessiter des compétences en programmation pour les résoudre.',
+      DEVELOPER_DESC: 'Vérifie les problèmes qui peuvent nécessiter des connaissances en programmation pour être corrigés, comme les attributs HTML, les formulaires et plus encore.',
       DARK_MODE: 'Mode sombre',
       SHORTCUT_SR: 'Passer à l’édition. Raccourci clavier: Alt et point',
       SKIP_TO_ISSUE: 'Passer à l’édition',
@@ -54,9 +54,12 @@
       TOTAL_FOUND: 'problème(s) trouvé(s) au total.',
       NOT_VISIBLE: 'L’élément que vous tentez de consulter n’est pas visible; il peut être masqué, à l’intérieur de l’accordéon ou dans le volet de l’onglet. Voir l’aperçu:',
       MISSING_ROOT: 'L\'accessibilité de la page entière a été vérifiée, car la zone cible <code>%(root)</code> n\'existe pas.',
+      MISSING_READABILITY_ROOT: 'Le score de lisibilité est basé sur la zone de contenu <code>%(fallback)</code>, car la zone cible <code>%(root)</code> n’existe pas.',
       HEADING_NOT_VISIBLE: 'L\'en-tête n\'est pas visible ; il peut être caché ou à l\'intérieur d\'un accordéon ou d\'un composant d\'onglet.',
       SKIP_TO_PAGE_ISSUES: 'Passer aux problèmes de page',
       CONSOLE_ERROR: 'Désolé, mais il y a un problème avec le vérificateur d\'accessibilité sur cette page. Pouvez-vous s\'il vous plaît <a href="%(link)">le signaler via ce formulaire</a> ou sur <a href="%(link)">GitHub</a> ?',
+      APPEARANCE: 'Apparence',
+      MOVE_PANEL: 'Déplacer le panneau',
 
       // Export
       DATE: 'Date',
@@ -167,10 +170,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'L’image est utilisé en tant que lien avec un texte autour, alors que l’attribut de rem-placement doit être signalé comme décoratif ou nul.',
       MISSING_ALT_LINK: 'L’image est utilisée en tant que lien mais manque de texte de remplacement! Veuillez vous assurer que le texte de remplacement décrit où le lien vous mène.',
       MISSING_ALT: 'Texte de remplacement manquant! Si l’image transmet un message, une émotion ou des informations importantes - assurez-vous d’ajouter une description de l’image.',
-      LINK_ALT_FILE_EXT: 'L’extension du fichier trouvé à l’intérieur du texte de remplacement. Assurez-vous que le texte de remplacement décrit la destination du lien pas une description complète de l’image. Retirer: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Le texte alternatif ne doit pas inclure les extensions de fichier ou les dimensions de l\'image. Assurez-vous que le texte de remplacement décrit la destination du lien pas une description complète de l’image. Retirer: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Texte de remplacement non-descriptif ou séparateur trouvé dans une image. Assurez-vous que le texte de remplacement décrit la destination du lien, pas une description compète de l’image. Remplacer le texte de remplacement suivant. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'La technologie d’assistance indiquer déjà que c’est une image, donc &quot;<strong {C}>%(ERROR)</strong>&quot; pourrait être redondant. Assurez-vous que le texte de remplacement décrit la destination du lien, pas la des-cription complète de l’image. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'L’extension du fichier trouvé à l’intérieur du texte de remplacement. Si l’image trans-met un message, une émotion ou une information importante - assurez-vous d’ajouter une description de l’image. Retirer: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Le texte alternatif ne doit pas inclure les extensions de fichier ou les dimensions de l\'image. Si l’image trans-met un message, une émotion ou une information importante - assurez-vous d’ajouter une description de l’image. Retirer: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Texte de remplacement non-descriptif ou séparateur trouvé dans une image. Modifier le texte de remplacement suivant pour le rendre plus significatif. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Les technologies d’assistances indiquent déjà qu’il s’agit d’une image, donc &quot;<strong {C}>%(ERROR)</strong>&quot; peut être redondant. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'L’image dans le lien est marquée comme décorative et il n’y a pas de lien de texte. Veuillez ajouter du texte de remplacement à l’image qui décrit la destination du lien.',
@@ -191,7 +194,7 @@
       LABELS_ARIA_LABEL_INPUT: 'L’entrée a un nom accessible, assurez-vouer qu’il y a aussi une étiquette visible. <hr> <strong {B}>Nom accessible</strong> <strong {C}>%(TEXT)</strong>',
       LABELS_NO_FOR_ATTRIBUTE: 'Il n’y a pas d’étiquette associée à cette entrée. Ajouter en un <code>pour</code> l’attribut de l’étiquette qui correspond <code>id</code> à l’id(identifiant) de cette entrée. <hr> <strong {B}>ID</strong> <strong {C}>#%(id)</strong>',
       LABELS_MISSING_LABEL: 'Il n’y a pas d’étiquette associée à cette entrée. Veuillez ajouter un <code>id</code> id (identifiant) à cette entrée et ajouter un <code>for</code> attribut correspondant à l’étiquette.',
-      LABELS_PLACEHOLDER: 'Le texte de remplacement qui disparaît rend difficile pour les gens de se souvenir de quelle information appartient à un champ et d’identifier et de corriger les problèmes de validation. En revanche, envisagez d\'utiliser un indice visible en permanence avant le champ du formulaire. < hr > En savoir plus: <a href="https://www.nngroup.com/articles/form-design-placeholders/">Les espaces réservés dans les champs de formulaire sont nuisibles.</a>',
+      LABELS_PLACEHOLDER: 'Le texte de remplacement qui disparaît rend difficile pour les gens de se souvenir de quelle information appartient à un champ et d’identifier et de corriger les problèmes de validation. En revanche, envisagez d\'utiliser un indice visible en permanence avant le champ du formulaire. <hr> En savoir plus: <a href="https://www.nngroup.com/articles/form-design-placeholders/">Les espaces réservés dans les champs de formulaire sont nuisibles.</a>',
 
       // Embedded content
       EMBED_VIDEO: 'Assurez-vous <strong>que les vidéos ont des sous-titres codés.</strong> Fournir les sous-titres pour tout type de contenu audio ou vidéo est une exigence obli-gatoire de Niveau A. Les sous-titres aident les gens qui sont malentendants.',

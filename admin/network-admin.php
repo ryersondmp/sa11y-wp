@@ -74,14 +74,6 @@ function sa11y_network_fields()
     'sa11y_network_options_page'
   );
 
-  // 4. Create "Embedded Content" section.
-  add_settings_section(
-    'embedded-content',
-    esc_html__(SA11Y_SECTION["EMBEDDED"]),
-    'network_embedded_callback',
-    'sa11y_network_options_page'
-  );
-
   // 5. Create "Advanced settings" section.
   add_settings_section(
     'advanced-settings',
@@ -107,20 +99,6 @@ function sa11y_network_fields()
     'sa11y_network_options_page',
     'general',
     ['label_for' => 'sa11y_network_target']
-  );
-
-  // Option: Panel Position
-  register_setting(
-    'sa11y_network_options_page',
-    'sa11y_network_panel_position',
-    'sa11y_network_validate_panel_position'
-  );
-  add_settings_field(
-    'sa11y_network_panel_position',
-    esc_html__(SA11Y_LABEL["POSITION"]),
-    'sa11y_network_panel_position_callback',
-    'sa11y_network_options_page',
-    'general',
   );
 
   // Option: Developer checks on by default
@@ -303,51 +281,6 @@ function sa11y_network_fields()
     ['label_for' => 'sa11y_network_link_flag']
   );
 
-  // Option: Video sources
-  register_setting(
-    'sa11y_network_options_page',
-    'sa11y_network_video',
-    'sa11y_sanitize_extra_text_fields'
-  );
-  add_settings_field(
-    'sa11y_network_video',
-    esc_html__(SA11Y_LABEL["VIDEO"]),
-    'sa11y_network_video_callback',
-    'sa11y_network_options_page',
-    'embedded-content',
-    ['label_for' => 'sa11y_network_video']
-  );
-
-  // Option: Audio sources
-  register_setting(
-    'sa11y_network_options_page',
-    'sa11y_network_audio',
-    'sa11y_sanitize_extra_text_fields'
-  );
-  add_settings_field(
-    'sa11y_network_audio',
-    esc_html__(SA11Y_LABEL["AUDIO"]),
-    'sa11y_network_audio_callback',
-    'sa11y_network_options_page',
-    'embedded-content',
-    ['label_for' => 'sa11y_network_audio']
-  );
-
-  // Option: Data viz sources
-  register_setting(
-    'sa11y_network_options_page',
-    'sa11y_network_dataViz',
-    'sa11y_sanitize_extra_text_fields'
-  );
-  add_settings_field(
-    'sa11y_network_dataViz',
-    esc_html__(SA11Y_LABEL["DATAVIZ"]),
-    'sa11y_network_dataViz_callback',
-    'sa11y_network_options_page',
-    'embedded-content',
-    ['label_for' => 'sa11y_network_dataViz']
-  );
-
   // Option: Do not run
   register_setting(
     'sa11y_network_options_page',
@@ -424,40 +357,6 @@ function sa11y_network_target_callback()
     </p>
   </div>
 <?php
-}
-
-// Option: Panel Position
-function sa11y_network_panel_position_callback()
-{
-  $settings = get_site_option('sa11y_network_panel_position');
-?>
-  <fieldset>
-    <legend>
-      <p>
-        <?php echo wp_kses(SA11Y_DESC["PANEL_POSITION"]["DESCRIPTION"], SA11Y_ALLOWED_HTML); ?>
-      </p>
-    </legend>
-    <label for="sa11y-left">
-      <input id="sa11y-left" type="radio" name="sa11y_network_panel_position" value="left" <?php checked('left', $settings); ?> />
-      <?php echo esc_html_e(SA11Y_DESC["PANEL_POSITION"]["LEFT"]); ?>
-    </label>
-    <label for="sa11y-right">
-      <input id="sa11y-right" type="radio" name="sa11y_network_panel_position" value="right" <?php checked('right', $settings); ?> />
-      <?php echo esc_html_e(SA11Y_DESC["PANEL_POSITION"]["RIGHT"]); ?>
-    </label>
-  </fieldset>
-<?php
-}
-
-// Validate Panel Position
-function sa11y_network_validate_panel_position($value)
-{
-  $value = sanitize_key($value);
-  $valid_position = ['left', 'right'];
-  if (!in_array($value, $valid_position, true)) {
-    $value = 'right';
-  }
-  return $value;
 }
 
 // Option: Developer checks on by default
@@ -645,80 +544,10 @@ function sa11y_network_link_flag_callback()
 <?php
 }
 
-// Embedded content callback
-function network_embedded_callback()
-{
-?>
-  <p>
-    <?php echo wp_kses(SA11Y_DESC["EMBEDDED_CONTENT_DESCRIPTION"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-  <p class="network-admin-note">
-    <?php echo wp_kses(SA11Y_DESC["NETWORK_CANNOT_OVERRIDE_SECTION"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-<?php
-}
-
-// Option: Video sources
-function sa11y_network_video_callback()
-{
-  $option = get_site_option('sa11y_network_video');
-?>
-  <input <?php echo SA11Y_TEXT_FIELD_EXTRA ?> id="sa11y_network_video" name="sa11y_network_video" value="<?php echo esc_attr($option); ?>" aria-describedby="video_desc" />
-  <p id="video_desc">
-    <?php echo wp_kses(SA11Y_DESC["VIDEO"]["DESCRIPTION"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-  <details>
-    <summary>
-      <?php echo esc_html_e(SA11Y_DESC["VIDEO"]["SHOW_SOURCES"]); ?>
-    </summary>
-    <p><?php echo esc_html_e(SA11Y_DESC["VIDEO"]["SOURCES"]); ?></p>
-  </details>
-<?php
-}
-
-// Option: Audio sources
-function sa11y_network_audio_callback()
-{
-  $option = get_site_option('sa11y_network_audio');
-?>
-  <input <?php echo SA11Y_TEXT_FIELD_EXTRA ?> id="sa11y_network_audio" name="sa11y_network_audio" value="<?php echo esc_attr($option); ?>" aria-describedby="audio_desc" />
-  <p id="audio_desc">
-    <?php echo wp_kses(SA11Y_DESC["AUDIO"]["DESCRIPTION"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-  <details>
-    <summary>
-      <?php echo esc_html_e(SA11Y_DESC["AUDIO"]["SHOW_SOURCES"]); ?>
-    </summary>
-    <p><?php echo esc_html_e(SA11Y_DESC["AUDIO"]["SOURCES"]); ?></p>
-  </details>
-<?php
-}
-
-// Option: Data visualization sources
-function sa11y_network_dataViz_callback()
-{
-  $option = get_site_option('sa11y_network_dataViz');
-?>
-  <input <?php echo SA11Y_TEXT_FIELD_EXTRA ?> id="sa11y_network_dataViz" name="sa11y_network_dataViz" value="<?php echo esc_attr($option); ?>" aria-describedby="dataviz_desc" />
-  <p id="dataviz_desc">
-    <?php echo wp_kses(SA11Y_DESC["DATA_VIZ"]["DESCRIPTION"], SA11Y_ALLOWED_HTML); ?>
-  </p>
-  <details>
-    <summary>
-      <?php echo esc_html_e(SA11Y_DESC["DATA_VIZ"]["SHOW_SOURCES"]); ?>
-    </summary>
-    <p><?php echo esc_html_e(SA11Y_DESC["DATA_VIZ"]["SOURCES"]); ?></p>
-  </details>
-<?php
-}
-
 // Section: Advanced settings callback
 function network_advanced_settings_callback()
 {
 ?>
-  <p class="network-admin-note">
-    <?php echo wp_kses(SA11Y_DESC["NETWORK_CANNOT_OVERRIDE_SECTION"], SA11Y_ALLOWED_HTML); ?>
-  </p>
 <?php
 }
 
@@ -730,6 +559,9 @@ function sa11y_network_noRun_callback()
   <input <?php echo SA11Y_TEXT_FIELD ?> id="sa11y_network_noRun" name="sa11y_network_noRun" value="<?php echo esc_attr($option); ?>" aria-describedby="no_run_desc" />
   <p id="no_run_desc">
     <?php echo wp_kses(SA11Y_DESC["NO_RUN"], SA11Y_ALLOWED_HTML); ?>
+  </p>
+  <p class="network-admin-note">
+    <?php echo wp_kses(SA11Y_DESC["NETWORK_CANNOT_OVERRIDE"], SA11Y_ALLOWED_HTML); ?>
   </p>
 <?php
 }
@@ -744,6 +576,9 @@ function sa11y_network_shadow_components_callback()
   <p id="shadow_desc">
     <?php echo wp_kses(SA11Y_DESC["SHADOW"], SA11Y_ALLOWED_HTML); ?>
   </p>
+  <p class="network-admin-note">
+    <?php echo wp_kses(SA11Y_DESC["NETWORK_CANNOT_OVERRIDE"], SA11Y_ALLOWED_HTML); ?>
+  </p>
 <?php
 }
 
@@ -756,7 +591,20 @@ function sa11y_network_extra_props_callback()
 ?>
   <textarea <?php echo SA11Y_TEXTAREA ?> id="sa11y_network_extra_props" name="sa11y_network_extra_props" aria-describedby="extra_props_desc"><?php echo esc_textarea($option); ?></textarea>
   <p id="extra_props_desc">
-    <?php echo wp_kses($string, ['a' => ['href' => []]]); ?>
+    <?php echo wp_kses($string, [
+      'a' => [
+        'href' => [],
+        'target' => [],
+        'rel' => [],
+      ],
+      'span' => [
+        'class' => [],
+        'aria-hidden' => [],
+      ],
+    ]); ?>
+  </p>
+  <p class="network-admin-note">
+    <?php echo wp_kses(SA11Y_DESC["NETWORK_CAN_OVERRIDE"], SA11Y_ALLOWED_HTML); ?>
   </p>
   <?php
 }

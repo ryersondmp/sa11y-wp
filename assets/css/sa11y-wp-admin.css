@@ -161,3 +161,8 @@ summary:focus {
 details[open] p {
   padding: 5px;
 }
+
+.CodeMirror {
+  border: 1px solid #8c8f94;
+  border-radius: 4px;
+}

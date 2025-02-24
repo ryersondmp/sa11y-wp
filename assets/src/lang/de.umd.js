@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.0.2
+  * @version 4.1.1
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -42,7 +42,7 @@
       PAGE_ISSUES: 'Seitenprobleme',
       SETTINGS: 'Einstellungen',
       DEVELOPER_CHECKS: 'Entwicklerprüfungen',
-      DEVELOPER_DESC: 'Überprüft Probleme, die möglicherweise Programmierkenntnisse zur Behebung erfordern.',
+      DEVELOPER_DESC: 'Überprüft Probleme, deren Behebung Programmierkenntnisse erfordern kann, wie HTML-Attribute, Formulare und mehr.',
       DARK_MODE: 'Dark mode',
       SHORTCUT_SR: 'Zum Eintrag springen. Keyboard shortcut: Alt Punkt',
       SKIP_TO_ISSUE: 'Zum Eintrag springen',
@@ -54,9 +54,12 @@
       TOTAL_FOUND: 'Einträge insgesamt gefunden.',
       NOT_VISIBLE: 'Das Element, das Sie anzeigen möchten, ist nicht sichtbar; es ist möglicherweise ausgeblendet oder befindet sich in einer Akkordeon- oder Registerkartenkomponente. Hier ist eine Vorschau:',
       MISSING_ROOT: 'Die gesamte Seite wurde auf Barrierefreiheit geprüft, da der Zielbereich <code>%(root)</code> nicht existiert.',
+      MISSING_READABILITY_ROOT: 'Die Lesbarkeitsbewertung basiert auf dem Inhaltsbereich <code>%(fallback)</code>, da der Zielbereich <code>%(root)</code> nicht existiert.',
       HEADING_NOT_VISIBLE: 'Die Überschrift ist nicht sichtbar; sie kann ausgeblendet sein oder sich innerhalb einer Akkordeon- oder Registerkartenkomponente befinden.',
       SKIP_TO_PAGE_ISSUES: 'Zu Seitenproblemen springen',
       CONSOLE_ERROR: 'Leider liegt ein Problem mit der Barrierefreiheitsprüfung auf dieser Seite vor. Können Sie es bitte <a href="%(link)">über dieses Formular</a> oder auf <a href="%(link)">GitHub</a> melden?',
+      APPEARANCE: 'Erscheinungsbild',
+      MOVE_PANEL: 'Panel verschieben',
 
       // Dismiss
       PANEL_DISMISS_BUTTON: 'Zeige %(dismissCount) abgelehnte',
@@ -189,10 +192,10 @@
       MISSING_ALT_LINK_HAS_TEXT: 'Das Bild wird als Link mit umliegendem Text verwendet, obwohl das alt-Attribut als dekorativ oder null markiert sein sollte.',
       MISSING_ALT_LINK: 'Das Bild wird als Link verwendet, aber es fehlt der Alt-Text! Bitte stellen Sie sicher, dass der Alt-Text beschreibt, wohin der Link Dich führt.',
       MISSING_ALT: 'Fehlender Alt text! Wenn das Bild eine Geschichte, eine Stimmung oder eine wichtige Information vermittelt - beschreibe das Bild unbedingt.',
-      LINK_ALT_FILE_EXT: 'Dateierweiterung im Alt-Text gefunden. Achte darauf, dass der Alt-Text das Ziel des Links beschreibt und nicht eine wörtliche Beschreibung des Bildes ist. Entferne: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
+      LINK_ALT_FILE_EXT: 'Alternativtext sollte keine Dateierweiterungen oder Bildmaße enthalten. Achte darauf, dass der Alt-Text das Ziel des Links beschreibt und nicht eine wörtliche Beschreibung des Bildes ist. Entferne: <strong {C}>%(ERROR)</strong> <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_PLACEHOLDER_ALT: 'Nicht beschreibender oder Platzhalter-Alt-Text innerhalb eines verlinkten Bildes gefunden. Achte darauf, dass der Alt-Text das Ziel des Links beschreibt und nicht eine wörtliche Beschreibung des Bildes ist. Ersetzen Sie den folgenden Alt-Text. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_SUS_ALT: 'Assistive Technologien zeigen bereits an, dass es sich um ein Bild handelt, so dass &quot;<strong {C}>%(ERROR)</strong>&quot; möglicherweise überflüssig ist. Achte darauf, dass der Alt-Text das Ziel des Links beschreibt und nicht eine wörtliche Beschreibung des Bildes ist. <hr> {ALT} {L} <strong {C}>%(ALT_TEXT)</strong>',
-      ALT_FILE_EXT: 'Dateierweiterung im Alt-Text gefunden. Wenn das Bild eine Geschichte, eine Stimmung oder eine wichtige Information vermittelt - beschreibe das Bild unbedingt. Entferne: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
+      ALT_FILE_EXT: 'Alternativtext sollte keine Dateierweiterungen oder Bildmaße enthalten. Wenn das Bild eine Geschichte, eine Stimmung oder eine wichtige Information vermittelt - beschreibe das Bild unbedingt. Entferne: <strong {C}>%(ERROR)</strong> <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       ALT_PLACEHOLDER: 'Nicht-beschreibender oder Platzhalter-Alt-Text gefunden. Ersetze den folgenden Alt-Text durch einen aussagekräftigeren Text. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       SUS_ALT: 'Assistive Technologien zeigen bereits an, dass es sich um ein Bild handelt, so dass &quot;<strong {C}>%(ERROR)</strong>&quot; möglicherweise überflüssig ist. <hr> {ALT} <strong {C}>%(ALT_TEXT)</strong>',
       LINK_IMAGE_NO_ALT_TEXT: 'Das Bild innerhalb des Links ist als dekorativ gekennzeichnet und es gibt keinen Linktext. Bitte füge dem Bild einen Alt-Text hinzu, der das Ziel des Links beschreibt.',

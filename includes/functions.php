@@ -29,16 +29,17 @@ function sa11y_get_defaultOptions()
   $defaultReadabilityTarget = empty($getNetworkReadabilityTarget) ? '' : $getNetworkReadabilityTarget;
 
   // Checkboxes
-  $defaultPanelPosition = is_multisite() ? get_site_option('sa11y_network_panel_position') : 'right';
   $defaultDeveloperChecks = is_multisite() ? get_site_option('sa11y_network_developer_checks') : 1;
   $defaultReadability = is_multisite() ? get_site_option('sa11y_network_readability') : 1;
+  $defaultShowImageEditLink = get_site_option('sa11y_edit_image_link');
 
   /* Default options */
   $defaultOptions = [
     // General
     'sa11y_enable' => absint(1),
     'sa11y_target' => esc_html($defaultTarget),
-    'sa11y_panel_position' => esc_html($defaultPanelPosition),
+    'sa11y_developer_checks' => absint($defaultDeveloperChecks),
+    'sa11y_edit_image_link' => absint($defaultShowImageEditLink),
 
     // Readability
     'sa11y_readability' => absint($defaultReadability),
@@ -55,13 +56,7 @@ function sa11y_get_defaultOptions()
     'sa11y_link_ignore_span' => esc_html(''),
     'sa11y_links_to_flag' => esc_html(''),
 
-    // Embedded content
-    'sa11y_video_sources' => esc_html(''),
-    'sa11y_audio_sources' => esc_html(''),
-    'sa11y_dataviz_sources' => esc_html(''),
-
     // Advanced settings
-    'sa11y_developer_checks' => absint($defaultDeveloperChecks),
     'sa11y_no_run' => esc_html(''),
     'sa11y_export_results' => absint(0),
     'sa11y_shadow_components' => esc_html(''),
@@ -189,7 +184,8 @@ function sa11y_init()
   // General
   $enable = absint(sa11y_get_settings('sa11y_enable'));
   $checkRoot = esc_html__(sa11y_get_settings('sa11y_target'));
-  $panelPosition = esc_html__(sa11y_get_settings('sa11y_panel_position'));
+  $getDeveloperChecks = absint(sa11y_get_settings('sa11y_developer_checks'));
+  $getImageEditLink = absint(sa11y_get_settings('sa11y_edit_image_link'));
 
   // Readability
   $getReadability = absint(sa11y_get_settings('sa11y_readability'));
@@ -206,17 +202,20 @@ function sa11y_init()
   $getLinkIgnoreSpan = esc_html(sa11y_get_settings('sa11y_link_ignore_span'));
   $getLinksToFlag = esc_html(sa11y_get_settings('sa11y_links_to_flag'));
 
-  // Embedded content
-  $getVideoContent = wp_filter_nohtml_kses(sa11y_get_settings('sa11y_video_sources'));
-  $getAudioContent = wp_filter_nohtml_kses(sa11y_get_settings('sa11y_audio_sources'));
-  $getDataVizContent = wp_filter_nohtml_kses(sa11y_get_settings('sa11y_dataviz_sources'));
-
   // Advanced settings
-  $getDeveloperChecks = absint(sa11y_get_settings('sa11y_developer_checks'));
   $getExportResults = absint(sa11y_get_settings('sa11y_export_results'));
   $getNoRun = esc_html(sa11y_get_settings('sa11y_no_run'));
   $getShadowComponents = esc_html(sa11y_get_settings('sa11y_shadow_components'));
-  $getExtraProps = wp_filter_nohtml_kses(sa11y_get_settings('sa11y_extra_props'));
+  $getExtraProps = wp_kses(sa11y_get_settings('sa11y_extra_props'), [
+    'strong' => [
+      'class' => true,
+    ],
+    'em' => true,
+    'hr' => true,
+    'a' => [
+      'href' => true,
+    ],
+  ]);
 
   /* ******************** */
   /*  Get network values  */
@@ -230,14 +229,21 @@ function sa11y_init()
   $networkLinkIgnore = esc_html(get_site_option('sa11y_network_link_ignore'));
   $networkLinkIgnoreSpan = esc_html(get_site_option('sa11y_network_link_ignore_span'));
   $networkLinkFlag = esc_html(get_site_option('sa11y_network_link_flag'));
-
-  $networkVideo = wp_filter_nohtml_kses(get_site_option('sa11y_network_video'));
-  $networkAudio = wp_filter_nohtml_kses(get_site_option('sa11y_network_audio'));
-  $networkDataViz = wp_filter_nohtml_kses(get_site_option('sa11y_network_dataViz'));
-
   $networkNoRun = esc_html(get_site_option('sa11y_network_noRun'));
   $networkShadowComponents = esc_html(get_site_option('sa11y_network_shadow_components'));
-  $networkExtraProps = wp_filter_nohtml_kses(get_site_option('sa11y_network_extra_props'));
+  $networkExtraProps = wp_kses(
+    get_site_option('sa11y_network_extra_props'),
+    [
+      'strong' => [
+        'class' => true,
+      ],
+      'em' => true,
+      'hr' => true,
+      'a' => [
+        'href' => true,
+      ],
+    ]
+  );
 
   /* ********************************************** */
   /*  Combine defaults, local and network options.  */
@@ -245,9 +251,6 @@ function sa11y_init()
 
   // Global defaults
   $defaultIgnore = '#query-monitor-main, #wpadminbar';
-  $videoDefault = 'youtube.com, vimeo.com, yuja.com, panopto.com';
-  $audioDefault = 'soundcloud.com, simplecast.com, podbean.com, buzzsprout.com, blubrry.com, transistor.fm, fusebox.fm, libsyn.com';
-  $dataVizDefault = 'datastudio.google.com, tableau';
 
   // Exclusions
   $containerIgnore = $networkContainerIgnore
@@ -286,19 +289,6 @@ function sa11y_init()
     ? "{$networkLinkFlag}, {$getLinksToFlag}"
     : $getLinksToFlag;
 
-  // Embedded content
-  $videoContent = $networkVideo
-    ? "{$videoDefault}, {$networkVideo}, {$getVideoContent}"
-    : "{$videoDefault}, {$getVideoContent}";
-
-  $audioContent = $networkAudio
-    ? "{$audioDefault}, {$networkAudio}, {$getAudioContent}"
-    : "{$audioDefault}, {$getAudioContent}";
-
-  $dataVizContent = $networkDataViz
-    ? "{$dataVizDefault}, {$networkDataViz}, {$getDataVizContent}"
-    : "{$dataVizDefault}, {$getDataVizContent}";
-
   // Advanced
   $noRun = $networkNoRun
     ? "{$networkNoRun}, {$getNoRun}"
@@ -308,18 +298,18 @@ function sa11y_init()
     ? "{$networkShadowComponents}, {$getShadowComponents}"
     : $getShadowComponents;
 
-  $extraProps = $networkExtraProps
-    ? "{$networkExtraProps}, {$getExtraProps}"
-    : $getExtraProps;
+  // Show "Edit" image link in Images panel.
+  $getImageEditLink = $getImageEditLink === 1
+    ? ['relativePathImageID' => 'wp-image-', 'editImageURLofCMS' => '/wp-admin/upload.php?item=']
+    : [];
 
   /* ******************************** */
   /* Final prep before instantiation. */
   /* ******************************** */
 
   // Prepare object.
-  $sa11yOptionsArray = [
+  $sa11yOptionsArray = array_merge([
     'checkRoot' => empty($checkRoot) ? 'body' : $checkRoot,
-    'panelPosition' => $panelPosition,
     'developerChecksOnByDefault' => ($getDeveloperChecks === 1) ? 1 : 0,
     'readabilityPlugin' => ($getReadability === 1) ? 1 : 0,
     'readabilityRoot' => empty($getReadabilityTarget) ? 'body' : $getReadabilityTarget,
@@ -333,12 +323,9 @@ function sa11y_init()
     'linkIgnore' => $linkIgnore,
     'linkIgnoreSpan' => $linkIgnoreSpan,
     'linksToFlag' => $linksToFlag,
-    'videoContent' => $videoContent,
-    'audioContent' => $audioContent,
-    'dataVizContent' => $dataVizContent,
     'doNotRun' => $noRun,
-    'shadowComponents' => $shadowComponents,
-  ];
+    'shadowComponents' => $shadowComponents
+  ], $getImageEditLink);
 
   // Remove trailing commas and empty space at beginning or end of values.
   foreach ($sa11yOptionsArray as $key => $value) {
@@ -347,13 +334,26 @@ function sa11y_init()
     $sa11yOptionsArray[$key] = $cleanValue;
   }
 
+  /* ******************************** */
+  /*  Prepare extra props.            */
+  /* ******************************** */
+
   // JSONify extra props.
-  function parseExtraOptions($input)
+  function parseExtraProps(string $input)
   {
-    $json = '{' . rtrim(trim($input), ',') . '}';
-    $json = preg_replace('/\\\\"/', '"', $json); // Remove escaped double quotes.
-    $json = preg_replace('/(\w+):/', '"$1":', $json); // Adds quotes around keys.
-    $parsed = json_decode($json, true);
+    // Wrap in curly braces if not already.
+    $input = trim($input);
+    if ($input[0] !== '{') $input = "{ $input }";
+
+    // Ensure keys are properly quoted.
+    $input = preg_replace('/(\w+):/i', '"$1":', $input);
+
+    // Remove unnecessary escape characters and fix trailing commas.
+    $input = str_replace(['\"', ',}'], ['"', '}'], $input);
+    $input = preg_replace('/,\s*([\]}])/', '$1', $input);
+
+    // Decode as an associative array.
+    $parsed = json_decode($input, true);
 
     // Return an empty array if parsing fails.
     if (json_last_error() !== JSON_ERROR_NONE) {
@@ -364,9 +364,20 @@ function sa11y_init()
     return $parsed ?: [];
   }
 
-  // Main processing code
-  $getExtraPropsOptions = !empty($extraProps) ? parseExtraOptions($extraProps) : [];
-  $allSa11yOptions = array_merge($sa11yOptionsArray, $getExtraPropsOptions);
+  // Process extra props for textareas.
+  $localExtraProps = !empty($getExtraProps)
+    ? parseExtraProps($getExtraProps)
+    : [];
+  $networkExtraProps = empty($localExtraProps) && !empty($networkExtraProps)
+    ? parseExtraProps($networkExtraProps)
+    : [];
+
+  // Prioritize local extra props over network extra props.
+  $allSa11yOptions = !empty($getExtraProps)
+    ? array_merge($sa11yOptionsArray, $localExtraProps)
+    : array_merge($sa11yOptionsArray, $networkExtraProps);
+
+  // Encode final options as JSON.
   $allSa11yOptions = json_encode($allSa11yOptions, JSON_UNESCAPED_SLASHES);
 
   //Allowed characters.
@@ -405,3 +416,45 @@ function sa11y_init()
   }
 }
 add_action('wp_footer', 'sa11y_init');
+
+/* ******************* */
+/*  Code Mirror        */
+/* ******************* */
+add_action('admin_enqueue_scripts', 'codemirror_enqueue_scripts');
+add_action('network_admin_enqueue_scripts', 'codemirror_enqueue_scripts');
+function codemirror_enqueue_scripts()
+{
+  $settings = wp_enqueue_code_editor(['type' => 'application/json']);
+  if ($settings) {
+    wp_localize_script('wp-theme-plugin-editor', 'sa11y_extra_props_textarea', $settings);
+    wp_enqueue_script('wp-theme-plugin-editor');
+    wp_enqueue_style('wp-codemirror');
+    add_action('admin_footer', 'my_init_codemirror');
+  }
+}
+
+function my_init_codemirror()
+{
+?>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const textarea = document.getElementById('sa11y_extra_props') || document.getElementById('sa11y_network_extra_props');
+      if (textarea) {
+        const customConfig = Object.assign({}, sa11y_extra_props_textarea, {
+          codemirror: {
+            mode: "javascript",
+            lineNumbers: true,
+            indentUnit: 2,
+            tabSize: 2,
+            theme: "default",
+            autoCloseBrackets: true,
+            matchBrackets: true,
+            lineWrapping: true,
+          },
+        });
+        wp.codeEditor.initialize(textarea, customConfig);
+      }
+    });
+  </script>
+<?php
+}

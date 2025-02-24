@@ -84,14 +84,30 @@ function sa11y_sanitize_extra_text_fields($value)
 // Sanitize TEXT AREA fields.
 function sa11y_sanitize_textarea_fields($value)
 {
-  global $sa11y_replaceExtraHTML;
-  $sanitizedValue = sanitize_textarea_field($value);
-  // Strip all characters except numbers, letters, quotes, .,: and whitespace.
-  $sanitizedValue = preg_replace('/[^a-zA-Z0-9.,{}\':()%"_\s]/', '', $sanitizedValue);
-  $sanitizedValue = preg_replace('/^(javascript|data):/', '', $sanitizedValue); // URL schemes
-  $sanitizedValue = strtr($sanitizedValue, $sa11y_replaceExtraHTML); // Remove extra HTML entities.
-  $sanitizedValue = preg_replace('/ +/', ' ', $sanitizedValue); // Remove excessive white space.
-  $sanitizedValue = rtrim(trim($sanitizedValue), ','); // Remove trailing comma.
-  $sanitizedValue = substr($sanitizedValue, 0, 4000); // Max 4000 characters.
+  $sanitizedValue = wp_kses($value, [
+    'strong' => [
+      'class' => true,
+    ],
+    'em' => true,
+  ]);
+  $replaceCharacters = [
+    '&gt;' => '>',
+    '&lt;' => '',
+    '`' => '',
+    '|' => '',
+    '$' => '',
+    '+' => '',
+    '\\' => '',
+    '--' => '-',
+    '@' => '',
+    ';' => '',
+    'amp' => 'amp;',
+    ': \'' => ': "',
+    '\',' => '",',
+  ];
+  $sanitizedValue = strtr(trim($sanitizedValue), $replaceCharacters);
+  $sanitizedValue = preg_replace('/(javascript|data|vbscript):/i', '', $sanitizedValue); // URL schemes.
+  $sanitizedValue = rtrim($sanitizedValue, ','); // Remove trailing commas.
+  $sanitizedValue = substr($sanitizedValue, 0, 10000); // Max characters.
   return $sanitizedValue;
 }
