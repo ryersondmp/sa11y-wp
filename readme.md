@@ -17,6 +17,9 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.2.1
+* Update plugin short description.
+
 ### 1.2.0
 * Upgrade to Sa11y 4.1.1
 * Simplified admin settings page. Removal of "Panel Position" option and embedded content sources.

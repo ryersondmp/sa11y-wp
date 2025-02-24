@@ -4,11 +4,11 @@ Tags: accessibility, accessibility automated testing, accessibility checker, wca
 Requires at least: 5.6
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Sa11y is an accessibility quality assurance tool that visually highlights common accessibility and usability issues. Geared towards content authors, Sa11y straightforwardly identifies errors or warnings at the source.
+Geared towards content authors, Sa11y straightforwardly identifies accessibility issues at the source.
 
 == Description ==
 
@@ -36,6 +36,14 @@ Visit the [project website](https://sa11y.netlify.app/) for a demo or to learn m
 4. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.2.1 =
+* Upgrade to Sa11y 4.1.1
+* Simplified admin settings page. Removal of "Panel Position" option and embedded content sources.
+* Content authors can now change the panel position through Sa11y's settings panel.
+* Enhanced "Extra Props" section. Admins can customize or turn off any check programatically via props.
+* New experimental setting! Show "Edit" links in Images panel: Enabling this option will show an "Edit" link for each image in the Images panel if uploaded to the Media Library. This allows content authors to quickly add alt text to an image.
+* Updated plugin description.
 
 = 1.2.0 =
 * Upgrade to Sa11y 4.1.1
