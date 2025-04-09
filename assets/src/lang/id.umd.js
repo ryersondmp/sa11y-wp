@@ -1,7 +1,7 @@
 
 /*!
   * Sa11y, the accessibility quality assurance assistant.
-  * @version 4.1.1
+  * @version 4.1.6
   * @author Adam Chaboryk
   * @license GPL-2.0-or-later
   * @copyright © 2020 - 2025 Toronto Metropolitan University.
@@ -32,7 +32,8 @@
       OFF: 'Mati',
       ALERT_TEXT: 'Waspada',
       ALERT_CLOSE: 'Tutup',
-      OUTLINE: 'Halaman',
+      OUTLINE: 'Kerangka',
+      READABILITY_DESC: 'Menampilkan skor keterbacaan di tab <strong>Kerangka</strong> untuk membantu mengukur kesulitan membaca.',
       TITLE: 'Judul',
       ALT: 'ALT',
       IMAGES: 'Gambar',
@@ -278,23 +279,24 @@
       TABLES_EMPTY_HEADING: 'Header tabel kosong ditemukan! Header tabel tidak boleh kosong. Penting untuk menentukan header baris dan/atau kolom untuk menyampaikan hubungan mereka. Informasi ini memberikan konteks kepada orang-orang yang menggunakan teknologi bantu. Harap diingat bahwa tabel harus digunakan hanya untuk data tabular. <hr> Pelajari lebih lanjut tentang <a href="https://www.w3.org/WAI/tutorials/tables/">tabel yang dapat diakses.</a>',
 
       // Contrast
-      CONTRAST_ERROR: 'Teks tidak memiliki kontras yang cukup dengan latar belakang, membuatnya sulit dibaca.',
-      CONTRAST_WARNING: 'Kontras teks ini tidak diketahui dan perlu ditinjau secara manual. Pastikan teks dan latar belakang memiliki kontras yang kuat.',
+      CONTRAST_NORMAL: 'Teks ukuran normal harus memiliki rasio kontras setidaknya %(RATIO).',
+      CONTRAST_LARGE: 'Teks ukuran besar harus memiliki rasio kontras setidaknya %(RATIO).',
+      CONTRAST_ERROR: 'Teks tidak memiliki kontras yang cukup dengan latar belakang, sehingga sulit untuk dibaca.',
+      CONTRAST_WARNING: 'Kontras teks ini tidak diketahui dan harus ditinjau secara manual. Pastikan teks dan latar belakang memiliki perbedaan warna yang kuat.',
       CONTRAST_ERROR_GRAPHIC: 'Grafik tidak memiliki kontras yang cukup dengan latar belakang, sehingga sulit untuk dilihat.',
-      CONTRAST_WARNING_GRAPHIC: 'Kontras grafik ini tidak diketahui dan perlu ditinjau secara manual. Pastikan grafik dan latar belakang memiliki kontras yang kuat.',
+      CONTRAST_WARNING_GRAPHIC: 'Kontras grafik ini tidak diketahui dan harus ditinjau secara manual.',
+      CONTRAST_TIP_GRAPHIC: 'Grafik dan elemen antarmuka pengguna harus memiliki rasio kontras minimal 3:1.',
       CONTRAST_OPACITY: 'Tingkatkan opasitas untuk visibilitas yang lebih baik.',
-      CONTRAST_APCA: 'Ini tidak memiliki kontras yang cukup untuk teks dengan ukuran apa pun. Pertimbangkan untuk menggunakan kombinasi warna dan ukuran teks ini?',
-      CONTRAST_COLOR: 'Pertimbangkan menggunakan warna ini sebagai pengganti?',
-      CONTRAST_SIZE: 'Pertimbangkan untuk membuat ukuran teks lebih besar untuk kombinasi warna ini?',
-      CONTRAST_PLACEHOLDER: 'Teks placeholder dalam input ini tidak memiliki kontras yang cukup dengan latar belakang, membuatnya sulit dibaca.',
-      CONTRAST_INPUT: 'Teks dalam input ini tidak memiliki kontras yang cukup dengan latar belakang, membuatnya sulit dibaca.',
+      CONTRAST_APCA: 'Kontras ini tidak cukup untuk ukuran teks apa pun. Apakah Anda ingin menggunakan kombinasi warna dan ukuran teks ini?',
+      CONTRAST_COLOR: 'Apakah Anda ingin menggunakan warna ini sebagai gantinya?',
+      CONTRAST_SIZE: 'Apakah Anda ingin memperbesar ukuran teks untuk kombinasi warna ini?',
+      CONTRAST_PLACEHOLDER: 'Teks placeholder dalam input ini tidak memiliki kontras yang cukup dengan latar belakang, sehingga sulit dibaca.',
+      CONTRAST_INPUT: 'Teks dalam input ini tidak memiliki kontras yang cukup dengan latar belakang, sehingga sulit dibaca.',
       CONTRAST: 'Kontras',
       UNKNOWN: 'Tidak diketahui',
-      LARGE_TEXT: 'Teks Besar',
-      BODY_TEXT: 'Teks Tubuh',
-      FG: 'Teks Depan',
-      BG: 'Latar Belakang',
-      NON_TEXT: 'Bukan Teks',
+      FG: 'Latar depan',
+      BG: 'Latar belakang',
+      NO_SUGGESTION: 'Tidak ada kombinasi aksesibel yang dapat ditemukan dengan hanya mengubah warna teks. Coba ubah warna latar belakang.',
     },
   };
 

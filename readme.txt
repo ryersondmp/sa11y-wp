@@ -4,7 +4,7 @@ Tags: accessibility, accessibility automated testing, accessibility checker, wca
 Requires at least: 5.6
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,13 @@ Visit the [project website](https://sa11y.netlify.app/) for a demo or to learn m
 4. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.2.2 =
+* Upgrade to Sa11y 4.1.6
+* Contrast tools and colour pickers are further simplified. A simple "Good" badge is shown when the colour picker finds a colour that meets contrast for the element in context, whether it's normal-sized text or large-sized text.
+* Support for Level AAA contrast checking via prop "contrastAAA".
+* Images from the same origin are converted to Base64 in the Export HTML report feature, ensuring image previews are embedded within the report for improved usability.
+* Minor visual improvements to the HTML report.
 
 = 1.2.1 =
 * Upgrade to Sa11y 4.1.1

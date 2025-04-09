@@ -17,6 +17,9 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.2.2
+* Upgrade to Sa11y 4.1.6
+
 ### 1.2.1
 * Update plugin short description.
 
