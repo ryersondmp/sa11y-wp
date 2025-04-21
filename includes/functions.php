@@ -1,7 +1,14 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
+
+
+/* For testing: Imitate Pressbooks installation.
+if (! class_exists('\Pressbooks\Book')) {
+  class ImitatePressbooksBook {}
+  class_alias('ImitatePressbooksBook', '\Pressbooks\Book');
+} */
 
 /**
  * Sets up custom filters for the plugin's output.
@@ -19,19 +26,46 @@ add_filter('plugin_action_links_' . SA11Y_BASE, 'add_action_links');
 function sa11y_get_defaultOptions()
 {
 
-  /* Get Network defaults. */
-  // Target
-  $getNetworkTarget = get_site_option('sa11y_network_target');
-  $defaultTarget = empty($getNetworkTarget) ? '' : $getNetworkTarget;
+  /* Custom defaults for Pressbooks */
+  $is_pressbooks = class_exists('\Pressbooks\Book');
 
-  // Readability target
+  // Main target/root.
+  $getNetworkTarget = get_site_option('sa11y_network_target');
+  if ($is_pressbooks) {
+    $defaultTarget = empty($getNetworkTarget) ? 'main' : $getNetworkTarget;
+  } else {
+    $defaultTarget = empty($getNetworkTarget) ? '' : $getNetworkTarget;
+  }
+
+  // Readability root/target.
   $getNetworkReadabilityTarget = get_site_option('sa11y_network_readability_target');
-  $defaultReadabilityTarget = empty($getNetworkReadabilityTarget) ? '' : $getNetworkReadabilityTarget;
+  if ($is_pressbooks) {
+    $defaultReadabilityTarget = empty($getNetworkReadabilityTarget) ? 'main' : $getNetworkReadabilityTarget;
+  } else {
+    $defaultReadabilityTarget = empty($getNetworkReadabilityTarget) ? '' : $getNetworkReadabilityTarget;
+  }
+
+  // Exclusions
+  $defaultContainerIgnore = $is_pressbooks ? '#comments, nav' : '#comments';
+  $defaultHeaderIgnore = $is_pressbooks ? 'nav h1, nav h2, nav h3' : '';
+  $defaultImageIgnore = $is_pressbooks ? '.license-attribution img' : '';
 
   // Checkboxes
-  $defaultDeveloperChecks = is_multisite() ? get_site_option('sa11y_network_developer_checks') : 1;
+  $getNetworkDeveloperChecks = get_site_option('sa11y_network_developer_checks');
+  if ($is_pressbooks) {
+    $defaultDeveloperChecks = empty($getNetworkDeveloperChecks) ? 0 : $getNetworkDeveloperChecks;
+  } else {
+    $defaultDeveloperChecks = empty($getNetworkDeveloperChecks) ? 1 : $getNetworkDeveloperChecks;
+  }
+
   $defaultReadability = is_multisite() ? get_site_option('sa11y_network_readability') : 1;
   $defaultShowImageEditLink = get_site_option('sa11y_edit_image_link');
+  $defaultNoRun = $is_pressbooks ? 'section.book-header' : '';
+
+  // Customized props for PressBooks mode.
+  $defaultExtraProps = $is_pressbooks
+    ? 'showTitleInPageOutline: false, checkAllHideToggles: true,'
+    : 'showTitleInPageOutline: false,';
 
   /* Default options */
   $defaultOptions = [
@@ -47,20 +81,20 @@ function sa11y_get_defaultOptions()
     'sa11y_readability_ignore' => esc_html(''),
 
     // Exclusions
-    'sa11y_container_ignore' => esc_html('#comments'),
+    'sa11y_container_ignore' => esc_html($defaultContainerIgnore),
     'sa11y_contrast_ignore' => esc_html(''),
     'sa11y_outline_ignore' => esc_html(''),
-    'sa11y_header_ignore' => esc_html(''),
-    'sa11y_image_ignore' => esc_html(''),
+    'sa11y_header_ignore' => esc_html($defaultHeaderIgnore),
+    'sa11y_image_ignore' => esc_html($defaultImageIgnore),
     'sa11y_link_ignore' => esc_html('nav *, [role="navigation"] *'),
     'sa11y_link_ignore_span' => esc_html(''),
     'sa11y_links_to_flag' => esc_html(''),
 
     // Advanced settings
-    'sa11y_no_run' => esc_html(''),
+    'sa11y_no_run' => esc_html($defaultNoRun),
     'sa11y_export_results' => absint(0),
     'sa11y_shadow_components' => esc_html(''),
-    'sa11y_extra_props' => esc_html(''),
+    'sa11y_extra_props' => esc_html($defaultExtraProps),
   ];
 
   // Allow dev to filter the default settings.
@@ -76,6 +110,26 @@ function sa11y_get_settings($option = '')
   $settings = get_option('sa11y_settings', sa11y_get_defaultOptions());
   return $settings[$option] ?? null;
 }
+
+/**
+ * If we're inside a Pressbook, offset control panel so it doesn't overlap navigation.
+ */
+function sa11y_pressbooks_css()
+{
+  $enable = sa11y_get_settings('sa11y_enable');
+  if ($enable !== 1 || ! is_user_logged_in() || ! class_exists('\Pressbooks\Book')) {
+    return;
+  }
+
+  $user = wp_get_current_user();
+  $allowed_roles = ['editor', 'administrator', 'author', 'contributor'];
+  $user_has_allowed_role = array_intersect($allowed_roles, (array) $user->roles);
+
+  if ($user_has_allowed_role || current_user_can('edit_posts') || current_user_can('edit_pages')) {
+    echo '<style id="sa11y-pressbooks">:root {--sa11y-toggle-y-offset: 45px;}</style>';
+  }
+}
+add_action('wp_head', 'sa11y_pressbooks_css');
 
 /**
  * Loads the scripts for the plugin.
@@ -100,37 +154,7 @@ function sa11y_load_scripts()
     $splitLang = explode('_', get_locale());
     $lang      = $splitLang[0];
     $country   = $splitLang[1] ?? '';
-    $languages = [
-      'bg',
-      'cs',
-      'da',
-      'de',
-      'el',
-      'en',
-      'es',
-      'et',
-      'fi',
-      'fr',
-      'hu',
-      'id',
-      'it',
-      'ja',
-      'ko',
-      'lt',
-      'lv',
-      'nb',
-      'nl',
-      'pl',
-      'pt',
-      'ro',
-      'sl',
-      'sk',
-      'sv',
-      'tr',
-      'ua',
-      'uk',
-      'zh',
-    ];
+    $languages = ['bg', 'cs', 'da', 'de', 'el', 'en', 'es', 'et', 'fi', 'fr', 'hu', 'id', 'it', 'ja', 'ko', 'lt', 'lv', 'nb', 'nl', 'pl', 'pt', 'ro', 'sl', 'sk', 'sv', 'tr', 'ua', 'uk', 'zh'];
 
     // Check if Sa11y supports language.
     if (!in_array($lang, $languages)) {
@@ -365,9 +389,7 @@ function sa11y_init()
   }
 
   // Process extra props for textareas.
-  $localExtraProps = !empty($getExtraProps)
-    ? parseExtraProps($getExtraProps)
-    : [];
+  $localExtraProps = !empty($getExtraProps) ? parseExtraProps($getExtraProps) : [];
   $networkExtraProps = empty($localExtraProps) && !empty($networkExtraProps)
     ? parseExtraProps($networkExtraProps)
     : [];

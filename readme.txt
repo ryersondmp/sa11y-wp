@@ -2,9 +2,9 @@
 Contributors: adamchaboryk
 Tags: accessibility, accessibility automated testing, accessibility checker, wcag, audit
 Requires at least: 5.6
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,10 +37,14 @@ Visit the [project website](https://sa11y.netlify.app/) for a demo or to learn m
 
 == Changelog ==
 
+= 1.2.3 =
+* Provided a default configuration for PressBooks to make setup more turnkey.
+* Upgrade to Sa11y 4.1.8
+
 = 1.2.2 =
 * Upgrade to Sa11y 4.1.6
+* Support for Level AAA contrast checking via prop contrastAAA.
 * Contrast tools and colour pickers are further simplified. A simple "Good" badge is shown when the colour picker finds a colour that meets contrast for the element in context, whether it's normal-sized text or large-sized text.
-* Support for Level AAA contrast checking via prop "contrastAAA".
 * Images from the same origin are converted to Base64 in the Export HTML report feature, ensuring image previews are embedded within the report for improved usability.
 * Minor visual improvements to the HTML report.
 
