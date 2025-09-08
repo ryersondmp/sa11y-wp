@@ -17,6 +17,9 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.2.4
+* Upgrade to Sa11y 4.2.1
+
 ### 1.2.3
 * Provided a default configuration for PressBooks to make setup more turnkey.
 * Upgrade to Sa11y 4.1.8
