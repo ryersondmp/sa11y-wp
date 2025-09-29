@@ -4,7 +4,7 @@ Tags: accessibility, accessibility automated testing, accessibility checker, wca
 Requires at least: 5.6
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,14 @@ Visit the [project website](https://sa11y.netlify.app/) for a demo or to learn m
 4. The Advanced Settings page where admins can customize different settings.
 
 == Changelog ==
+
+= 1.2.5 =
+* Upgrade to Sa11y 4.3.1
+* Images in the Images panel are now clickable, matching the behaviour of the Outline panel.
+* Images panel now indicates visually hidden images using an eye icon, similar to the Outline panel.
+* New check for unpronounceable characters in alt text.
+* Improved annotation positioning.
+* Colour suggestions for contrast issues in tooltips are clickable. * Clicking the hex code will update the colour preview within the tooltip and copies the hex code to the clipboard.
 
 = 1.2.4 =
 * Upgrade to Sa11y 4.2.1
