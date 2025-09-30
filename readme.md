@@ -17,6 +17,9 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
+### 1.2.6
+* Upgrade to Sa11y 4.3.2
+
 ### 1.2.5
 * Upgrade to Sa11y 4.3.1
 
