@@ -1,8 +1,6 @@
 # Sa11y on WordPress
 This is the development environment for [Sa11y](https://github.com/ryersondmp/sa11y).
 
-Documentation for WordPress plugin coming soon.
-
 ## How to report bugs
 Report bugs by creating a new issue. If you do not have a GitHub account, please submit your issue using this [Google Form.](https://forms.gle/sjzK9XykETaoqZv99)
 
@@ -16,6 +14,12 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 **Contact:** [adam.chaboryk@torontomu.ca](mailto:adam.chaboryk@torontomu.ca)
 
 ## Changelog
+
+### 1.2.9
+* Upgrade to Sa11y 5.0.5
+
+### 1.2.8
+* Upgrade to Sa11y 4.4.1
 
 ### 1.2.7
 * Upgrade to Sa11y 4.4.0
