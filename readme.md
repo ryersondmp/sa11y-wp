@@ -15,11 +15,8 @@ Created and maintained by [Adam Chaboryk](https://github.com/adamchaboryk).
 
 ## Changelog
 
-### 1.2.9
-* Upgrade to Sa11y 5.0.5
-
 ### 1.2.8
-* Upgrade to Sa11y 4.4.1
+* Upgrade to Sa11y 5.0.5
 
 ### 1.2.7
 * Upgrade to Sa11y 4.4.0
